@@ -1,9 +1,10 @@
-# This file includes all definitions that apply to ALL find7a devices, and
-# are also specific to find7a devices
+# This file includes all definitions that apply to ALL oppo msm8974 devices,
 #
 # Everything in this directory will become public
 
-DEVICE_PACKAGE_OVERLAYS := device/oppo/find7a/overlay
+DEVICE_PACKAGE_OVERLAYS := device/oppo/msm8974-common/overlay
+
+COMMON_PATH := device/oppo/msm8974-common
 
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
@@ -13,8 +14,8 @@ PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 PRODUCT_PACKAGES += \
-    charger_res_images_find7a \
-    charger_find7a
+    charger_res_images \
+    charger
 
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
@@ -36,50 +37,42 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    device/oppo/find7a/configs/init.find7a.rc:root/init.qcom.rc \
-    device/oppo/find7a/configs/init.find7a.usb.rc:root/init.find7a.usb.rc \
-    device/oppo/find7a/configs/ueventd.qcom.rc:root/ueventd.qcom.rc \
-    device/oppo/find7a/configs/fstab.find7a:root/fstab.qcom \
-    device/oppo/find7a/configs/twrp.fstab:recovery/root/etc/twrp.fstab
+    $(COMMON_PATH)/configs/init.oppo.usb.rc:root/init.oppo.usb.rc \
+    $(COMMON_PATH)/configs/ueventd.qcom.rc:root/ueventd.qcom.rc
 
 # Config files for touch and input
 PRODUCT_COPY_FILES += \
-    device/oppo/find7a/configs/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    device/oppo/find7a/configs/keylayout/atmel_mxt_ts.kl:system/usr/keylayout/atmel_mxt_ts.kl \
-    device/oppo/find7a/configs/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
-    device/oppo/find7a/configs/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl
+    $(COMMON_PATH)/configs/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    $(COMMON_PATH)/configs/keylayout/atmel_mxt_ts.kl:system/usr/keylayout/atmel_mxt_ts.kl \
+    $(COMMON_PATH)/configs/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
+    $(COMMON_PATH)/configs/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl
 
 # Media config files
 PRODUCT_COPY_FILES += \
-    device/oppo/find7a/media_codecs.xml:system/etc/media_codecs.xml \
-    device/oppo/find7a/media_profiles.xml:system/etc/media_profiles.xml
+    $(COMMON_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
+    $(COMMON_PATH)/media_profiles.xml:system/etc/media_profiles.xml
 
 # Audio config files
 PRODUCT_COPY_FILES += \
-    device/oppo/find7a/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    device/oppo/find7a/mixer_paths.xml:/system/etc/mixer_paths.xml
+    $(COMMON_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(COMMON_PATH)/mixer_paths.xml:/system/etc/mixer_paths.xml
 
 # MSM IPC Router security configuration
 PRODUCT_COPY_FILES += \
-    device/oppo/find7a/configs/sec_config:system/etc/sec_config
+    $(COMMON_PATH)/configs/sec_config:system/etc/sec_config
 
 # qcom init stuff
 PRODUCT_COPY_FILES += \
-    device/oppo/find7a/init.qcom.syspart_fixup.sh:system/etc/init.qcom.syspart_fixup.sh \
-    device/oppo/find7a/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
-
-#sdcard permissions fix
-PRODUCT_COPY_FILES += \
-    device/oppo/find7a/configs/init.sdcard_perms.sh:system/etc/init.sdcard_perms.sh
+    $(COMMON_PATH)/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
 
 #thermal-engine
 PRODUCT_COPY_FILES += \
-    device/oppo/find7a/configs/thermal-engine-8974.conf:system/etc/thermal-engine-8974.conf
+    $(COMMON_PATH)/configs/thermal-engine-8974.conf:system/etc/thermal-engine-8974.conf
 
 # Wifi config
 PRODUCT_COPY_FILES += \
-    device/oppo/find7a/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    device/oppo/find7a/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+    $(COMMON_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    $(COMMON_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -136,14 +129,7 @@ PRODUCT_PACKAGES += \
     wcnss_service
 
 PRODUCT_COPY_FILES += \
-    device/oppo/find7a/configs/init.find7a.bt.sh:system/etc/init.find7a.bt.sh
-
-# NFC packages
-PRODUCT_PACKAGES += \
-    libnfc \
-    libnfc_jni \
-    Nfc \
-    Tag
+    $(COMMON_PATH)/configs/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
 
 # Device settings
 PRODUCT_PACKAGES += \
@@ -155,12 +141,8 @@ PRODUCT_COPY_FILES += \
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
-    device/oppo/find7a/gps/gps.conf:system/etc/gps.conf \
-    device/oppo/find7a/gps/izat.conf:system/etc/izat.conf
-
-# Sensor configuration from Oppo
-PRODUCT_COPY_FILES += \
-    device/oppo/find7a/sensor/sensor_def_qcomdev.conf:system/etc/sensor_def_qcomdev.conf
+    $(COMMON_PATH)/gps/gps.conf:system/etc/gps.conf \
+    $(COMMON_PATH)/gps/izat.conf:system/etc/izat.conf
 
 # Properties
 

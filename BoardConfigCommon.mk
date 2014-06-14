@@ -1,11 +1,9 @@
 # inherit from the proprietary version
 -include vendor/oppo/find7a/BoardConfigVendor.mk
 
-LOCAL_PATH := device/oppo/find7a
+COMMON_PATH := device/oppo/msm8974-common
 
 TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := find7a
-TARGET_OTA_ASSERT_DEVICE := find7a,FIND7
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8974
@@ -36,7 +34,7 @@ BOARD_KERNEL_BASE :=  0x80200000
 #BOARD_FORCE_RAMDISK_ADDRESS := 0x05000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
-BOARD_CUSTOM_BOOTIMG_MK := device/oppo/find7a/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := $(COMMON_PATH)/mkbootimg.mk
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00F00000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00F00000
@@ -78,7 +76,6 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
@@ -93,7 +90,7 @@ WIFI_DRIVER_FW_PATH_AP           := "ap"
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wlan.ko"
 WIFI_DRIVER_MODULE_NAME          := "wlan"
 
-BOARD_EGL_CFG := device/oppo/find7a/configs/egl.cfg
+BOARD_EGL_CFG := $(COMMON_PATH)/configs/egl.cfg
 
 # Compatibility with pre-kitkat Qualcomm sensor HALs
 SENSORS_NEED_SETRATE_ON_ENABLE := true
@@ -101,8 +98,6 @@ SENSORS_NEED_SETRATE_ON_ENABLE := true
 #TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 
 # Recovery:Start
-
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/configs/fstab.find7a
 
 # Use this flag if the board has a ext4 partition larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
