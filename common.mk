@@ -210,7 +210,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.fluencetype=fluence \
     persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.speaker=true \
     persist.audio.lowlatency.rec=false \
     af.resampler.quality=4 \
     ro.qc.sdk.audio.ssr=false \
