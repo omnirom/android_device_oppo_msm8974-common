@@ -674,12 +674,19 @@
         <ctl name="SLIM_0_RX Format" value="S16_LE" />
     </path>
 
-    <path name="anc-mic">
-        <ctl name="DEC2 MUX" value="ADC5" />
-        <ctl name="DEC2 Volume" value="84" />
+    <path name="sec-mic">
+        <ctl name="DEC3 MUX" value="ADC4" />
+        <ctl name="DEC3 Volume" value="84" />
+        <ctl name="ADC4 Volume" value="19" />
         <ctl name="SLIM_0_RX Format" value="S16_LE" />
     </path>
 
+    <path name="anc-mic">
+        <ctl name="DEC2 MUX" value="ADC5" />
+        <ctl name="DEC2 Volume" value="84" />
+        <ctl name="ADC5 Volume" value="19" />
+        <ctl name="SLIM_0_RX Format" value="S16_LE" />
+    </path>
 
     <!-- Recording paths -->
     <path name="handset-mic">
@@ -691,9 +698,8 @@
     <path name="speaker-mic">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
         <ctl name="SLIM_0_TX Channels" value="One" />
-        <ctl name="SLIM TX7 MUX" value="DEC2" />
-        <ctl name="ADC5 Volume" value="19" />
-        <path name="anc-mic" />
+        <ctl name="SLIM TX7 MUX" value="DEC3" />
+        <path name="sec-mic" />
     </path>
 
     <path name="headset-mic">
