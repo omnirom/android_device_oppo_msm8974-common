@@ -153,7 +153,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072 \
-    ro.sf.lcd_density=480 \
     persist.hwc.mdpcomp.enable=true
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
