@@ -19,4 +19,6 @@
 <resources>
     <!-- Allows setting video size before recording starts -->
     <bool name="needsEarlyVideoSize">true</bool>
+    <!-- use oppo-app = 1 param -->
+    <bool name="needsOppoCamMode">true</bool>
 </resources>
