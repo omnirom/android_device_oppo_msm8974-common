@@ -162,6 +162,8 @@ char * camera_fixup_setparams(int id, const char * settings)
     }
 
     */
+    params.set("oppo-app","1");
+
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
 
