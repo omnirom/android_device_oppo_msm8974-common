@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b713d8b_beebd60d",
+        "filename": "overlay/packages/apps/Camera2/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000008
+      },
+      "writtenOn": "2014-07-27T16:23:12Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "bc18860aa30907d4eafcc0d4900e9c9600d87e5e",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
