@@ -27,4 +27,7 @@
 
     <!-- Show enabled lte option for lte device -->
     <bool name="config_enabled_lte" translatable="false">true</bool>
+
+    <!-- Use TD-SDCMA 3G/4G technologies on this device -->
+    <bool name="config_enabled_tdscdma" translatable="false">true</bool>
 </resources>
