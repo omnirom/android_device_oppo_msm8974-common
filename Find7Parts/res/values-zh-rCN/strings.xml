@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Find 7</string>
+    <string name="category_gestures_title">快捷手势</string>
+    <string name="double_tap_wake_title_head">双击唤醒</string>
+    <string name="double_tap_wake_summary_head">双击屏幕唤醒设备</string>
+    <string name="camera_title_head">相机</string>
+    <string name="camera_summary_head">画一个圆圈以启动相机</string>
+    <string name="torch_title_head">手电筒</string>
+    <string name="torch_summary_head">"画 'V' 以启动手电筒"</string>
+    <string name="advanced_settings">原厂设置</string>
+</resources>
