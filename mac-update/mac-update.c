@@ -28,8 +28,8 @@
 
 static char mac_string[256];
 
-#define NV_IN "/system/etc/wifi/WCNSS_qcom_cfg.ini"
-#define NV_OUT "/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini"
+#define NV_IN "/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini"
+#define NV_OUT "/data/misc/wifi/prima/WCNSS_qcom_cfg.ini"
 
 #define MAC_FILE "/data/opponvitems/4678"
 #define EMPTY_MAC "000000000000"

@@ -63,10 +63,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/sec_config:system/etc/sec_config
 
-# qcom init stuff
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
-
 #thermal-engine
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/thermal-engine-8974.conf:system/etc/thermal-engine-8974.conf
