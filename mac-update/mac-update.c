@@ -49,12 +49,21 @@ int read_mac(const char *filename)
     char raw[6];
     char mac[6];
     FILE *fp = NULL;
+    int numtries = 0;
     int ret;
 
     memset(raw, 0, 6);
     memset(mac, 0, 6);
 
-    fp = fopen(filename, "r");
+    //Try to open the file once every 4 seconds for 120 seconds
+    while(fp == NULL && numtries++ < 30) {
+        fp = fopen(filename, "r");
+        if(fp == NULL) {
+            sleep(4);
+        }
+    }
+
+    //if it's still not open, bomb out
     if (fp == NULL)
         return ENOENT;
 
