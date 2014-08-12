@@ -212,7 +212,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.ssr=false \
     audio.offload.buffer.size.kb=32 \
     audio.offload.gapless.enabled=true \
-    av.offload.enable=true
+    av.offload.enable=true \
+    use.voice.path.for.pcm.voip=true
 
 # QCOM
 PRODUCT_PROPERTY_OVERRIDES += \
