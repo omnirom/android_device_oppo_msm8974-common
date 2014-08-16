@@ -57,4 +57,41 @@
         <item>640x480</item>
         <item>320x240</item>
     </string-array>
+
+    <!-- exposure time feature -->
+    <string-array name="pref_camera_slow_shutter_entries" translatable="false">
+        <item>@string/pref_camera_slow_shutter_entry_off</item>
+        <item>@string/pref_camera_slow_shutter_entry_auto</item>
+        <item>@string/pref_camera_slow_shutter_entry_half_second</item>
+        <item>@string/pref_camera_slow_shutter_entry_1s</item>
+        <item>@string/pref_camera_slow_shutter_entry_2s</item>
+        <item>@string/pref_camera_slow_shutter_entry_4s</item>
+        <item>@string/pref_camera_slow_shutter_entry_8s</item>
+        <item>@string/pref_camera_slow_shutter_entry_16s</item>
+        <item>@string/pref_camera_slow_shutter_entry_32s</item>
+    </string-array>
+
+    <string-array name="pref_camera_slow_shutter_entryvalues" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>500000</item>
+        <item>1000000</item>
+        <item>2000000</item>
+        <item>4000000</item>
+        <item>8000000</item>
+        <item>16000000</item>
+        <item>32000000</item>
+    </string-array>
+
+    <string-array name="pref_camera_slow_shutter_entryvalues_ms" translatable="false">
+        <item>0</item>
+        <item>0</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>4000</item>
+        <item>8000</item>
+        <item>16000</item>
+        <item>32000</item>
+    </string-array>
 </resources>
