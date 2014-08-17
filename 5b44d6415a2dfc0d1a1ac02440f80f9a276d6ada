@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b6ec9b0_828b24c3",
+        "filename": "configs/init.oppo.usb.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2014-08-17T20:39:44Z",
+      "side": 1,
+      "message": "you dont need both on boot and on init\nespecially not containing the same line\nso I would combine this into one section",
+      "revId": "5b44d6415a2dfc0d1a1ac02440f80f9a276d6ada",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
