@@ -39,7 +39,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/init.oppo.usb.rc:root/init.oppo.usb.rc \
     $(COMMON_PATH)/configs/ueventd.qcom.rc:root/ueventd.qcom.rc \
-    $(COMMON_PATH)/configs/init.recovery.find7.rc:root/init.recovery.qcom.rc \
     $(COMMON_PATH)/configs/qhdcp.sh:recovery/root/sbin/qhdcp.sh
 
 # Config files for touch and input
