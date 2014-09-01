@@ -57,6 +57,7 @@ PRODUCT_COPY_FILES += \
 # Audio config files
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(COMMON_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     $(COMMON_PATH)/mixer_paths.xml:/system/etc/mixer_paths.xml
 
 # MSM IPC Router security configuration
@@ -107,7 +108,9 @@ PRODUCT_PACKAGES += \
     camera-wrapper.msm8974 \
     libaudio-resampler \
     audiod \
-    libqcompostprocbundle
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
