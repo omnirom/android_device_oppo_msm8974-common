@@ -109,7 +109,8 @@ PRODUCT_PACKAGES += \
     audiod \
     libqcompostprocbundle \
     libqcomvisualizer \
-    libqcomvoiceprocessing
+    libqcomvoiceprocessing \
+    libdashplayer
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
