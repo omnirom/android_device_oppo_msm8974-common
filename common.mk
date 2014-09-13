@@ -57,8 +57,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
     $(COMMON_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    $(COMMON_PATH)/mixer_paths.xml:/system/etc/mixer_paths.xml
-
+    $(COMMON_PATH)/mixer_paths.xml:/system/etc/mixer_paths.xml \
+    $(COMMON_PATH)/configs/audio_platform_info.xml:/system/etc/audio_platform_info.xml
+    
 # MSM IPC Router security configuration
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/sec_config:system/etc/sec_config
