@@ -22,7 +22,7 @@
 */
 
 
-#define LOG_NDEBUG 0
+//#define LOG_NDEBUG 0
 #define LOG_PARAMETERS
 
 #define LOG_TAG "CameraWrapper"
@@ -44,10 +44,6 @@ static int camera_device_close(hw_device_t* device);
 static int camera_get_number_of_cameras(void);
 static int camera_get_camera_info(int camera_id, struct camera_info *info);
 
-#if 0
-static camera_notify_callback orig_notify_cb;
-#endif
-
 static struct hw_module_methods_t camera_module_methods = {
         open: camera_device_open
 };
@@ -58,7 +54,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          version_major: 1,
          version_minor: 0,
          id: CAMERA_HARDWARE_MODULE_ID,
-         name: "N1 Camera Wrapper",
+         name: "Find7(s/a/op) Camera Wrapper",
          author: "The CyanogenMod Project",
          methods: &camera_module_methods,
          dso: NULL, /* remove compilation warnings */
@@ -102,20 +98,6 @@ static char * camera_fixup_getparams(int id, const char * settings)
 {
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
-    /*
-    // added video snapshot supported
-    params.set(android::CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "true");
-
-    // add hdr scene mode to existing scene modes
-    params.set(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES, scene_mode_values[id]);
-    if (params.get("ae-bracket-hdr")) {
-        const char* hdrMode = params.get("ae-bracket-hdr");
-        if (strcmp(hdrMode, "HDR") == 0) {
-            // Scene mode is HDR then (see fixup_setparams)
-            params.set("scene-mode", "hdr");
-        }
-    }
-    */
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
 
@@ -127,41 +109,7 @@ char * camera_fixup_setparams(int id, const char * settings)
 {
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
-    /*
-    // fix params here
-    if (params.get("scene-mode")) {
-        const char* sceneMode = params.get("scene-mode");
-        if (strcmp(sceneMode, "hdr") == 0) {
-            // On n1 and find5, HDR works by setting 'ae-bracket-hdr' to 'HDR'
-            // ('AE-Bracket' exists too). We then use
-            // 'auto' scene mode as it's AOSP/Nexus behavior
-            params.set("ae-bracket-hdr", "HDR");
-            params.set("scene-mode", "auto");
-            params.set("scene-detect", "on");
-            ALOGD("Fixup: Hdr enabled");
-        } else {
-            // Remove HDR flag
-            params.set("ae-bracket-hdr", "Off");
-            params.set("scene-detect", "off");
-            ALOGD("Fixup: Hdr disabled");
-        }
-    }
 
-    // allowing setting this to true will create the issue
-    // with continious auto focus and flash
-    params.set("auto-exposure-lock", "false");
-    params.set("auto-whitebalance-lock", "false");
-
-    if (params.get("recording-hint")) {
-        const char* isRecording = params.get("recording-hint");
-        const char* videoSize = params.get("video-size");
-
-        if (strcmp(isRecording, "true") == 0){
-            params.set("picture-size", videoSize);
-        }
-    }
-
-    */
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
 
