@@ -39,8 +39,9 @@ $(INSTALLED_DTIMAGE_TARGET): $(DTBTOOL) $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/u
 ## Overload bootimg generation: Same as the original, + --dt arg
 $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(INSTALLED_DTIMAGE_TARGET) $(PRODUCT_OUT)/utilities/busybox
 	$(call pretty,"Target boot image: $@")
-	@echo -e ${CL_CYN}"----- Copying busybox to ramdisk ------"${CL_RST}
-	$(hide) cp $(PRODUCT_OUT)/utilities/busybox $(PRODUCT_OUT)/root/sbin/
+	@echo -e ${CL_CYN}"----- Copying static busybox to ramdisk ------"${CL_RST}
+	$(hide) mkdir -p $(PRODUCT_OUT)/root/sbin/static
+	$(hide) cp $(PRODUCT_OUT)/utilities/busybox $(PRODUCT_OUT)/root/sbin/static/busybox
 	@echo -e ${CL_CYN}"----- Making boot ramdisk ------"${CL_RST}
 	$(hide) rm -f $(INSTALLED_RAMDISK_TARGET)
 	$(hide) $(MKBOOTFS) $(TARGET_ROOT_OUT) | $(MINIGZIP) > $(INSTALLED_RAMDISK_TARGET)
