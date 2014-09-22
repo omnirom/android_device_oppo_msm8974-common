@@ -98,6 +98,9 @@ SENSORS_NEED_SETRATE_ON_ENABLE := true
 
 #TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 
+# charger
+BOARD_CHARGER_RES := $(COMMON_PATH)/charger/images
+
 # Recovery:Start
 
 # Use this flag if the board has a ext4 partition larger than 2gb
