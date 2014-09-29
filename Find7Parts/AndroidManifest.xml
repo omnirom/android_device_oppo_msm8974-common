@@ -10,6 +10,7 @@
 	<application
 		android:icon="@drawable/icon"
 		android:label="@string/advanced_settings"
+		android:theme="@style/Theme.Main"
 		android:supportsRtl="true" >
 		<activity
 			android:name="org.omnirom.device.DeviceSettings"
