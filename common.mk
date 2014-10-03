@@ -56,8 +56,10 @@ PRODUCT_COPY_FILES += \
 # Audio config files
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    $(COMMON_PATH)/mixer_paths.xml:/system/etc/mixer_paths.xml
-
+    $(COMMON_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    $(COMMON_PATH)/mixer_paths.xml:/system/etc/mixer_paths.xml \
+    $(COMMON_PATH)/configs/audio_platform_info.xml:/system/etc/audio_platform_info.xml
+    
 # MSM IPC Router security configuration
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/sec_config:system/etc/sec_config
@@ -105,7 +107,11 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     camera-wrapper.msm8974 \
     libaudio-resampler \
-    audiod
+    audiod \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    libdashplayer
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
@@ -209,7 +215,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     af.resampler.quality=4 \
     audio.offload.buffer.size.kb=32 \
     audio.offload.gapless.enabled=true \
-    use.voice.path.for.pcm.voip=true
+    use.voice.path.for.pcm.voip=true \
+    av.offload.enable=true \
+    av.streaming.offload.enable=true \
+    audio.offload.pcm.enable=true
 
 # QCOM
 PRODUCT_PROPERTY_OVERRIDES += \
