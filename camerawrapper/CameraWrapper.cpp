@@ -111,6 +111,7 @@ char * camera_fixup_setparams(int id, const char * settings)
     params.unflatten(android::String8(settings));
 
     params.set("oppo-app", "1");
+    params.set("zsl", "off");
 
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
