@@ -24,8 +24,10 @@ import android.preference.TwoStatePreference;
 public class DeviceSettings extends PreferenceActivity  {
 
     public static final String KEY_DOUBLE_TAP_SWITCH = "double_tap";
+
     public static final String KEY_CAMERA_SWITCH = "camera";
     public static final String KEY_TORCH_SWITCH = "torch";
+
 /* Commented out until reimplemented on F7
     public static final String KEY_MUSIC_SWITCH = "music";
 
@@ -34,9 +36,10 @@ public class DeviceSettings extends PreferenceActivity  {
     public static final String KEY_SUSPEND_CAP_CORE = "suspend_cap_core";
 */
     private TwoStatePreference mDoubleTapSwitch;
+
+/* Commented out until reimplemented
     private TwoStatePreference mCameraSwitch;
     private TwoStatePreference mTorchSwitch;
-/* Commented out until reimplemented
     private TwoStatePreference mMusicSwitch;
     private SuspendFreqCap mSuspendFreqCap;
     private SuspendCoreCap mSuspendCoreCap;
@@ -52,6 +55,7 @@ public class DeviceSettings extends PreferenceActivity  {
         mDoubleTapSwitch.setChecked(DoubleTapSwitch.isEnabled(this));
         mDoubleTapSwitch.setOnPreferenceChangeListener(new DoubleTapSwitch());
 
+/*
         mCameraSwitch = (TwoStatePreference) findPreference(KEY_CAMERA_SWITCH);
         mCameraSwitch.setEnabled(CameraGestureSwitch.isSupported());
         mCameraSwitch.setChecked(CameraGestureSwitch.isEnabled(this));
@@ -62,7 +66,6 @@ public class DeviceSettings extends PreferenceActivity  {
         mTorchSwitch.setChecked(TorchGestureSwitch.isEnabled(this));
         mTorchSwitch.setOnPreferenceChangeListener(new TorchGestureSwitch());
 
-/*
         mMusicSwitch = (TwoStatePreference) findPreference(KEY_MUSIC_SWITCH);
         mMusicSwitch.setEnabled(MusicGestureSwitch.isSupported());
         mMusicSwitch.setChecked(MusicGestureSwitch.isEnabled(this));
