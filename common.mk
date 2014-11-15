@@ -105,13 +105,13 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
-    camera-wrapper.msm8974 \
     libaudio-resampler \
     audiod \
     libqcompostprocbundle \
     libqcomvisualizer \
-    libqcomvoiceprocessing \
-    libdashplayer
+    libqcomvoiceprocessing
+
+#    camera-wrapper.msm8974
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
@@ -238,5 +238,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/sensor/sap.conf:system/etc/sap.conf
 
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+# enable if merged
+#$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+#$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
