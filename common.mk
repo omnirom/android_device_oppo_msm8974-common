@@ -32,8 +32,8 @@ PRODUCT_PACKAGES += \
     librs_jni
 
 # Omni Packages
-PRODUCT_PACKAGES += \
-    OmniTorch
+#PRODUCT_PACKAGES += \
+#    OmniTorch
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
@@ -51,7 +51,10 @@ PRODUCT_COPY_FILES += \
 # Media config files
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
-    $(COMMON_PATH)/media_profiles.xml:system/etc/media_profiles.xml
+    $(COMMON_PATH)/media_profiles.xml:system/etc/media_profiles.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 # Audio config files
 PRODUCT_COPY_FILES += \
@@ -100,18 +103,18 @@ PRODUCT_PACKAGES += \
     copybit.msm8974 \
     memtrack.msm8974 \
     audio.primary.msm8974 \
-    audio_policy.msm8974 \
     lights.qcom \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
-    camera-wrapper.msm8974 \
     libaudio-resampler \
     audiod \
     libqcompostprocbundle \
     libqcomvisualizer \
-    libqcomvoiceprocessing \
-    libdashplayer
+    libqcomvoiceprocessing
+
+#    camera-wrapper.msm8974
+#    audio_policy.msm8974 \
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
@@ -129,7 +132,11 @@ PRODUCT_PACKAGES += \
 # wifi
 PRODUCT_PACKAGES += \
     mac-update \
-    wcnss_service
+    wcnss_service \
+    libwpa_client \
+	hostapd \
+	wpa_supplicant \
+	wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
@@ -156,7 +163,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072 \
-    persist.hwc.mdpcomp.enable=true
+    persist.hwc.mdpcomp.enable=false
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -238,5 +245,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/sensor/sap.conf:system/etc/sap.conf
 
+# enable if merged
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
