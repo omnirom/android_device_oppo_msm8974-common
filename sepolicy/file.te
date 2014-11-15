@@ -1,0 +1,21 @@
+###########################
+# OmniROM common sepolicy
+#
+
+type camera_socket, file_type;
+type qmuxd_socket, file_type;
+type sysfs_rmnet, fs_type, sysfs_type;
+type sysfs_smdcntl_open_timeout, fs_type, sysfs_type;
+type sysfs_xhci_msm_hsic, fs_type, sysfs_type;
+type sysfs_msm_hsic_host, fs_type, sysfs_type;
+type sensors_socket, file_type;
+type thermald_socket, file_type;
+type time_data_file, file_type, data_file_type;
+type persist_file, file_type;
+type mpdecision_socket, file_type;
+type sysfs_mpdecision, fs_type, sysfs_type;
+type sysfs_rqstats, fs_type, sysfs_type;
+type sysfs_cpu_online, fs_type, sysfs_type;
+type sysfs_cpuboost, fs_type, sysfs_type;
+type firmware_file, fs_type, contextmount_type;
+
