@@ -1,0 +1,11 @@
+binder_call(rild, mediaserver)
+binder_use(rild)
+binder_service(rild)
+
+# Grant access to Qualcomm MSM Interface (QMI) radio sockets to RILD
+qmux_socket(rild)
+
+allow rild persist_file:dir search;
+allow rild time:unix_stream_socket connectto;
+
+
