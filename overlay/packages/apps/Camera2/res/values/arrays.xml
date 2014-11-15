@@ -59,7 +59,7 @@
     </string-array>
 
     <!-- exposure time feature -->
-    <string-array name="pref_camera_slow_shutter_entries" translatable="false">
+   <!-- <string-array name="pref_camera_slow_shutter_entries" translatable="false">
         <item>@string/pref_camera_slow_shutter_entry_off</item>
         <item>@string/pref_camera_slow_shutter_entry_auto</item>
         <item>@string/pref_camera_slow_shutter_entry_half_second</item>
@@ -93,5 +93,5 @@
         <item>8000</item>
         <item>16000</item>
         <item>32000</item>
-    </string-array>
+    </string-array>-->
 </resources>
