@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b432935_14ff5a31",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000049
+      },
+      "writtenOn": "2014-11-30T19:42:05Z",
+      "side": 1,
+      "message": "TARGET_USES_QCOM_BSP :\u003d true  needs to be commented out to make a succesfull build for find7op",
+      "revId": "7860a1d05fca284eabc9491d52615434137a9489",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b432935_d4e4f2a6",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000049
+      },
+      "writtenOn": "2014-11-30T19:42:05Z",
+      "side": 1,
+      "message": "-DQCOM_BSP needs to be removed to make a succesfull build for find7op",
+      "revId": "7860a1d05fca284eabc9491d52615434137a9489",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b432935_f4e9ee7b",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000049
+      },
+      "writtenOn": "2014-11-30T19:42:05Z",
+      "side": 1,
+      "message": "Disbaling TARGET_ENABLE_QC_AV_ENHANCEMENTS is also needed for a complete build of find7op",
+      "revId": "7860a1d05fca284eabc9491d52615434137a9489",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
