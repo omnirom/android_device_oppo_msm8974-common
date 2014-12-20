@@ -1,0 +1,4 @@
+# thermal-engine daemon
+
+allow thermal-engine self:netlink_kobject_uevent_socket *;
+

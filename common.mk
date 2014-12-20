@@ -251,25 +251,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/sensor/sap.conf:system/etc/sap.conf
 
-BOARD_SEPOLICY_DIRS += \
-    $(COMMON_PATH)/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    file_contexts \
-    platform_app.te \
-    file.te \
-    device.te \
-    qmux.te \
-    sensors.te \
-    thermald.te \
-    time.te \
-    mediaserver.te \
-    ueventd.te \
-    system_server.te \
-    rild.te \
-    te_macros \
-    mpdecision.te \
-    camera.te
-
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
