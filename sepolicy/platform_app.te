@@ -1,5 +1,0 @@
-###########################
-# OmniROM common sepolicy
-#
-
-#allow platform_app proc:file rw_file_perms;
