@@ -10,8 +10,6 @@ TARGET_BOARD_PLATFORM := msm8974
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
 
 # Architecture
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_CPU_VARIANT := krait
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -115,6 +113,11 @@ SENSORS_NEED_SETRATE_ON_ENABLE := true
 
 # charger
 BOARD_CHARGER_RES := $(COMMON_PATH)/charger/images
+
+include device/qcom/sepolicy/sepolicy.mk
+
+BOARD_SEPOLICY_DIRS += \
+    $(COMMON_PATH)/sepolicy
 
 # Recovery:Start
 
