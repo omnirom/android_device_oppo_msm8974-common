@@ -1,9 +1,9 @@
-# Grant access to Qualcomm MSM Interface (QMI) radio sockets to system services
-# (e.g., LocationManager)
-qmux_socket(system_server)
+###########################
+# OmniROM common sepolicy
+#
 
-allow system_server mpdecision_socket:dir r_dir_perms;
-unix_socket_send(system_server, mpdecision, mpdecision)
+allow system_server time_daemon:unix_stream_socket connectto;
+allow system_server apk_data_file:sock_file { write getattr };
+allow system_server cache_file:file { execute };
 
-unix_socket_connect(system_server, sensors, sensors)
-allow system_server sensors_socket:sock_file r_file_perms;
+
