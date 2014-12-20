@@ -1,0 +1,7 @@
+###########################
+# OmniROM common sepolicy
+#
+
+allow tee modem_block_device:blk_file rw_file_perms;
+allow tee vfat:file r_file_perms;
+allow tee vfat:dir r_dir_perms;
