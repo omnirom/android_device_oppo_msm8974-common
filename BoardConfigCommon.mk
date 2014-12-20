@@ -116,6 +116,9 @@ SENSORS_NEED_SETRATE_ON_ENABLE := true
 # charger
 BOARD_CHARGER_RES := $(COMMON_PATH)/charger/images
 
+# power hal
+TARGET_PROVIDES_POWERHAL := true
+
 # Recovery:Start
 
 # Use this flag if the board has a ext4 partition larger than 2gb
