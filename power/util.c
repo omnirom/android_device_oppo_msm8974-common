@@ -27,7 +27,7 @@
 #define LOG_TAG "PowerHAL"
 #include <utils/Log.h>
 
-#define DEBUG
+//#define LOG_NDEBUG 0
 
 #define SCALING_MAX_PATH "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"
 #define CPUFREQ_ROOT_PATH "/sys/devices/system/cpu/cpu"
@@ -138,8 +138,6 @@ void write_cpufreq_value(int cpu, const char* key, const char* value)
 
     sprintf(cpufreq_path, "%s%d%s%s", CPUFREQ_ROOT_PATH, cpu, CPUFREQ_TAIL_PATH, key);
     if (!sysfs_write_silent(cpufreq_path, value)) {
-#ifdef DEBUG
-        ALOGI("write %s -> %s", cpufreq_path, value);
-#endif
+        ALOGV("write %s -> %s", cpufreq_path, value);
     }
 }
