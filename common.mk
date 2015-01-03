@@ -114,7 +114,8 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    power.msm8974
+    power.msm8974 \
+    kystore.msm8974
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
