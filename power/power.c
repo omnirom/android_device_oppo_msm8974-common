@@ -32,7 +32,7 @@
 
 #include "util.h"
 
-#define DEBUG
+//#define LOG_NDEBUG 0
 
 #define CPUFREQ_SCALING_MAX_PATH "scaling_max_freq"
 #define MAX_CPU_PATH "/sys/devices/system/cpu/cpuquiet/cpuquiet_driver/max_cpus"
@@ -59,9 +59,7 @@ static void write_cpuquiet_max(const char* value)
     } else {
         strcpy(buf, value);
     }
-#ifdef DEBUG
-    ALOGI("write %s -> %s", MAX_CPU_PATH, buf);
-#endif
+    ALOGV("write %s -> %s", MAX_CPU_PATH, buf);
     sysfs_write(MAX_CPU_PATH, buf);
 }
 
@@ -75,17 +73,13 @@ static void write_gpu_max(const char* value)
     } else {
         int max_gpu = atoi(value);
         if (max_gpu > min_gpu) {
-#ifdef DEBUG
-            ALOGI("maxGpu value %d > %d", max_gpu, min_gpu);
-#endif
+            ALOGV("maxGpu value %d > %d", max_gpu, min_gpu);
             sprintf(buf, "%d", 0);
         } else {
             strcpy(buf, value);
         }
     }
-#ifdef DEBUG
-    ALOGI("write %s -> %s", MAX_GPU_PATH, buf);
-#endif
+    ALOGV("write %s -> %s", MAX_GPU_PATH, buf);
     sysfs_write(MAX_GPU_PATH, buf);
 }
 
@@ -120,9 +114,7 @@ static void apply_profile(char* profile)
 
     token = strtok(profile, separator);
     while(token != NULL) {
-#ifdef DEBUG
-        ALOGI("token %s", token);
-#endif
+        ALOGV("token %s", token);
         if (!strcmp(token, PROFILE_MAX_CPU_NUM_TAG)) {
             token = strtok(NULL, separator);
             strcpy(max_cpu_profile, token);
@@ -136,11 +128,9 @@ static void apply_profile(char* profile)
         token = strtok(NULL, separator);
     }
 
-#ifdef DEBUG
-    ALOGI("max_freq_profile %s", max_freq_profile);
-    ALOGI("max_cpu_profile %s", max_cpu_profile);
-    ALOGI("max_gpu_profile %s", max_gpu_profile);
-#endif
+    ALOGV("max_freq_profile %s", max_freq_profile);
+    ALOGV("max_cpu_profile %s", max_cpu_profile);
+    ALOGV("max_gpu_profile %s", max_gpu_profile);
 
     // the API will ignore invalid values so we dont need to check it here
     if (strlen(max_freq_profile) != 0) {
@@ -190,18 +180,14 @@ static void power_hint(struct power_module __unused *module, power_hint_t hint,
         case POWER_HINT_VIDEO_ENCODE:
             break;
         case POWER_HINT_POWER_PROFILE:
-#ifdef DEBUG
-            ALOGI("POWER_HINT_POWER_PROFILE %s", (char*)data);
-#endif
+            ALOGV("POWER_HINT_POWER_PROFILE %s", (char*)data);
             // profile is contributed as string with key value
             // pairs separated with ":"
             apply_profile((char*)data);
             break;
         case POWER_HINT_LOW_POWER:
-#ifdef DEBUG
             // handled by power profiles!
-            ALOGI("POWER_HINT_LOW_POWER");
-#endif
+            ALOGV("POWER_HINT_LOW_POWER");
             break;
         default:
              break;
@@ -218,7 +204,7 @@ struct power_module HAL_MODULE_INFO_SYM = {
         .module_api_version = POWER_MODULE_API_VERSION_0_2,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = POWER_HARDWARE_MODULE_ID,
-        .name = "Qualcomm Power HAL",
+        .name = "find7a/s/op power HAL",
         .author = "The OmniROM Project",
         .methods = &power_module_methods,
     },
