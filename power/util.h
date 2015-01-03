@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#ifndef POWER_UTIL_H
+#define POWER_UTIL_H
 
 void sysfs_write(const char *path, const char *s);
 int sysfs_write_silent(const char *path, const char *s);
@@ -22,3 +24,5 @@ int sysfs_read_buf(const char* path, char *buf, int size);
 int get_max_freq(char *freq, int size);
 int get_max_cpus(char *cpus, int size);
 void write_cpufreq_value(int cpu, const char* key, const char* value);
+
+#endif
