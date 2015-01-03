@@ -14,8 +14,7 @@ PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 PRODUCT_PACKAGES += \
-    charger_res_images \
-    charger
+    charger_res_images
 
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
@@ -114,7 +113,8 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    power.msm8974
+    power.msm8974 \
+    kystore.msm8974
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
