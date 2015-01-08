@@ -256,7 +256,6 @@
         <item>airplane</item>
         <item>users</item>
         <item>silent</item>
-        <item>bugreport</item>
     </string-array>
 
     <!-- The list absolute paths of jar/apk files containing the device specific handlers,
@@ -268,4 +267,6 @@
 
     <bool name="config_powerProfilesSupported">true</bool>
 
+    <!-- Whether Multiuser UI should be shown -->
+    <bool name="config_enableMultiUserUI">true</bool>
 </resources>
