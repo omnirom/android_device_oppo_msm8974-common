@@ -1,3 +1,3 @@
 #!/sbin/sh
 
-cp -R /qhdres/* /res
+cp -R /qhdres/* /twres
