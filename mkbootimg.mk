@@ -6,23 +6,19 @@ LOCAL_PATH := $(call my-dir)
 
 ## Imported from the original makefile...
 KERNEL_CONFIG := $(KERNEL_OUT)/.config
-MSM8974_DTS_NAMES := msm8974
 
-MSM8974_DTS_FILES = $(wildcard $(TOP)/$(TARGET_KERNEL_SOURCE)/arch/arm/boot/dts/msm8974pro*.dts)
+MSM8974_DTB_FILES = $(wildcard $(TOP)/$(TARGET_KERNEL_SOURCE)/arch/arm/boot/dts/*.dtb)
 MSM8974_DTS_FILE = $(lastword $(subst /, ,$(1)))
-DTB_FILE = $(addprefix $(KERNEL_OUT)/arch/arm/boot/,$(patsubst %.dts,%.dtb,$(call MSM8974_DTS_FILE,$(1))))
+DTB_FILE = $(ddprefix $(KERNEL_OUT)/arch/arm/boot/,$(patsubst %.dts,%.dtb,$(call MSM8974_DTS_FILE,$(1))))
 ZIMG_FILE = $(addprefix $(KERNEL_OUT)/arch/arm/boot/,$(patsubst %.dts,%-zImage,$(call MSM8974_DTS_FILE,$(1))))
 KERNEL_ZIMG = $(KERNEL_OUT)/arch/arm/boot/zImage
 DTC = $(KERNEL_OUT)/scripts/dtc/dtc
 
 define append-msm8974-dtb
 mkdir -p $(KERNEL_OUT)/arch/arm/boot;\
-$(foreach MSM8974_DTS_NAME, $(MSM8974_DTS_NAMES), \
-   $(foreach d, $(MSM8974_DTS_FILES), \
-      $(DTC) -p 1024 -O dtb -o $(call DTB_FILE,$(d)) $(d); \
-      cat $(KERNEL_ZIMG) $(call DTB_FILE,$(d)) > $(call ZIMG_FILE,$(d));))
+$(foreach d, $(MSM8974_DTB_FILES), \
+    cat $(KERNEL_ZIMG) $(call DTB_FILE,$(d)) > $(call ZIMG_FILE,$(d));)
 endef
-
 
 ## Build and run dtbtool
 DTBTOOL := $(HOST_OUT_EXECUTABLES)/dtbTool.oppo.msm8974$(HOST_EXECUTABLE_SUFFIX)
