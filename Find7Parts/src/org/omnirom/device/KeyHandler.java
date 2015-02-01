@@ -21,6 +21,7 @@ import android.os.UserHandle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.WindowManagerGlobal;
 
 import com.android.internal.os.DeviceKeyHandler;
 import com.android.internal.util.ArrayUtils;
@@ -47,6 +48,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private final PowerManager mPowerManager;
     private EventHandler mEventHandler;
     private WakeLock mGestureWakeLock;
+    private KeyguardManager mKeyguardManager;
 
     public KeyHandler(Context context) {
         mContext = context;
@@ -56,6 +58,13 @@ public class KeyHandler implements DeviceKeyHandler {
                 "GestureWakeLock");
     }
 
+    private void ensureKeyguardManager() {
+        if (mKeyguardManager == null) {
+            mKeyguardManager =
+                    (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+        }
+    }
+
     private class EventHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
@@ -63,6 +72,22 @@ public class KeyHandler implements DeviceKeyHandler {
             switch(event.getScanCode()) {
             case GESTURE_CIRCLE_SCANCODE:
                 if (DEBUG) Log.i(TAG, "GESTURE_CIRCLE_SCANCODE");
+                ensureKeyguardManager();
+                String action = null;
+                mGestureWakeLock.acquire(GESTURE_WAKELOCK_DURATION);
+                if (mKeyguardManager.isKeyguardSecure() && mKeyguardManager.isKeyguardLocked()) {
+                    action = MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA_SECURE;
+                } else {
+                    try {
+                        WindowManagerGlobal.getWindowManagerService().dismissKeyguard();
+                    } catch (RemoteException e) {
+                        // Ignore
+                    }
+                    action = MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA;
+                }
+                mPowerManager.wakeUp(SystemClock.uptimeMillis());
+                Intent intent = new Intent(action, null);
+                startActivitySafely(intent);
                 break;
             case GESTURE_V_SCANCODE:
                 if (DEBUG) Log.i(TAG, "GESTURE_V_SCANCODE");
@@ -98,6 +123,19 @@ public class KeyHandler implements DeviceKeyHandler {
         Message msg = mEventHandler.obtainMessage(GESTURE_REQUEST);
         msg.obj = keyEvent;
         return msg;
+    }
+
+    private void startActivitySafely(Intent intent) {
+        intent.addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_SINGLE_TOP
+                | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        try {
+            UserHandle user = new UserHandle(UserHandle.USER_CURRENT);
+            mContext.startActivityAsUser(intent, null, user);
+        } catch (ActivityNotFoundException e) {
+            // Ignore
+        }
     }
 }
 

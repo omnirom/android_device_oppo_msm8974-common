@@ -31,16 +31,12 @@ public class DeviceSettings extends PreferenceActivity  {
     public static final String KEY_MUSIC_SWITCH = "music";
 
     public static final String KEY_VIBSTRENGTH = "vib_strength";
-    public static final String KEY_SUSPEND_CAP_FREQ = "suspend_cap_freq";
-    public static final String KEY_SUSPEND_CAP_CORE = "suspend_cap_core";
 */
     private TwoStatePreference mDoubleTapSwitch;
     private TwoStatePreference mTorchSwitch;
+    private TwoStatePreference mCameraSwitch;
 
-/*  private TwoStatePreference mCameraSwitch;
-    private TwoStatePreference mMusicSwitch;
-    private SuspendFreqCap mSuspendFreqCap;
-    private SuspendCoreCap mSuspendCoreCap;
+/*  private TwoStatePreference mMusicSwitch;
 */
 
     @Override
@@ -58,12 +54,12 @@ public class DeviceSettings extends PreferenceActivity  {
         mTorchSwitch.setChecked(TorchGestureSwitch.isEnabled(this));
         mTorchSwitch.setOnPreferenceChangeListener(new TorchGestureSwitch());
 
-        /*mCameraSwitch = (TwoStatePreference) findPreference(KEY_CAMERA_SWITCH);
+        mCameraSwitch = (TwoStatePreference) findPreference(KEY_CAMERA_SWITCH);
         mCameraSwitch.setEnabled(CameraGestureSwitch.isSupported());
         mCameraSwitch.setChecked(CameraGestureSwitch.isEnabled(this));
         mCameraSwitch.setOnPreferenceChangeListener(new CameraGestureSwitch());
 
-        mMusicSwitch = (TwoStatePreference) findPreference(KEY_MUSIC_SWITCH);
+        /*mMusicSwitch = (TwoStatePreference) findPreference(KEY_MUSIC_SWITCH);
         mMusicSwitch.setEnabled(MusicGestureSwitch.isSupported());
         mMusicSwitch.setChecked(MusicGestureSwitch.isEnabled(this));
         mMusicSwitch.setOnPreferenceChangeListener(new MusicGestureSwitch());
