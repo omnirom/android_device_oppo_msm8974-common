@@ -21,8 +21,9 @@ void sysfs_write(const char *path, const char *s);
 int sysfs_write_silent(const char *path, const char *s);
 int sysfs_read(const char *path, char *s, int num_bytes);
 int sysfs_read_buf(const char* path, char *buf, int size);
-int get_max_freq(char *freq, int size);
-int get_max_cpus(char *cpus, int size);
+int get_max_freq(char *buf, int size);
+int get_max_cpus(char *buf, int size);
+int get_governor(char *buf, int size);
 void write_cpufreq_value(int cpu, const char* key, const char* value);
 
 #endif

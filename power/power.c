@@ -35,6 +35,7 @@
 //#define LOG_NDEBUG 0
 
 #define CPUFREQ_SCALING_MAX_PATH "scaling_max_freq"
+#define CPUFREQ_SCALING_GOVERNOR_PATH "scaling_governor"
 #define MAX_CPU_PATH "/sys/devices/system/cpu/cpuquiet/cpuquiet_driver/max_cpus"
 #define MAX_GPU_PATH "/sys/class/kgsl/kgsl-3d0/max_pwrlevel"
 #define MIN_GPU_PATH "/sys/class/kgsl/kgsl-3d0/min_pwrlevel"
@@ -43,12 +44,15 @@
 #define PROFILE_MAX_CPU_NUM_TAG "maxCpu"
 #define PROFILE_MAX_CPU_FREQ_TAG "maxFreq"
 #define PROFILE_MAX_GPU_FREQ_TAG "maxGpu"
+#define PROFILE_GOVERNOR_TAG "governor"
 #define PROFILE_MAX_TAG "max"
+#define PROFILE_DEFAULT_TAG "default"
 #define PROFILE_SEPARATOR ":"
 
 static int max_freq = 0;
 static int max_cpus = 0;
 static int min_gpu = 0;
+static char governor[80];
 
 static void write_cpuquiet_max(const char* value)
 {
@@ -83,14 +87,14 @@ static void write_gpu_max(const char* value)
     sysfs_write(MAX_GPU_PATH, buf);
 }
 
-static void write_cpufreq_values(const char* key, const char* value)
+static void write_cpufreq_values(const char* key, const char* value, const char* default_value)
 {
     char cpufreq_path[256];
     int i;
     char buf[80];
 
-    if (!strcmp(value, PROFILE_MAX_TAG)) {
-        sprintf(buf, "%d", max_freq);
+    if (!strcmp(value, PROFILE_MAX_TAG) || !strcmp(value, PROFILE_DEFAULT_TAG)) {
+        strcpy(buf, default_value);
     } else {
         strcpy(buf, value);
     }
@@ -111,6 +115,7 @@ static void apply_profile(char* profile)
     char max_freq_profile[80];
     char max_cpu_profile[80];
     char max_gpu_profile[80];
+    char governor_profile[80];
 
     token = strtok(profile, separator);
     while(token != NULL) {
@@ -124,6 +129,9 @@ static void apply_profile(char* profile)
         } else if (!strcmp(token, PROFILE_MAX_GPU_FREQ_TAG)) {
             token = strtok(NULL, separator);
             strcpy(max_gpu_profile, token);
+        } else if (!strcmp(token, PROFILE_GOVERNOR_TAG)) {
+            token = strtok(NULL, separator);
+            strcpy(governor_profile, token);
         }
         token = strtok(NULL, separator);
     }
@@ -131,16 +139,22 @@ static void apply_profile(char* profile)
     ALOGV("max_freq_profile %s", max_freq_profile);
     ALOGV("max_cpu_profile %s", max_cpu_profile);
     ALOGV("max_gpu_profile %s", max_gpu_profile);
+    ALOGV("governor_profile %s", governor_profile);
 
     // the API will ignore invalid values so we dont need to check it here
     if (strlen(max_freq_profile) != 0) {
-        write_cpufreq_values(CPUFREQ_SCALING_MAX_PATH, max_freq_profile);
+        char default_value[80];
+        sprintf(default_value, "%d", max_freq);
+        write_cpufreq_values(CPUFREQ_SCALING_MAX_PATH, max_freq_profile, default_value);
     }
     if (strlen(max_cpu_profile) != 0) {
         write_cpuquiet_max(max_cpu_profile);
     }
     if (strlen(max_gpu_profile) != 0) {
         write_gpu_max(max_gpu_profile);
+    }
+    if (strlen(governor_profile) != 0) {
+        write_cpufreq_values(CPUFREQ_SCALING_GOVERNOR_PATH, governor_profile, governor);
     }
 }
 
@@ -165,6 +179,9 @@ static void power_init(struct power_module __unused *module)
 	    min_gpu = atoi(gpu);
 	}
     ALOGI("min_gpu %s %d", gpu, min_gpu);
+
+	get_governor(governor, sizeof(governor));
+    ALOGI("governor %s", governor);
 }
 
 static void power_set_interactive(struct power_module __unused *module, int on)
