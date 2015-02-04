@@ -29,7 +29,6 @@
 
 //#define LOG_NDEBUG 0
 
-#define SCALING_MAX_PATH "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"
 #define CPUFREQ_ROOT_PATH "/sys/devices/system/cpu/cpu"
 #define CPUFREQ_TAIL_PATH "/cpufreq/"
 
@@ -37,6 +36,8 @@
 #define MAX_FREQ_PATH "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq"
 // how much cpus ara available (for using max value) e.g. 0-3
 #define CPUS_MAX_PATH "/sys/devices/system/cpu/present"
+// default governor (for using max value)
+#define GOVERNOR_PATH "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
 
 #define PROFILE_MAX_TAG "max"
 
@@ -124,12 +125,16 @@ int sysfs_read_buf(const char* path, char *buf, int size) {
     return 0;
 }
 
-int get_max_freq(char *freq, int size) {
-    return sysfs_read_buf(MAX_FREQ_PATH, freq, size);
+int get_max_freq(char *buf, int size) {
+    return sysfs_read_buf(MAX_FREQ_PATH, buf, size);
 }
 
-int get_max_cpus(char *cpus, int size) {
-    return sysfs_read_buf(CPUS_MAX_PATH, cpus, size);
+int get_max_cpus(char *buf, int size) {
+    return sysfs_read_buf(CPUS_MAX_PATH, buf, size);
+}
+
+int get_governor(char *buf, int size) {
+    return sysfs_read_buf(GOVERNOR_PATH, buf, size);
 }
 
 void write_cpufreq_value(int cpu, const char* key, const char* value)

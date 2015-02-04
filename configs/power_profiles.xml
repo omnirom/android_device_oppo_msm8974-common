@@ -12,7 +12,8 @@
         name="default"
         maxFreq="max"
         maxCpu="max"
-        maxGpu="max" />
+        maxGpu="max"
+        governor="ondemand" />
     <!-- there must be a single profile with lowpower=true
     this is used when the AOSP battery saver mode is enabled
     this will be used also if profile switching is disabled -->
@@ -21,16 +22,19 @@
         name="lowpower"
         maxFreq="1036800"
         maxCpu="2"
-        maxGpu="2" />
+        maxGpu="2"
+        governor="smartmax" />
     <!-- add other profiles -->
     <profile
         name="powersave"
         maxFreq="1728000"
         maxCpu="max"
-        maxGpu="1" />
+        maxGpu="1"
+        governor="smartmax" />
     <profile
         name="ultra"
         maxFreq="1497600"
         maxCpu="2"
-        maxGpu="1" />
+        maxGpu="1"
+        governor="smartmax" />
 </profiles>
