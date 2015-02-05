@@ -101,10 +101,8 @@ BOARD_EGL_CFG := $(COMMON_PATH)/configs/egl.cfg
 # Compatibility with pre-kitkat Qualcomm sensor HALs
 SENSORS_NEED_SETRATE_ON_ENABLE := true
 
-#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
-
 # charger
-BOARD_CHARGER_RES := $(COMMON_PATH)/charger/images
+BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
 # power hal
 TARGET_PROVIDES_POWERHAL := true
