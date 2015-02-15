@@ -22,6 +22,24 @@
       "revId": "d1076e6130d2fe726712cfd06da2d2a317eccb26",
       "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b22818b_7f8b0fc4",
+        "filename": "overlay/frameworks/base/core/res/res/values/custom_config.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000313
+      },
+      "writtenOn": "2015-02-15T10:54:31Z",
+      "side": 1,
+      "message": "no, max, if you want using original ambient display, set this to false",
+      "parentUuid": "6b22818b_54255a03",
+      "revId": "d1076e6130d2fe726712cfd06da2d2a317eccb26",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
     }
   ]
 }
