@@ -16,12 +16,12 @@
 -->
 <resources>
   <string name="app_name">Find 7</string>
-  <string name="category_gestures_title">Appui écran éteint</string>
-  <string name="double_tap_wake_title_head">Double appui pour réveiller</string>
-  <string name="double_tap_wake_summary_head">Un double appui sur l\'écran réveille l\'appareil</string>
-  <string name="camera_title_head">Appareil photo</string>
-  <string name="camera_summary_head">Dessiner un cercle pour démarrer l\'appareil photo</string>
-  <string name="torch_title_head">Torche</string>
-  <string name="torch_summary_head">Dessiner un V pour afficher la torche</string>
-  <string name="advanced_settings">Avancés</string>
+  <string name="category_gestures_title">Gestos con la pantalla apagada</string>
+  <string name="double_tap_wake_title_head">Doble toque para despertar</string>
+  <string name="double_tap_wake_summary_head">Un doble toque en la pantalla despertará al dispositivo</string>
+  <string name="camera_title_head">Cámara</string>
+  <string name="camera_summary_head">Dibuje un círculo para iniciar la cámara</string>
+  <string name="torch_title_head">Linterna</string>
+  <string name="torch_summary_head">Dibuje una \"V\" para alternar la linterna</string>
+  <string name="advanced_settings">Ajustes avanzados</string>
 </resources>
