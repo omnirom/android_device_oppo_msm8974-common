@@ -51,9 +51,6 @@ $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(INSTALLED_DTIMAGE_TARGET) \
 		$(recovery_uncompressed_ramdisk) \
 		$(recovery_kernel) \
 		$(MINIGZIP)
-	@echo -e ${CL_CYN}"----- Copying 1440x2560 resources ------"${CL_RST}
-	$(hide) rm -rf $(TARGET_RECOVERY_ROOT_OUT)/qhdres
-	$(hide) cp -R bootable/recovery/gui/devices/1440x2560/res $(TARGET_RECOVERY_ROOT_OUT)/qhdres
 	@echo -e ${CL_CYN}"----- Making recovery ramdisk ------"${CL_RST}
 	$(hide) rm -f $(recovery_uncompressed_ramdisk)
 	$(MKBOOTFS) $(TARGET_RECOVERY_ROOT_OUT) > $(recovery_uncompressed_ramdisk)
