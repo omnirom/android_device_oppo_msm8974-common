@@ -228,8 +228,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     use.voice.path.for.pcm.voip=true \
     av.offload.enable=true \
     av.streaming.offload.enable=true \
-    audio.offload.pcm.enable=true \
-    persist.sys.media.use-awesome=true
+    audio.offload.pcm.16bit.enable=true \
+    audio.offload.multiple.enabled=false
 
 # QCOM
 PRODUCT_PROPERTY_OVERRIDES += \
