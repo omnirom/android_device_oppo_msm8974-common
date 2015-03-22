@@ -226,10 +226,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.buffer.size.kb=32 \
     audio.offload.gapless.enabled=true \
     use.voice.path.for.pcm.voip=true \
-    av.offload.enable=true \
-    av.streaming.offload.enable=true \
-    audio.offload.pcm.enable=true \
-    persist.sys.media.use-awesome=true
+    av.offload.enable=false \
+    av.streaming.offload.enable=false \
+    audio.offload.pcm.16bit.enable=true \
+    audio.offload.multiple.enabled=false
 
 # QCOM
 PRODUCT_PROPERTY_OVERRIDES += \
