@@ -109,6 +109,22 @@ include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += \
     $(COMMON_PATH)/sepolicy
 
+BOARD_SEPOLICY_UNION += \
+    device.te \
+    file_contexts \
+    file.te \
+    init_shell.te \
+    mediaserver.te \
+    mm-qcamerad.te \
+    qseecomd.te \
+    rmt_storage.te \
+    sensors.te \
+    system_app.te \
+    system_server.te \
+    time_daemon.te \
+    thermal-engine.te \
+    vold.te
+
 # Recovery:Start
 
 # Use this flag if the board has a ext4 partition larger than 2gb

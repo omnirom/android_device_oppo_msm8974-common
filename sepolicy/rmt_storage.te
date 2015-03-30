@@ -1,5 +1,5 @@
 ###########################
-# OmniROM common sepolicy
+# OmniROM oppo common sepolicy
 #
 
 allow rmt_storage ssd_device:blk_file rw_file_perms;
