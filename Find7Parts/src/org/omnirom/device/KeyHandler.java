@@ -17,7 +17,9 @@ import android.os.PowerManager.WakeLock;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
+import android.os.SystemProperties;
 import android.os.UserHandle;
+import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -32,6 +34,8 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final boolean DEBUG = false;
     private static final int GESTURE_REQUEST = 1;
     private static final int GESTURE_WAKELOCK_DURATION = 3000;
+
+    private static final String PROP_HAPTIC_FEEDBACK = "persist.gestures.haptic";
 
     // Supported scancodes
     private static final int GESTURE_CIRCLE_SCANCODE = 62;
@@ -49,6 +53,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private EventHandler mEventHandler;
     private WakeLock mGestureWakeLock;
     private KeyguardManager mKeyguardManager;
+    private Vibrator mVibrator;
 
     public KeyHandler(Context context) {
         mContext = context;
@@ -56,6 +61,10 @@ public class KeyHandler implements DeviceKeyHandler {
         mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         mGestureWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
                 "GestureWakeLock");
+        mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        if (mVibrator == null || !mVibrator.hasVibrator()) {
+            mVibrator = null;
+        }
     }
 
     private void ensureKeyguardManager() {
@@ -88,6 +97,7 @@ public class KeyHandler implements DeviceKeyHandler {
                 mPowerManager.wakeUp(SystemClock.uptimeMillis());
                 Intent intent = new Intent(action, null);
                 startActivitySafely(intent);
+                doHapticFeedback();
                 break;
             case GESTURE_V_SCANCODE:
                 if (DEBUG) Log.i(TAG, "GESTURE_V_SCANCODE");
@@ -96,6 +106,7 @@ public class KeyHandler implements DeviceKeyHandler {
                 torchIntent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
                 UserHandle user = new UserHandle(UserHandle.USER_CURRENT);
                 mContext.sendBroadcastAsUser(torchIntent, user);
+                doHapticFeedback();
                 break;
             }
         }
@@ -136,6 +147,11 @@ public class KeyHandler implements DeviceKeyHandler {
         } catch (ActivityNotFoundException e) {
             // Ignore
         }
+    }
+
+    private void doHapticFeedback() {
+        if (mVibrator == null || !SystemProperties.getBoolean(PROP_HAPTIC_FEEDBACK, true)) return;
+        mVibrator.vibrate(80);
     }
 }
 

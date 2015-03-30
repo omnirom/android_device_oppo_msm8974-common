@@ -22,6 +22,9 @@
     <string name="camera_summary_head">Draw a circle to start camera</string>
     <string name="torch_title_head">Torch</string>
     <string name="torch_summary_head">Draw a V to toggle torch</string>
+    <string name="touchscreen_extras">Extras</string>
+    <string name="haptic_feedback">Haptic feedback</string>
+    <string name="haptic_feedback_summary">Enable haptic feedback when a gesture is detected</string>
 <!--
     <string name="music_title_head">Music</string>
     <string name="music_summary_head">Draw II, &lt; or &gt; to control music playback</string>

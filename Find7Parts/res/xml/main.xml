@@ -24,6 +24,15 @@
 -->
 	</PreferenceCategory>
 
+        <PreferenceCategory android:title="@string/touchscreen_extras">
+
+            <SwitchPreference
+                android:key="touchscreen_haptic_feedback"
+                android:title="@string/haptic_feedback"
+                android:summary="@string/haptic_feedback_summary" />
+
+        </PreferenceCategory>
+
 <!--
 	<PreferenceCategory
         android:title="@string/category_vibrator">
