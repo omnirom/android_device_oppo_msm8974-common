@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b22818b_50438f68",
+        "filename": "Find7Parts/src/org/omnirom/device/DeviceSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2015-04-01T12:27:28Z",
+      "side": 1,
+      "message": "why make it so complicated and use a property?\nYou can use app local preferences to store the state of this option!",
+      "revId": "45bf1f2ee823bcc9161173b094a18f579149566d",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
