@@ -181,7 +181,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Ril
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so \
-    ril.subscription.types=NV,RUIM
+    ril.subscription.types=NV,RUIM \
+    ro.telephony.ril_class=OppoRIL
 
 # Cell Broadcasts
 PRODUCT_PROPERTY_OVERRIDES += \

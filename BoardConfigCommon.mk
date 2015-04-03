@@ -104,6 +104,10 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 # power hal
 TARGET_PROVIDES_POWERHAL := true
 
+# ril - must be relative to frameworks/opt/telephony
+BOARD_RIL_CLASS := ../../../$(COMMON_PATH)/ril
+
+# selinux
 include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
