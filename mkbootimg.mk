@@ -1,32 +1,10 @@
 LOCAL_PATH := $(call my-dir)
 
-## Don't change anything under here. The variables are named MSM8974_whatever
-## on purpose, to avoid conflicts with similarly named variables at other
-## parts of the build environment
-
-## Imported from the original makefile...
-KERNEL_CONFIG := $(KERNEL_OUT)/.config
-
-MSM8974_DTB_FILES = $(wildcard $(TOP)/$(TARGET_KERNEL_SOURCE)/arch/arm/boot/dts/*.dtb)
-MSM8974_DTS_FILE = $(lastword $(subst /, ,$(1)))
-DTB_FILE = $(ddprefix $(KERNEL_OUT)/arch/arm/boot/,$(patsubst %.dts,%.dtb,$(call MSM8974_DTS_FILE,$(1))))
-ZIMG_FILE = $(addprefix $(KERNEL_OUT)/arch/arm/boot/,$(patsubst %.dts,%-zImage,$(call MSM8974_DTS_FILE,$(1))))
-KERNEL_ZIMG = $(KERNEL_OUT)/arch/arm/boot/zImage
-DTC = $(KERNEL_OUT)/scripts/dtc/dtc
-
-define append-msm8974-dtb
-mkdir -p $(KERNEL_OUT)/arch/arm/boot;\
-$(foreach d, $(MSM8974_DTB_FILES), \
-    cat $(KERNEL_ZIMG) $(call DTB_FILE,$(d)) > $(call ZIMG_FILE,$(d));)
-endef
-
 ## Build and run dtbtool
 DTBTOOL := $(HOST_OUT_EXECUTABLES)/dtbTool.oppo.msm8974$(HOST_EXECUTABLE_SUFFIX)
 INSTALLED_DTIMAGE_TARGET := $(PRODUCT_OUT)/dt.img
 
 $(INSTALLED_DTIMAGE_TARGET): $(DTBTOOL) $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr $(INSTALLED_KERNEL_TARGET)
-	@echo -e ${CL_CYN}"Start DT image: $@"${CL_RST}
-	$(call append-msm8974-dtb)
 	$(call pretty,"Target dt image: $(INSTALLED_DTIMAGE_TARGET)")
 	$(hide) $(DTBTOOL) -o $(INSTALLED_DTIMAGE_TARGET) -s $(BOARD_KERNEL_PAGESIZE) -p $(KERNEL_OUT)/scripts/dtc/ $(KERNEL_OUT)/arch/arm/boot/
 	@echo -e ${CL_CYN}"Made DT image: $@"${CL_RST}
