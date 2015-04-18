@@ -718,8 +718,8 @@
 
     <path name="speaker">
         <path name="spk" />
-        <ctl name="RX3 Digital Volume" value="82" />
-        <ctl name="RX4 Digital Volume" value="82" />
+        <ctl name="RX3 Digital Volume" value="80" />
+        <ctl name="RX4 Digital Volume" value="80" />
     </path>
 
     <path name="voice-speaker">
@@ -744,8 +744,8 @@
         <path name="spk-hph" />
         <ctl name="RX1 Digital Volume" value="84" />
         <ctl name="RX2 Digital Volume" value="84" />
-        <ctl name="RX3 Digital Volume" value="82" />
-        <ctl name="RX4 Digital Volume" value="82" />
+        <ctl name="RX3 Digital Volume" value="80" />
+        <ctl name="RX4 Digital Volume" value="80" />
     </path>
 
 
@@ -871,35 +871,20 @@
         <path name="dmic-endfire" />
     </path>
 
-
     <!-- Stereo recording -->
     <path name="speaker-stereo-dmic-ef">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
         <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
+        <ctl name="SLIM TX7 MUX" value="DEC3" />
+        <ctl name="DEC3 MUX" value="ADC4" />
+        <ctl name="SLIM TX8 MUX" value="DEC4" />
+        <ctl name="DEC4 MUX" value="ADC3" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
-        <ctl name="SLIM TX7 MUX" value="DEC4" />
-        <ctl name="DEC4 MUX" value="ADC3" />
-        <ctl name="DEC4 Volume" value="84" />
-        <ctl name="SLIM TX8 MUX" value="DEC2" />
-        <ctl name="DEC2 MUX" value="ADC5" />
-        <ctl name="DEC2 Volume" value="84" />
+        <ctl name="ADC4 Volume" value="19" />
+        <ctl name="DEC3 Volume" value="84" />
         <ctl name="ADC3 Volume" value="19" />
-        <ctl name="ADC5 Volume" value="19" />
-    </path>
-
-    <!-- Mono recording -->
-    <path name="speaker-mono-dmic-ef">
-        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
-        <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
-        <ctl name="SLIM_0_TX Channels" value="One" />
-        <ctl name="SLIM TX7 MUX" value="DEC4" />
-        <ctl name="DEC4 MUX" value="ADC3" />
         <ctl name="DEC4 Volume" value="84" />
-        <ctl name="SLIM TX8 MUX" value="DEC2" />
-        <ctl name="DEC2 MUX" value="ADC5" />
-        <ctl name="DEC2 Volume" value="84" />
-        <ctl name="ADC3 Volume" value="19" />
-        <ctl name="ADC5 Volume" value="19" />
+        <ctl name="SLIM_0_RX Format" value="S16_LE" />
     </path>
 
     <path name="handset-stereo-dmic-ef">
@@ -909,7 +894,7 @@
     </path>
 
     <path name="camcorder-mic">
-        <path name="speaker-mono-dmic-ef" />
+        <path name="speaker-stereo-dmic-ef" />
     </path>
 
 
