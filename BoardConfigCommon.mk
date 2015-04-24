@@ -127,7 +127,9 @@ BOARD_SEPOLICY_UNION += \
     system_server.te \
     time_daemon.te \
     thermal-engine.te \
-    vold.te
+    vold.te \
+    property_contexts \
+    property.te
 
 # Recovery:Start
 
