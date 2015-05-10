@@ -171,8 +171,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.apm_sim_not_pwdn=1 \
-    persist.radio.eons.enabled=false
+    persist.radio.apm_sim_not_pwdn=1
 
 # Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -181,8 +180,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Ril
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so \
-    ril.subscription.types=NV,RUIM \
-    ro.telephony.ril_class=OppoRIL
+    ril.subscription.types=NV,RUIM
 
 # Cell Broadcasts
 PRODUCT_PROPERTY_OVERRIDES += \
