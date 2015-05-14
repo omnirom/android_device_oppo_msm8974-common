@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2014 The OmniROM Project
+ *  Copyright (C) 2015 The OmniROM Project
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,8 +16,6 @@
  *
  */
 
-/* this will patch the MAC address in the wlan config file */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -25,29 +23,28 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 static char mac_string[256];
-
-#define NV_IN "/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini"
-#define NV_OUT "/data/misc/wifi/prima/WCNSS_qcom_cfg.ini"
+static char mac[6];
 
 #define MAC_FILE "/data/opponvitems/4678"
 #define EMPTY_MAC "000000000000"
 
-/*
- * Station Mode MAC Address
- */
-#define WFC_UTIL_CFG_TAG_MAC_ADDRESS    "Intf0MacAddress="
-#define WFC_UTIL_CFG_TAG_P2P_ADDRESS    "Intf1MacAddress="
-/*
- * AP Mode MAC Address
- */
-#define WFC_UTIL_CFG_TAG_AP_MAC_ADDRESS "gAPMacAddr="
+/* control messages to wcnss driver */
+#define WCNSS_USR_CTRL_MSG_START    0x00000000
+#define WCNSS_USR_SERIAL_NUM        (WCNSS_USR_CTRL_MSG_START + 1)
+#define WCNSS_USR_HAS_CAL_DATA      (WCNSS_USR_CTRL_MSG_START + 2)
+#define WCNSS_USR_WLAN_MAC_ADDR     (WCNSS_USR_CTRL_MSG_START + 3)
+
+#define WCNSS_CTRL      "/dev/wcnss_ctrl"
+#define WCNSS_MAX_CMD_LEN  (128)
+#define BYTE_0  0
+#define BYTE_1  8
 
 int read_mac(const char *filename)
 {
     char raw[6];
-    char mac[6];
     FILE *fp = NULL;
     int numtries = 0;
     int ret;
@@ -68,6 +65,7 @@ int read_mac(const char *filename)
         return ENOENT;
 
     ret = fread(raw, 6, 1, fp);
+    fclose(fp);
 
     // swap bytes
     mac[0] = raw[5];
@@ -84,19 +82,17 @@ int read_mac(const char *filename)
 
 int main(int argc, char **argv)
 {
-    struct stat statbuf;
-    int ret;
-    size_t actual;
-    FILE *f;
-    char *buf;
+    int pos = 0;
+    int fd = 0;
+    char msg[WCNSS_MAX_CMD_LEN];
 
     if (read_mac(MAC_FILE)) {
-        perror("Failed to read MAC");
+        fprintf(stderr, "Failed to read MAC");
         exit(EINVAL);
     }
 
     if (!strcmp(mac_string, EMPTY_MAC)) {
-        perror("MAC empty");
+        fprintf(stderr, "MAC empty");
         exit(EINVAL);
     }
     
@@ -106,65 +102,25 @@ int main(int argc, char **argv)
         exit(0);
     }
 
-    ret = stat(NV_IN, &statbuf);
-    if (ret) {
-        perror("Failed to stat " NV_IN);
-        exit(ENOENT);
-    }
-
-    f = fopen(NV_IN, "r");
-    if (!f) {
-        perror("Failed to open " NV_IN);
-        exit(ENOENT);
-    }
-
-    buf = malloc(statbuf.st_size);
-    if (!buf) {
-        perror("malloc failed");
-        exit(ENOMEM);
-    }
-
-    actual = fread(buf, 1, statbuf.st_size, f);
-    if (actual != statbuf.st_size) {
-        perror("Failed to read from nv");
-        exit(ENOENT);
-    }
-    fclose(f);
-
-    char *p = strstr(buf, WFC_UTIL_CFG_TAG_MAC_ADDRESS);
-    if (p == NULL){
-        perror("Failed to locate " WFC_UTIL_CFG_TAG_MAC_ADDRESS);
+    fd = open(WCNSS_CTRL, O_WRONLY);
+    if (fd < 0) {
+        fprintf(stderr, "Failed to open %s : %s\n", WCNSS_CTRL, strerror(errno));
         exit(EINVAL);
     }
-    strncpy(p + strlen(WFC_UTIL_CFG_TAG_MAC_ADDRESS), mac_string, 12);
 
-    p = strstr(buf, WFC_UTIL_CFG_TAG_P2P_ADDRESS);
-    if (p == NULL){
-        perror("Failed to locate " WFC_UTIL_CFG_TAG_P2P_ADDRESS);
-        exit(EINVAL);
-    }
-    strncpy(p + strlen(WFC_UTIL_CFG_TAG_P2P_ADDRESS), mac_string, 12);
+    msg[pos++] = WCNSS_USR_WLAN_MAC_ADDR >> BYTE_1;
+    msg[pos++] = WCNSS_USR_WLAN_MAC_ADDR >> BYTE_0;
+    msg[pos++] = mac[0];
+    msg[pos++] = mac[1];
+    msg[pos++] = mac[2];
+    msg[pos++] = mac[3];
+    msg[pos++] = mac[4];
+    msg[pos++] = mac[5];
 
-    p = strstr(buf, WFC_UTIL_CFG_TAG_AP_MAC_ADDRESS);
-    if (p == NULL){
-        perror("Failed to locate " WFC_UTIL_CFG_TAG_AP_MAC_ADDRESS);
-        exit(EINVAL);
-    }
-    strncpy(p + strlen(WFC_UTIL_CFG_TAG_AP_MAC_ADDRESS), mac_string, 12);
-
-    f = fopen(NV_OUT, "w");
-    if (!f) {
-        perror("Failed to open " NV_OUT);
-        exit(ENOENT);
+    if (write(fd, msg, pos) < 0) {
+        fprintf(stderr, "Failed to write to %s : %s\n", WCNSS_CTRL, strerror(errno));
     }
 
-    actual = fwrite(buf, 1, statbuf.st_size, f);
-    if (actual != statbuf.st_size) {
-        perror("Failed to write to nv");
-        exit(ENOENT);
-    }
-
-    fclose(f);
-
+    close(fd);
     return 0;
 }
