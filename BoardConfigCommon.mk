@@ -95,9 +95,6 @@ WIFI_DRIVER_MODULE_NAME          := "wlan"
 
 BOARD_EGL_CFG := $(COMMON_PATH)/configs/egl.cfg
 
-# Compatibility with pre-kitkat Qualcomm sensor HALs
-SENSORS_NEED_SETRATE_ON_ENABLE := true
-
 # charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
@@ -129,7 +126,9 @@ BOARD_SEPOLICY_UNION += \
     thermal-engine.te \
     vold.te \
     property_contexts \
-    property.te
+    property.te \
+    rild.te \
+    mac-update.te
 
 # Recovery:Start
 

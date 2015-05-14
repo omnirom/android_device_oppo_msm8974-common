@@ -1,0 +1,5 @@
+###########################
+# OmniROM oppo common sepolicy
+#
+
+allow rild nv_data_file:file rw_file_perms;
