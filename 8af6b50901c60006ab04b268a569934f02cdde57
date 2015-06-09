@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18e79d95_bc2aa174",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000008
+      },
+      "writtenOn": "2015-06-09T12:08:48Z",
+      "side": 1,
+      "message": "I think we should just key this whole mess on BOARD_USES_QCOM_HARDWARE - same thing the ifdefs keyed off of in the past.\n\nAV_VARIANT implies that we plan on splitting AV even more in the future, but I want to avoid encouraging that, so I think we should intentionally make this as inflexible as possible to discourage more AV splits, at least until a time when we find out that we REALLY need a third.",
+      "revId": "8af6b50901c60006ab04b268a569934f02cdde57",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
