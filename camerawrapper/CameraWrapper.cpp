@@ -96,13 +96,39 @@ static int check_vendor_module()
     return rv;
 }
 
-const static char * scene_mode_values[] =
-{"auto,hdr,asd,action,portrait,landscape,night,night-portrait,theatre,beach,snow,sunset,steadyphoto,fireworks,sports,party,candlelight,backlight,flowers,AR,hdr,macro,mix-illuminant,indoor"};
+static const char *KEY_EXPOSURE_TIME = "exposure-time";
+static const char *KEY_EXPOSURE_TIME_VALUES = "exposure-time-values";
+const static char *scene_mode_values =
+{"auto,asd,landscape,snow,beach,sunset,night,portrait,backlight,sports,steadyphoto,flowers,candlelight,fireworks,party,night-portrait,theatre,action,AR"};
+const static char *exposure_times = {"0,1,500000,1000000,2000000,4000000,8000000,16000000,32000000,64000000"};
 
 static char * camera_fixup_getparams(int id, const char * settings)
 {
+    bool videoMode = false;
+
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
+
+    if (params.get(android::CameraParameters::KEY_RECORDING_HINT)) {
+        videoMode = (!strcmp(params.get(
+                android::CameraParameters::KEY_RECORDING_HINT), "true"));
+    }
+
+    if (!videoMode) {
+        /* Back camera */
+        if (id == 0) {
+            /* Set supported exposure time values */
+            params.set(KEY_EXPOSURE_TIME_VALUES, exposure_times);
+        }
+
+        /* Front camera */
+        if (id == 1) {
+            /* Remove HDR scene mode */
+            params.set(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES,
+                    scene_mode_values);
+        }
+    }
+
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
 
@@ -112,9 +138,30 @@ static char * camera_fixup_getparams(int id, const char * settings)
 
 char * camera_fixup_setparams(int id, const char * settings)
 {
+    bool videoMode = false;
+    bool slowShutterMode = false;
+
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
 
+    if (params.get(android::CameraParameters::KEY_RECORDING_HINT)) {
+        videoMode = (!strcmp(params.get(
+                android::CameraParameters::KEY_RECORDING_HINT), "true"));
+    }
+
+    if (params.get(KEY_EXPOSURE_TIME)) {
+        slowShutterMode = (strcmp(params.get(KEY_EXPOSURE_TIME), "0"));
+    }
+
+    /* Disable flash if slow shutter is enabled */
+    if (!videoMode) {
+        if (id == 0) {
+            if (slowShutterMode) {
+                params.set(android::CameraParameters::KEY_FLASH_MODE,
+                        android::CameraParameters::FLASH_MODE_OFF);
+            }
+        }
+    }
     params.set("oppo-app", "1");
 
     android::String8 strParams = params.flatten();
