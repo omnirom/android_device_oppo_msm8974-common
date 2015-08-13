@@ -25,7 +25,7 @@ import android.preference.PreferenceManager;
 
 public class CameraGestureSwitch implements OnPreferenceChangeListener {
 
-    private static final String FILE = "/sys/kernel/touchscreen/camera_enable";
+    private static final String FILE = "/sys/kernel/touchscreen/circle_enable";
 
     public static boolean isSupported() {
         return Utils.fileWritable(FILE);

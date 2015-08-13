@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<PreferenceCategory android:title="@string/category_gestures_title" >
+		<SwitchPreference
+			android:key="gesture_enable"
+			android:title="@string/gesture_enable_title_head" />
+
 		<CheckBoxPreference
 			android:key="double_tap"
 			android:summary="@string/double_tap_wake_summary_head"
-			android:title="@string/double_tap_wake_title_head" />
+			android:title="@string/double_tap_wake_title_head"
+			android:dependency="gesture_enable" />
 
 		<CheckBoxPreference
 			android:key="camera"
 			android:summary="@string/camera_summary_head"
-			android:title="@string/camera_title_head" />
+			android:title="@string/camera_title_head"
+			android:dependency="gesture_enable" />
 
 		<CheckBoxPreference
 			android:key="torch"
 			android:summary="@string/torch_summary_head"
-			android:title="@string/torch_title_head" />
+			android:title="@string/torch_title_head"
+			android:dependency="gesture_enable" />
 
 <!--
 		<CheckBoxPreference

@@ -22,6 +22,7 @@
     <string name="camera_summary_head">Draw a circle to start camera</string>
     <string name="torch_title_head">Torch</string>
     <string name="torch_summary_head">Draw a V to toggle torch</string>
+    <string name="gesture_enable_title_head">Enable</string>
 <!--
     <string name="music_title_head">Music</string>
     <string name="music_summary_head">Draw II, &lt; or &gt; to control music playback</string>
