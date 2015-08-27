@@ -233,7 +233,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.video=true \
     av.streaming.offload.enable=false \
     audio.offload.pcm.16bit.enable=true \
-    audio.offload.multiple.enabled=false
+    audio.offload.multiple.enabled=false \
+    audio.deep_buffer.media=true
 
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
