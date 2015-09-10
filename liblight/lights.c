@@ -111,8 +111,11 @@ static int is_find7s(void)
 
     if (property_get("ro.oppo.device", value, NULL)) {
         if (!strcmp(value, "find7s")) {
-	    return 1;
-	}
+	        return 1;
+	    }
+        if (!strcmp(value, "n3")) {
+	        return 1;
+	    }
     }
     return 0;
 }
