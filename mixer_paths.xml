@@ -204,6 +204,14 @@
     <ctl name="MAD Input" value="ADC3" />
     <!-- listen end-->
 
+    <!-- speaker i2s -->
+    <ctl name="SPKR Enable" value="0" />
+    <ctl name="SEC_MI2S_RX Audio Mixer MultiMedia1" value="0" />
+    <ctl name="SEC_MI2S_RX Audio Mixer MultiMedia5" value="0" />
+    <ctl name="SEC_MI2S_RX_Voice Mixer CSVoice" value="0" />
+    <ctl name="SEC_MI2S_RX_Voice Mixer Voice2" value="0" />
+    <ctl name="SEC_MI2S_RX_VI_FB_MUX" value="ZERO" />
+
     <!-- EC_REF -->
     <ctl name="AUDIO_REF_EC_UL1 MUX" value="None" />
 
@@ -243,6 +251,10 @@
         <ctl name="AFE_PCM_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
+    <path name="deep-buffer-playback i2s">
+        <ctl name="SEC_MI2S_RX Audio Mixer MultiMedia1" value="1" />
+    </path>
+
     <path name="deep-buffer-playback usb-headphones">
         <path name="deep-buffer-playback afe-proxy" />
     </path>
@@ -267,6 +279,10 @@
 
     <path name="low-latency-playback afe-proxy">
         <ctl name="AFE_PCM_RX Audio Mixer MultiMedia5" value="1" />
+    </path>
+
+    <path name="low-latency-playback i2s">
+        <ctl name="SEC_MI2S_RX Audio Mixer MultiMedia5" value="1" />
     </path>
 
     <path name="low-latency-playback usb-headphones">
@@ -297,6 +313,10 @@
 
     <path name="compress-offload-playback afe-proxy">
         <ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback i2s">
+        <ctl name="SEC_MI2S_RX Audio Mixer MultiMedia5" value="1" />
     </path>
 
     <path name="compress-offload-playback usb-headphones">
@@ -441,6 +461,11 @@
         <ctl name="Voice_Tx Mixer AFE_PCM_TX_Voice" value="1" />
     </path>
 
+    <path name="voice-call i2s">
+        <ctl name="SEC_MI2S_RX_Voice Mixer CSVoice" value="1" />
+        <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="1" />
+    </path>
+
     <path name="afe-proxy-playback afe-proxy">
     </path>
 
@@ -465,6 +490,11 @@
     <path name="voice2-call bt-sco-wb">
         <ctl name="Internal BTSCO SampleRate" value="16000" />
         <path name="voice2-call bt-sco" />
+    </path>
+
+    <path name="voice2-call i2s">
+        <ctl name="SEC_MI2S_RX_Voice Mixer Voice2" value="1" />
+        <ctl name="Voice2_Tx Mixer SLIM_0_TX_Voice2" value="1" />
     </path>
 
     <path name="voice2-call usb-headphones">
@@ -617,6 +647,11 @@
         <path name="compress-voip-call bt-sco" />
     </path>
 
+    <path name="compress-voip-call i2s">
+        <ctl name="SEC_MI2S_RX_Voice Mixer Voip" value="1" />
+        <ctl name="Voip_Tx Mixer SLIM_0_TX_Voip" value="1" />
+    </path>
+
     <path name="compress-voip-call usb-headphones">
         <ctl name="AFE_PCM_RX_Voice Mixer Voip" value="1" />
         <ctl name="Voip_Tx Mixer AFE_PCM_TX_Voip" value="1" />
@@ -682,6 +717,10 @@
         <ctl name="LINEOUT3 Volume" value="13" />
     </path>
 
+    <path name="spk-i2s">
+        <ctl name="SPKR Enable" value="1" />
+    </path>
+
     <path name="hph">
         <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
         <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
@@ -722,10 +761,24 @@
         <ctl name="RX4 Digital Volume" value="80" />
     </path>
 
+    <path name="speaker-protected">
+        <ctl name="SPKR Enable" value="1" />
+    </path>
+
+    <path name="speaker i2s">
+        <path name="spk-i2s" />
+        <path name="speaker" />
+    </path>
+
     <path name="voice-speaker">
         <path name="spk" />
         <ctl name="RX3 Digital Volume" value="84" />
         <ctl name="RX4 Digital Volume" value="84" />
+    </path>
+
+    <path name="voice-speaker i2s">
+        <path name="spk-i2s" />
+        <path name="voice-speaker" />
     </path>
 
     <path name="headphones">
@@ -816,6 +869,11 @@
         <path name="hph-mic" />
     </path>
 
+    <path name="spkr-vi-record">
+        <ctl name="SEC_MI2S_RX_VI_FB_MUX" value="SEC_MI2S_TX" />
+    </path>
+
+    <path name="vi-feedback" />
 
     <!-- USB digital audio -->
     <path name="usb-headphones">
@@ -954,3 +1012,4 @@
         <ctl name="AUDIO_REF_EC_UL1 MUX" value="SLIM_RX" />
     </path>
 </mixer>
+
