@@ -1,3 +1,4 @@
+ifeq ($(filter n3,$(TARGET_DEVICE)),)
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
@@ -24,3 +25,4 @@ $(LOCAL_INSTALLED_MODULE): $(LOCAL_BUILT_MODULE) | $(ACP)
 	@echo "Install (overridden): $@"
 	$(hide) $(ACP) -fp $< $(dir $@)/camera.msm8974$(TARGET_SHLIB_SUFFIX)
 
+endif
