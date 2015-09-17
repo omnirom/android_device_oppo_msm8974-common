@@ -20,6 +20,7 @@ package org.omnirom.device;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.TwoStatePreference;
+import android.view.MenuItem;
 
 public class DeviceSettings extends PreferenceActivity  {
 
@@ -42,6 +43,8 @@ public class DeviceSettings extends PreferenceActivity  {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         addPreferencesFromResource(R.xml.main);
 
         mDoubleTapSwitch = (TwoStatePreference) findPreference(KEY_DOUBLE_TAP_SWITCH);
@@ -74,6 +77,18 @@ public class DeviceSettings extends PreferenceActivity  {
         mSuspendCoreCap.setValue(SuspendCoreCap.getValue(this));
         mSuspendCoreCap.setOnPreferenceChangeListener(mSuspendCoreCap);
 */
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            finish();
+            return true;
+        default:
+            break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
