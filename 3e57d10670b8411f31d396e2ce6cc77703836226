@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8f5b13e_08d5cbb9",
+        "filename": "common.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000174
+      },
+      "writtenOn": "2015-10-20T08:43:40Z",
+      "side": 1,
+      "message": "Some of this lines broke compilation on nightlies.",
+      "revId": "3e57d10670b8411f31d396e2ce6cc77703836226",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
