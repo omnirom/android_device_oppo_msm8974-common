@@ -146,6 +146,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     Find7Parts
 
+# Stlport
+PRODUCT_PACKAGES += \
+    libstlport
+
 # NFC feature files
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
@@ -241,9 +245,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.gps.qc_nlp_in_use=1 \
     ro.gps.agps_provider=1
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1
 
 # sensors
 # Sensor configuration from Oppo
