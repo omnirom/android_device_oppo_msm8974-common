@@ -21,7 +21,7 @@ TARGET_CPU_SMP := true
 TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
 
 BOARD_KERNEL_SEPARATED_DT := true
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom androidboot.selinux=enforcing user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom androidboot.selinux=enforcing user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
@@ -37,7 +37,8 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_USES_QCOM_BSP := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP -DQCOM_MEDIA_DISABLE_BUFFER_SIZE_CHECK
+TARGET_USES_QTI_BSP := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP -DQTI_BSP -DQCOM_MEDIA_DISABLE_BUFFER_SIZE_CHECK
 
 # Display
 TARGET_QCOM_DISPLAY_VARIANT := caf-bfam
@@ -107,28 +108,6 @@ BOARD_RIL_CLASS := ../../../$(COMMON_PATH)/ril
 
 # selinux
 include device/qcom/sepolicy/sepolicy.mk
-
-BOARD_SEPOLICY_DIRS += \
-    $(COMMON_PATH)/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    device.te \
-    file_contexts \
-    file.te \
-    init_shell.te \
-    mediaserver.te \
-    mm-qcamerad.te \
-    qseecomd.te \
-    rmt_storage.te \
-    sensors.te \
-    system_app.te \
-    system_server.te \
-    time_daemon.te \
-    thermal-engine.te \
-    vold.te \
-    property_contexts \
-    property.te \
-    mac-update.te
 
 # Recovery:Start
 
