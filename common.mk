@@ -179,8 +179,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Ril
 PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so \
-    ril.subscription.types=NV,RUIM
+    rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
 
 # Cell Broadcasts
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -236,12 +235,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=/vendor/lib/libqc-opt.so
+    ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
 
 # gps
-#system prop for switching gps driver to qmi
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.gps.qmienabled=true
+    persist.gps.qc_nlp_in_use=1 \
+    ro.gps.agps_provider=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
@@ -253,3 +252,6 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+
+# Inherit from proprietary blobs
+$(call inherit-product, vendor/oppo/msm8974-common/msm8974-common-vendor.mk)
