@@ -242,9 +242,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.gps.qc_nlp_in_use=1 \
     ro.gps.agps_provider=1
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1
-
 # sensors
 # Sensor configuration from Oppo
 PRODUCT_COPY_FILES += \
