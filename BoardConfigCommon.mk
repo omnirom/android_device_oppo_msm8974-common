@@ -61,8 +61,8 @@ AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
 AUDIO_FEATURE_ENABLED_EXTN_POST_PROC := true
 AUDIO_FEATURE_ENABLED_FLUENCE := true
 AUDIO_FEATURE_ENABLED_HFP := true
-AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
-AUDIO_FEATURE_ENABLED_FLAC_OFFLOAD := true
+#AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
+#AUDIO_FEATURE_ENABLED_FLAC_OFFLOAD := true
 AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 AUDIO_FEATURE_ENABLED_USBAUDIO := true
 AUDIO_FEATURE_ENABLED_COMPRESS_CAPTURE := true
@@ -110,25 +110,6 @@ include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
     $(COMMON_PATH)/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    device.te \
-    file_contexts \
-    file.te \
-    init_shell.te \
-    mediaserver.te \
-    mm-qcamerad.te \
-    qseecomd.te \
-    rmt_storage.te \
-    sensors.te \
-    system_app.te \
-    system_server.te \
-    time_daemon.te \
-    thermal-engine.te \
-    vold.te \
-    property_contexts \
-    property.te \
-    mac-update.te
 
 # Recovery:Start
 
