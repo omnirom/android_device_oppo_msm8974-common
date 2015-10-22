@@ -2,7 +2,7 @@
 # OmniROM oppo common sepolicy
 #
 
-allow mediaserver audiod:binder call;
+#allow mediaserver audiod:binder call;
 allow mediaserver system_data_file:sock_file { write };
 allow mediaserver socket_device:sock_file { write };
 # 4k2k property
