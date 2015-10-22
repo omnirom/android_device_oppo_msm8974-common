@@ -122,7 +122,8 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libOmxCore \
     libstagefrighthw \
-    libc2dcolorconvert
+    libc2dcolorconvert \
+    libxml2
 
 #    libOmxAacEnc \
 #    libOmxAmrEnc \
@@ -220,7 +221,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.fluencetype=fluence \
     persist.audio.fluence.voicecall=true \
-    af.resampler.quality=4 \
     audio.offload.buffer.size.kb=32 \
     audio.offload.gapless.enabled=true \
     use.voice.path.for.pcm.voip=true \
