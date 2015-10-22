@@ -21,7 +21,7 @@ TARGET_CPU_SMP := true
 TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
 
 BOARD_KERNEL_SEPARATED_DT := true
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom androidboot.selinux=enforcing user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom androidboot.selinux=permissive user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
@@ -37,10 +37,10 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_USES_QCOM_BSP := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP -DQCOM_MEDIA_DISABLE_BUFFER_SIZE_CHECK
+COMMON_GLOBAL_CFLAGS += -DQCOM_MEDIA_DISABLE_BUFFER_SIZE_CHECK -DUSE_RIL_VERSION_10
 
 # Display
-TARGET_QCOM_DISPLAY_VARIANT := caf-bfam
+TARGET_QCOM_DISPLAY_VARIANT := caf-msm8974
 USE_OPENGL_RENDERER := true
 TARGET_USES_ION := true
 TARGET_USES_C2D_COMPOSITION := true
@@ -50,8 +50,8 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 BOARD_USES_QC_TIME_SERVICES := true
 
 # Audio/media
-TARGET_QCOM_AUDIO_VARIANT := caf-bfam
-TARGET_QCOM_MEDIA_VARIANT := caf-bfam
+TARGET_QCOM_AUDIO_VARIANT := caf-msm8974
+TARGET_QCOM_MEDIA_VARIANT := caf-msm8974
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # audio
@@ -61,8 +61,8 @@ AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
 AUDIO_FEATURE_ENABLED_EXTN_POST_PROC := true
 AUDIO_FEATURE_ENABLED_FLUENCE := true
 AUDIO_FEATURE_ENABLED_HFP := true
-AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
-AUDIO_FEATURE_ENABLED_FLAC_OFFLOAD := true
+#AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
+#AUDIO_FEATURE_ENABLED_FLAC_OFFLOAD := true
 AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 AUDIO_FEATURE_ENABLED_USBAUDIO := true
 AUDIO_FEATURE_ENABLED_COMPRESS_CAPTURE := true
@@ -105,30 +105,13 @@ TARGET_PROVIDES_POWERHAL := true
 # ril - must be relative to frameworks/opt/telephony
 BOARD_RIL_CLASS := ../../../$(COMMON_PATH)/ril
 
+TARGET_RIL_VARIANT := caf
+
 # selinux
 include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
     $(COMMON_PATH)/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    device.te \
-    file_contexts \
-    file.te \
-    init_shell.te \
-    mediaserver.te \
-    mm-qcamerad.te \
-    qseecomd.te \
-    rmt_storage.te \
-    sensors.te \
-    system_app.te \
-    system_server.te \
-    time_daemon.te \
-    thermal-engine.te \
-    vold.te \
-    property_contexts \
-    property.te \
-    mac-update.te
 
 # Recovery:Start
 
