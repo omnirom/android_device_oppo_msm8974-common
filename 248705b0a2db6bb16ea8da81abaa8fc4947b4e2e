@@ -33,6 +33,24 @@
       "revId": "248705b0a2db6bb16ea8da81abaa8fc4947b4e2e",
       "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8f5b13e_d359d45d",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2015-10-23T16:58:23Z",
+      "side": 1,
+      "message": "actually we should also remove QCOM_BSP",
+      "parentUuid": "b8f5b13e_334b608c",
+      "revId": "248705b0a2db6bb16ea8da81abaa8fc4947b4e2e",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
     }
   ]
 }
