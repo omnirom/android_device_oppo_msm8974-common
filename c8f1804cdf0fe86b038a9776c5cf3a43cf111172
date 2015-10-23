@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8f5b13e_7351e837",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2015-10-23T16:54:49Z",
+      "side": 0,
+      "message": "dont remove - we still need a local sepolicy",
+      "revId": "c8f1804cdf0fe86b038a9776c5cf3a43cf111172",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8f5b13e_934c6ca6",
+        "filename": "common.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2015-10-23T16:54:49Z",
+      "side": 0,
+      "message": "dont remove - not needed for permissive",
+      "revId": "c8f1804cdf0fe86b038a9776c5cf3a43cf111172",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
