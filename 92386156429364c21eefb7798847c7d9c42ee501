@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8f5b13e_7950a70c",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2015-10-27T11:04:06Z",
+      "side": 1,
+      "message": "as said - I would prefer to fix it in the global qcom target - it doesnt make sense to have the same it in multipe locations",
+      "revId": "92386156429364c21eefb7798847c7d9c42ee501",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
