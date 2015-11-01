@@ -101,8 +101,12 @@ HEALTHD_BACKLIGHT_ON_LEVEL := 125
 # power hal
 TARGET_PROVIDES_POWERHAL := true
 
+# ril
 TARGET_RIL_VARIANT := caf
 COMMON_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_10
+
+# no DSPManager for us
+TARGET_NO_DSPMANAGER := true
 
 # selinux
 include device/qcom/sepolicy/sepolicy.mk
