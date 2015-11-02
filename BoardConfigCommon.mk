@@ -90,6 +90,8 @@ WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_AP           := "ap"
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wlan.ko"
 WIFI_DRIVER_MODULE_NAME          := "wlan"
+TARGET_USES_QCOM_WCNSS_QMI       := true
+TARGET_PROVIDES_WCNSS_QMI        := true
 
 BOARD_EGL_CFG := $(COMMON_PATH)/configs/egl.cfg
 
@@ -104,9 +106,6 @@ TARGET_PROVIDES_POWERHAL := true
 # ril
 TARGET_RIL_VARIANT := caf
 COMMON_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_10
-
-# no DSPManager for us
-TARGET_NO_DSPMANAGER := true
 
 # selinux
 include device/qcom/sepolicy/sepolicy.mk
