@@ -131,8 +131,8 @@ PRODUCT_PACKAGES += \
 
 # wifi
 PRODUCT_PACKAGES += \
-    mac-update \
     wcnss_service \
+    libwcnss_qmi \
     libwpa_client \
     hostapd \
     wpa_supplicant \
