@@ -1,0 +1,8 @@
+###########################
+# OmniROM oppo common sepolicy
+#
+
+allow wcnss_service devpts:chr_file rw_file_perms;
+
+
+
