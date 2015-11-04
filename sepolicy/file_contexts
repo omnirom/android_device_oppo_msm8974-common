@@ -14,4 +14,7 @@
 /dev/block/mmcblk0p1.* u:object_r:modem_block_device:s0
 /dev/block/mmcblk0p2.* u:object_r:modem_block_device:s0
 
-/system/bin/mac-update u:object_r:mac-update_exec:s0
+/system/bin/hci_qcomm_init     u:object_r:hci_attach_exec:s0
+/dev/smd3 u:object_r:hci_attach_dev:s0
+/system/bin/btnvtool           u:object_r:bluetooth_loader_exec:s0
+/system/etc/init\.qcom\.bt\.sh u:object_r:bluetooth_loader_exec:s0
