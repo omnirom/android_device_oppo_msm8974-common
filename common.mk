@@ -152,6 +152,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
 
+# NFC
+ifeq ($(TARGET_BUILD_VARIANT),user)
+    NFCEE_ACCESS_PATH := $(COMMON_PATH)/configs/nfcee_access.xml
+else
+    NFCEE_ACCESS_PATH := $(COMMON_PATH)/configs/nfcee_access_debug.xml
+endif
+PRODUCT_COPY_FILES += \
+    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+
 # GPS configuration
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/gps/gps.conf:system/etc/gps.conf \
@@ -212,10 +221,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # qcom
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.ssr=false \
-    ro.qc.sdk.sensors.gestures=true \
-    ro.qc.sdk.camera.facialproc=false \
-    ro.qc.sdk.gestures.camera=false \
     camera2.portability.force_api=1
 
 # Audio Configuration
@@ -229,10 +234,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     av.streaming.offload.enable=false \
     audio.offload.pcm.16bit.enable=true \
     audio.offload.multiple.enabled=false
-
-# QCOM
-PRODUCT_PROPERTY_OVERRIDES += \
-    com.qc.hardware=true
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
