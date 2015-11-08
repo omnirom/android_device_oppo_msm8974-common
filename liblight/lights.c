@@ -28,6 +28,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <pthread.h>
+#include <malloc.h>
 
 #include <sys/ioctl.h>
 #include <sys/types.h>
@@ -161,7 +162,7 @@ rgb_to_brightness(struct light_state_t const* state)
 }
 
 static int
-set_light_backlight(struct light_device_t* dev,
+set_light_backlight(struct light_device_t* dev __unused,
         struct light_state_t const* state)
 {
     int err = 0;
@@ -175,7 +176,7 @@ set_light_backlight(struct light_device_t* dev,
 }
 
 static int
-set_speaker_light_locked_shineled(struct light_device_t* dev,
+set_speaker_light_locked_shineled(struct light_device_t* dev __unused,
         struct light_state_t const* state)
 {
 
@@ -255,7 +256,7 @@ set_speaker_light_locked_shineled(struct light_device_t* dev,
 }
 
 static int
-set_speaker_light_locked_qpnp(struct light_device_t* dev,
+set_speaker_light_locked_qpnp(struct light_device_t* dev __unused,
         struct light_state_t const* state)
 {
 
@@ -351,7 +352,7 @@ set_speaker_light_locked(struct light_device_t* dev,
 
 static void
 handle_speaker_battery_locked(struct light_device_t* dev,
-    struct light_state_t const* state, int state_type)
+    struct light_state_t const* state __unused, int state_type __unused)
 {
     if(is_lit(&g_attention)) {
         set_speaker_light_locked(dev, NULL);
@@ -415,7 +416,7 @@ set_light_attention(struct light_device_t* dev,
 }
 
 static int
-set_light_touchkeys(struct light_device_t* dev,
+set_light_touchkeys(struct light_device_t* dev __unused,
         struct light_state_t const* state)
 {
     int err = 0;
