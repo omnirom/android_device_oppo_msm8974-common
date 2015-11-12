@@ -9,7 +9,6 @@ FIRMWARE_IMAGES := adsp.b00 adsp.b01 adsp.b02 adsp.b03 adsp.b04 adsp.b05 adsp.b0
 	widevine.b00 widevine.b01 widevine.b02 widevine.b03 widevine.mdt \
 	playread.b00 playread.b01 playread.b02 playread.b03 playread.mdt \
 	mc_v2.b00 mc_v2.b01 mc_v2.b02 mc_v2.b03 mc_v2.mdt \
-	keymaste.b00 keymaste.b01 keymaste.b02 keymaste.b03 keymaste.mdt \
 	isdbtmm.b00 isdbtmm.b01 isdbtmm.b02 isdbtmm.b03 isdbtmm.mdt \
 	cmnlib.b00 cmnlib.b01 cmnlib.b02 cmnlib.mdt \
 	tqs.b00 tqs.b01 tqs.b02 tqs.b03 tqs.mdt
