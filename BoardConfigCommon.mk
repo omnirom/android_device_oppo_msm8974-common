@@ -47,6 +47,7 @@ USE_OPENGL_RENDERER := true
 TARGET_USES_ION := true
 TARGET_USES_C2D_COMPOSITION := true
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+BOARD_EGL_CFG := $(COMMON_PATH)/configs/egl.cfg
 
 # Time Daemon
 BOARD_USES_QC_TIME_SERVICES := true
@@ -97,8 +98,6 @@ TARGET_USES_QCOM_WCNSS_QMI       := true
 TARGET_PROVIDES_WCNSS_QMI        := true
 TARGET_USES_WCNSS_MAC_ADDR_REV   := true
 
-BOARD_EGL_CFG := $(COMMON_PATH)/configs/egl.cfg
-
 # charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 HEALTHD_FORCE_BACKLIGHT_CONTROL := true
@@ -107,8 +106,12 @@ HEALTHD_BACKLIGHT_ON_LEVEL := 125
 # power hal
 TARGET_PROVIDES_POWERHAL := true
 
+# ril
 TARGET_RIL_VARIANT := caf
 COMMON_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_10
+
+# keymaster
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # selinux
 include device/qcom/sepolicy/sepolicy.mk
