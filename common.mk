@@ -175,6 +175,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
 
+# Dalvik
+PRODUCT_PROPERTY_OVERRIDES += \
+       dalvik.vm.heapminfree=2m
+
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608 \
