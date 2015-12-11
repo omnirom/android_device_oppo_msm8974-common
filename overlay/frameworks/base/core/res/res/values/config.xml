@@ -290,8 +290,6 @@
     -->
     <integer name="config_longPressOnHomeBehavior">2</integer>
 
-    <bool name="config_dozeUseAccelerometer">true</bool>
-
     <!-- Control the behavior when the user long presses the menu button.
             0 - Nothing
             1 - Recent apps view in SystemUI
