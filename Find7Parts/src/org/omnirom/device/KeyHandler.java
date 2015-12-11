@@ -85,7 +85,7 @@ public class KeyHandler implements DeviceKeyHandler {
                     }
                     action = MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA;
                 }
-                mPowerManager.wakeUp(SystemClock.uptimeMillis());
+                mPowerManager.wakeUp(SystemClock.uptimeMillis(), "android.policy:GESTURE");
                 Intent intent = new Intent(action, null);
                 startActivitySafely(intent);
                 break;
@@ -110,7 +110,7 @@ public class KeyHandler implements DeviceKeyHandler {
         if (isKeySupported && !mEventHandler.hasMessages(GESTURE_REQUEST)) {
             if (event.getScanCode() == KEY_DOUBLE_TAP && !mPowerManager.isScreenOn()) {
                 if (DEBUG) Log.i(TAG, "KEY_DOUBLE_TAP");
-                mPowerManager.wakeUp(SystemClock.uptimeMillis());
+                mPowerManager.wakeUp(SystemClock.uptimeMillis(), "android.policy:GESTURE");
                 return true;
             }
             Message msg = getMessageForKeyEvent(event);

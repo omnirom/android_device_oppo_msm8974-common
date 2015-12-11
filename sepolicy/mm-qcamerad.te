@@ -1,0 +1,5 @@
+###########################
+# OmniROM oppo common sepolicy
+#
+
+allow mm-qcamerad system_file:file execmod;
