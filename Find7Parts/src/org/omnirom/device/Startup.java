@@ -28,11 +28,6 @@ public class Startup extends BroadcastReceiver {
         DoubleTapSwitch.restore(context);
         CameraGestureSwitch.restore(context);
         TorchGestureSwitch.restore(context);
-/* Commented out until reimplemented
-        MusicGestureSwitch.restore(context);
-        VibratorStrengthPreference.restore(context);
-        SuspendFreqCap.restore(context);
-        SuspendCoreCap.restore(context);
-*/
+        KeyHandler.setButtonDisable(context);
     }
 }
