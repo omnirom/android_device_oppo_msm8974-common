@@ -33,6 +33,24 @@
       "revId": "e485101e914fd4ec06d314c293e0067add742b49",
       "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8f5b13e_e579a0f0",
+        "filename": "common.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2015-12-14T16:03:23Z",
+      "side": 1,
+      "message": "ah ok - this comes with https://gerrit.omnirom.org/#/c/15927/ - please make that more visible in the commit messages then :)",
+      "parentUuid": "b8f5b13e_658eb0fc",
+      "revId": "e485101e914fd4ec06d314c293e0067add742b49",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
     }
   ]
 }
