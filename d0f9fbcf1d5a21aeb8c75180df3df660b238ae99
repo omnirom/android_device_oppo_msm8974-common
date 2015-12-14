@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8f5b13e_651350b8",
+        "filename": "common.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2015-12-14T15:48:50Z",
+      "side": 1,
+      "message": "frameworks/native-caf/build/phone-xxxhdpi-3072-dalvik-heap.mk:    dalvik.vm.heapminfree\u003d2m \\",
+      "revId": "d0f9fbcf1d5a21aeb8c75180df3df660b238ae99",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
