@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8f5b13e_658eb0fc",
+        "filename": "common.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2015-12-14T15:59:14Z",
+      "side": 1,
+      "message": "our hal dont have this propery",
+      "revId": "e485101e914fd4ec06d314c293e0067add742b49",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
