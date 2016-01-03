@@ -256,6 +256,7 @@
         <item>airplane</item>
         <item>users</item>
         <item>silent</item>
+        <item>dnd</item>
     </string-array>
 
     <!-- The list absolute paths of jar/apk files containing the device specific handlers,
