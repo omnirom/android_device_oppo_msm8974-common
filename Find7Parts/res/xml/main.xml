@@ -16,15 +16,8 @@
 			android:summary="@string/torch_summary_head"
 			android:title="@string/torch_title_head" />
 
-<!--
-		<CheckBoxPreference
-			android:key="music"
-			android:summary="@string/music_summary_head"
-			android:title="@string/music_title_head" />
--->
 	</PreferenceCategory>
 
-<!--
 	<PreferenceCategory
         android:title="@string/category_vibrator">
         <org.omnirom.device.VibratorStrengthPreference
@@ -32,5 +25,5 @@
 	        android:title="@string/vib_strength_title_head"
 	        android:summary="@string/vib_strength_summary_head" />
 	</PreferenceCategory>
--->
+
 </PreferenceScreen>
