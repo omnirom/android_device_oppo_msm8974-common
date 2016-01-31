@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2013 The OmniROM Project
+* Copyright (C) 2016 The OmniROM Project
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -27,18 +27,12 @@ public class DeviceSettings extends PreferenceActivity  {
     public static final String KEY_DOUBLE_TAP_SWITCH = "double_tap";
     public static final String KEY_CAMERA_SWITCH = "camera";
     public static final String KEY_TORCH_SWITCH = "torch";
-
-/* Commented out until reimplemented on F7
-    public static final String KEY_MUSIC_SWITCH = "music";
-
     public static final String KEY_VIBSTRENGTH = "vib_strength";
-*/
+
     private TwoStatePreference mDoubleTapSwitch;
     private TwoStatePreference mTorchSwitch;
     private TwoStatePreference mCameraSwitch;
-
-/*  private TwoStatePreference mMusicSwitch;
-*/
+    private VibratorStrengthPreference mVibratorStrength;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,21 +56,8 @@ public class DeviceSettings extends PreferenceActivity  {
         mCameraSwitch.setChecked(CameraGestureSwitch.isEnabled(this));
         mCameraSwitch.setOnPreferenceChangeListener(new CameraGestureSwitch());
 
-        /*mMusicSwitch = (TwoStatePreference) findPreference(KEY_MUSIC_SWITCH);
-        mMusicSwitch.setEnabled(MusicGestureSwitch.isSupported());
-        mMusicSwitch.setChecked(MusicGestureSwitch.isEnabled(this));
-        mMusicSwitch.setOnPreferenceChangeListener(new MusicGestureSwitch());
-
-        mSuspendFreqCap = (SuspendFreqCap) findPreference(KEY_SUSPEND_CAP_FREQ);
-        mSuspendFreqCap.setEnabled(SuspendFreqCap.isSupported());
-        mSuspendFreqCap.setValue(SuspendFreqCap.getValue(this));
-        mSuspendFreqCap.setOnPreferenceChangeListener(mSuspendFreqCap);
-
-        mSuspendCoreCap = (SuspendCoreCap) findPreference(KEY_SUSPEND_CAP_CORE);
-        mSuspendCoreCap.setEnabled(SuspendCoreCap.isSupported());
-        mSuspendCoreCap.setValue(SuspendCoreCap.getValue(this));
-        mSuspendCoreCap.setOnPreferenceChangeListener(mSuspendCoreCap);
-*/
+		mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
+        mVibratorStrength.setEnabled(VibratorStrengthPreference.isSupported());
     }
 
     @Override
