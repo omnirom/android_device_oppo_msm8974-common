@@ -1,6 +1,5 @@
 ###########################
 # OmniROM oppo common sepolicy
 #
+allow vold persist_file:dir r_file_perms;
 
-# Allow reads/writes to modem related block devices
-allow vold modem_block_device:blk_file rw_file_perms;
