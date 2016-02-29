@@ -113,6 +113,9 @@ COMMON_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_10
 # keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
+# hacky for ext4 checks
+TARGET_NO_MOUNT_CHECK := true
+
 # selinux
 include device/qcom/sepolicy/sepolicy.mk
 
