@@ -49,7 +49,7 @@ static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 static struct light_state_t g_notification;
 static struct light_state_t g_battery;
 static struct light_state_t g_attention;
-static int g_is_find7s = 0;
+static int g_is_qpnp_device = 0;
 
 char const*const RED_LED_FILE
         = "/sys/class/leds/red/brightness";
@@ -106,14 +106,17 @@ void init_globals(void)
     pthread_mutex_init(&g_lock, NULL);
 }
 
-static int is_find7s(void)
+static int is_qpnp_device(void)
 {
     char value[PROPERTY_VALUE_MAX] = {'\0'};
 
     if (property_get("ro.oppo.device", value, NULL)) {
         if (!strcmp(value, "find7s")) {
-	    return 1;
-	}
+	        return 1;
+        }
+        if (!strcmp(value, "n3")) {
+	        return 1;
+        }
     }
     return 0;
 }
@@ -345,7 +348,7 @@ static int
 set_speaker_light_locked(struct light_device_t* dev,
         struct light_state_t const* state)
 {
-    if(g_is_find7s)
+    if(g_is_qpnp_device)
         return set_speaker_light_locked_qpnp(dev, state);
     return set_speaker_light_locked_shineled(dev, state);        
 }
@@ -479,7 +482,7 @@ static int open_lights(const struct hw_module_t* module, char const* name,
 
     *device = (struct hw_device_t*)dev;
 
-    g_is_find7s = is_find7s();
+    g_is_qpnp_device = is_qpnp_device();
 
     return 0;
 }
