@@ -37,6 +37,7 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/init.oppo.usb.rc:root/init.oppo.usb.rc \
+    $(COMMON_PATH)/configs/init.common.rc:root/init.common.rc \
     $(COMMON_PATH)/configs/ueventd.qcom.rc:root/ueventd.qcom.rc
 
 # Config files for touch and input
