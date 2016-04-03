@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98faad2e_33a7c9a8",
+        "filename": "configs/init.common.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2016-04-03T21:54:24Z",
+      "side": 1,
+      "message": "this include should be only once - either here or in the device repos - I guess you can move it from the device here and include it only here",
+      "revId": "db47bc6b154e0d9cb8176b8d52dc0f845721fd1d",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
