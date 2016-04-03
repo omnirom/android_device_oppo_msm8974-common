@@ -177,40 +177,25 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608 \
-    persist.hwc.mdpcomp.enable=true
+    persist.hwc.mdpcomp.enable=true \
+    debug.egl.recordable.rgba8888=1
 
-# Do not power down SIM card when modem is sent to Low Power Mode.
+# Radio/RIL/net
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.apm_sim_not_pwdn=1
-
-# Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.call_ring.multiple=0
-
-# Ril
-PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
+    ro.telephony.call_ring.multiple=0 \
+    rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so \
+    telephony.lteOnGSMDevice=1 \
+    ro.telephony.default_network=9 \
+    persist.data.netmgrd.qos.enable=true \
+    wifi.interface=wlan0
 
 # Cell Broadcasts
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cellbroadcast.emergencyids=0-65534
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    telephony.lteOnGSMDevice=1 \
-    ro.telephony.default_network=9
-
-PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0
-
-# Enable AAC 5.1 output
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.aac_51_output_enabled=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.egl.recordable.rgba8888=1
 
 # Oppo-specific
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -232,7 +217,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.video=true \
     av.streaming.offload.enable=false \
     audio.offload.pcm.16bit.enable=true \
-    audio.offload.multiple.enabled=false
+    audio.offload.multiple.enabled=false \
+    media.aac_51_output_enabled=true
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
