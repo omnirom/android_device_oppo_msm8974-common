@@ -17,8 +17,13 @@
 */
 package org.omnirom.device;
 
+import android.content.res.Resources;
+import android.content.Intent;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
+import android.preference.PreferenceScreen;
 import android.preference.TwoStatePreference;
 import android.view.MenuItem;
 
@@ -28,11 +33,14 @@ public class DeviceSettings extends PreferenceActivity  {
     public static final String KEY_CAMERA_SWITCH = "camera";
     public static final String KEY_TORCH_SWITCH = "torch";
     public static final String KEY_VIBSTRENGTH = "vib_strength";
+    public static final String KEY_OCLICK_CATEGORY = "oclick_category";
+    public static final String KEY_OCLICK = "oclick";
 
     private TwoStatePreference mDoubleTapSwitch;
     private TwoStatePreference mTorchSwitch;
     private TwoStatePreference mCameraSwitch;
     private VibratorStrengthPreference mVibratorStrength;
+    private Preference mOClickPreference;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,8 +64,15 @@ public class DeviceSettings extends PreferenceActivity  {
         mCameraSwitch.setChecked(CameraGestureSwitch.isEnabled(this));
         mCameraSwitch.setOnPreferenceChangeListener(new CameraGestureSwitch());
 
-		mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
+        mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
         mVibratorStrength.setEnabled(VibratorStrengthPreference.isSupported());
+
+        final boolean oclickEnabled = getResources().getBoolean(R.bool.config_has_oclick);
+        PreferenceCategory oclickCategory = (PreferenceCategory) findPreference(KEY_OCLICK_CATEGORY);
+        if (!oclickEnabled) {
+            getPreferenceScreen().removePreference(oclickCategory);
+        }
+        mOClickPreference = (Preference) findPreference(KEY_OCLICK);
     }
 
     @Override
@@ -82,9 +97,18 @@ public class DeviceSettings extends PreferenceActivity  {
         super.onPause();
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mOClickPreference) {
+            Intent i = new Intent(Intent.ACTION_MAIN).setClassName("org.omnirom.omniclick","org.omnirom.omniclick.OClickControlActivity");
+            startActivity(i);
+            return true;
+        }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 }
