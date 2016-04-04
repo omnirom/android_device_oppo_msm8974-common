@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98faad2e_13ededb5",
+        "filename": "Find7Parts/src/org/omnirom/device/DeviceSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2016-04-04T11:00:44Z",
+      "side": 1,
+      "message": "damn",
+      "revId": "70aacecae503bd2eb07e9dfe1cf2aadca6f85b9d",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
