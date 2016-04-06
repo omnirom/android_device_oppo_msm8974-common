@@ -4,20 +4,17 @@
 		<CheckBoxPreference
 			android:key="double_tap"
 			android:summary="@string/double_tap_wake_summary_head"
-			android:title="@string/double_tap_wake_title_head"
-			android:persistent="false" />
+			android:title="@string/double_tap_wake_title_head" />
 
 		<CheckBoxPreference
 			android:key="camera"
 			android:summary="@string/camera_summary_head"
-			android:title="@string/camera_title_head"
-			android:persistent="false" />
+			android:title="@string/camera_title_head" />
 
 		<CheckBoxPreference
 			android:key="torch"
 			android:summary="@string/torch_summary_head"
-			android:title="@string/torch_title_head"
-			android:persistent="false" />
+			android:title="@string/torch_title_head" />
 
 	</PreferenceCategory>
 
@@ -26,8 +23,7 @@
         <org.omnirom.device.VibratorStrengthPreference
 	        android:key="vib_strength"
 	        android:title="@string/vib_strength_title_head"
-	        android:summary="@string/vib_strength_summary_head"
-	        android:persistent="false" />
+	        android:summary="@string/vib_strength_summary_head" />
 	</PreferenceCategory>
 
 	<PreferenceCategory
