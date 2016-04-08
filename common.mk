@@ -148,11 +148,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     Find7Parts
 
-# NFC feature files
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
-
 # NFC
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
+
+PRODUCT_PACKAGES += \
+    Tag \
+    com.android.nfc_extras
+
 ifeq ($(TARGET_BUILD_VARIANT),user)
     NFCEE_ACCESS_PATH := $(COMMON_PATH)/configs/nfcee_access.xml
 else
