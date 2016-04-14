@@ -36,7 +36,7 @@ public class DeviceSettings extends PreferenceActivity  {
     public static final String KEY_OCLICK_CATEGORY = "oclick_category";
     public static final String KEY_OCLICK = "oclick";
 
-    private TwoStatePreference mDoubleTapSwitch;
+    //private TwoStatePreference mDoubleTapSwitch;
     private TwoStatePreference mTorchSwitch;
     private TwoStatePreference mCameraSwitch;
     private VibratorStrengthPreference mVibratorStrength;
@@ -49,10 +49,10 @@ public class DeviceSettings extends PreferenceActivity  {
 
         addPreferencesFromResource(R.xml.main);
 
-        mDoubleTapSwitch = (TwoStatePreference) findPreference(KEY_DOUBLE_TAP_SWITCH);
+        /*mDoubleTapSwitch = (TwoStatePreference) findPreference(KEY_DOUBLE_TAP_SWITCH);
         mDoubleTapSwitch.setEnabled(DoubleTapSwitch.isSupported());
         mDoubleTapSwitch.setChecked(DoubleTapSwitch.isEnabled(this));
-        mDoubleTapSwitch.setOnPreferenceChangeListener(new DoubleTapSwitch());
+        mDoubleTapSwitch.setOnPreferenceChangeListener(new DoubleTapSwitch());*/
 
         mTorchSwitch = (TwoStatePreference) findPreference(KEY_TORCH_SWITCH);
         mTorchSwitch.setEnabled(TorchGestureSwitch.isSupported());
