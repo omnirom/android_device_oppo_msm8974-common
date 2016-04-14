@@ -38,6 +38,7 @@
 #define MAX_CPU_PATH "/sys/devices/system/cpu/cpuquiet/cpuquiet_driver/max_cpus"
 #define MAX_GPU_PATH "/sys/class/kgsl/kgsl-3d0/max_pwrlevel"
 #define MIN_GPU_PATH "/sys/class/kgsl/kgsl-3d0/min_pwrlevel"
+#define DOUBLE_TAP_FILE "/sys/kernel/touchscreen/double_tap_enable"
 
 // we can handle those tags
 #define PROFILE_MAX_CPU_NUM_TAG "maxCpu"
@@ -194,6 +195,12 @@ static void power_hint(struct power_module __unused *module, power_hint_t hint,
     }
 }
 
+void set_feature(struct power_module __unused *module, feature_t feature, int state) {
+    if (feature == POWER_FEATURE_DOUBLE_TAP_TO_WAKE) {
+        sysfs_write(DOUBLE_TAP_FILE, state ? "1" : "0");
+    }
+}
+
 static struct hw_module_methods_t power_module_methods = {
     .open = NULL,
 };
@@ -201,7 +208,7 @@ static struct hw_module_methods_t power_module_methods = {
 struct power_module HAL_MODULE_INFO_SYM = {
     .common = {
         .tag = HARDWARE_MODULE_TAG,
-        .module_api_version = POWER_MODULE_API_VERSION_0_2,
+        .module_api_version = POWER_MODULE_API_VERSION_0_3,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = POWER_HARDWARE_MODULE_ID,
         .name = "find7a/s/op power HAL",
@@ -212,4 +219,5 @@ struct power_module HAL_MODULE_INFO_SYM = {
     .init = power_init,
     .setInteractive = power_set_interactive,
     .powerHint = power_hint,
+    .setFeature = set_feature,
 };
