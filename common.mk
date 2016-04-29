@@ -214,9 +214,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.egl.recordable.rgba8888=1
-
 # Oppo-specific
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.oppo.version=US \
