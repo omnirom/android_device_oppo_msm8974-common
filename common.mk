@@ -251,6 +251,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # sensors
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qc.sdk.camera.facialproc=true \
+    ro.qc.sdk.gestures.camera=false \
     ro.qti.sdk.sensors.gestures=true \
     ro.qti.sensors.bte=true \
     ro.qti.sensors.gtap=true \
