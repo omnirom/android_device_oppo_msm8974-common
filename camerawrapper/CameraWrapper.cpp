@@ -120,6 +120,20 @@ static char *camera_fixup_getparams(int id, const char *settings)
                 android::CameraParameters::KEY_RECORDING_HINT), "true"));
     }
 
+    /* Remove unsupported features */
+    params.remove("af-bracket");
+    params.remove("af-bracket-values");
+    params.remove("chroma-flash");
+    params.remove("chroma-flash-values");
+    params.remove("dis");
+    params.remove("dis-values");
+    params.remove("opti-zoom");
+    params.remove("opti-zoom-values");
+    params.remove("see-more");
+    params.remove("see-more-values");
+    params.remove("still-more");
+    params.remove("still-more-values");
+
     if (!videoMode) {
         /* Back camera */
         if (id == 0) {
