@@ -1,8 +1,9 @@
 ###########################
 # OmniROM oppo common sepolicy
 #
+allow wcnss_service persist_file:dir { search write create add_name };
 
-allow wcnss_service devpts:chr_file rw_file_perms;
+type_transition wcnss_service persist_file:file wifi_data_file ".genmac";
 
 
 
