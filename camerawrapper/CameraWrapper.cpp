@@ -133,6 +133,7 @@ static char *camera_fixup_getparams(int id, const char *settings)
     params.remove("see-more-values");
     params.remove("still-more");
     params.remove("still-more-values");
+    params.remove("hfr-size-values");
 
     if (!videoMode) {
         /* Back camera */
