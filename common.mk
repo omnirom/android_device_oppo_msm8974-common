@@ -123,6 +123,8 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libOmxCore \
+    libOmxVdecHevc \
+    libOmxVencHevc \
     libstagefrighthw \
     libc2dcolorconvert \
     libxml2 \
