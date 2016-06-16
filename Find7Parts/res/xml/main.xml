@@ -16,6 +16,13 @@
 			android:summary="@string/torch_summary_head"
 			android:title="@string/torch_title_head" />
 
+        <ListPreference
+            android:key="back_button"
+            android:title="@string/back_button_title"
+            android:entries="@array/back_button_entries"
+            android:entryValues="@array/back_button_values"
+            android:persistent="false" />
+
 	</PreferenceCategory>
 
 	<PreferenceCategory
