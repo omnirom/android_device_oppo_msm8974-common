@@ -19,4 +19,6 @@
 
     <bool name="config_has_oclick">false</bool>
 
+    <bool name="config_has_back_button">false</bool>
+
 </resources>

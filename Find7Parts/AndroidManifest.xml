@@ -5,6 +5,7 @@
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.WRITE_SETTINGS" />
+	<uses-permission android:name="android.permission.INJECT_EVENTS" />
 	<uses-sdk
 		android:minSdkVersion="18"
 		android:targetSdkVersion="21" />
