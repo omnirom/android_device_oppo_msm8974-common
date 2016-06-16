@@ -29,4 +29,8 @@
     <string name="advanced_settings">Advanced</string>
     <string name="category_oclick">O-Click</string>
     <string name="oclick_title">Configure O-Click</string>
+    <string name="back_button_title">Back button</string>
+    <string name="back_button_sleep">Sleep</string>
+    <string name="back_button_recents">Recents</string>
+    <string name="back_button_summary">Unassigned</string>
 </resources>
