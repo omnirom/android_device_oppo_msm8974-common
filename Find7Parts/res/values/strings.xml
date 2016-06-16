@@ -16,8 +16,6 @@
 <resources>
     <string name="app_name">Find 7</string>
     <string name="category_gestures_title">Off screen gestures</string>
-    <string name="double_tap_wake_title_head">Double tap to wake</string>
-    <string name="double_tap_wake_summary_head">Double tap on screen will wake the device</string>
     <string name="camera_title_head">Camera</string>
     <string name="camera_summary_head">Draw a circle to start camera</string>
     <string name="torch_title_head">Torch</string>
@@ -29,4 +27,9 @@
     <string name="advanced_settings">Advanced</string>
     <string name="category_oclick">O-Click</string>
     <string name="oclick_title">Configure O-Click</string>
+    <string name="back_button_title">Fingerprint scanner button</string>
+    <string name="back_button_sleep">Sleep</string>
+    <string name="back_button_recents">Recents</string>
+    <string name="back_button_summary">Unassigned</string>
+    <string name="category_button">Buttons</string>
 </resources>

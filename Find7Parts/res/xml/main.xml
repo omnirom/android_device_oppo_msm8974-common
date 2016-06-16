@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<PreferenceCategory android:title="@string/category_gestures_title" >
+	<PreferenceCategory
+	    android:key="gesture_category"
+	    android:title="@string/category_gestures_title" >
 		<!--<CheckBoxPreference
 			android:key="double_tap"
 			android:summary="@string/double_tap_wake_summary_head"
@@ -35,4 +37,15 @@
 	        android:persistent="false" />
 	</PreferenceCategory>
 
+	<PreferenceCategory
+	    android:key="button_category"
+        android:title="@string/category_button">
+        <ListPreference
+            android:key="back_button"
+            android:title="@string/back_button_title"
+            android:entries="@array/back_button_entries"
+            android:entryValues="@array/back_button_values"
+            android:summary="@string/back_button_summary"
+            android:persistent="false" />
+	</PreferenceCategory>
 </PreferenceScreen>
