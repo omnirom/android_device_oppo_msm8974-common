@@ -17,26 +17,16 @@
 */
 package org.omnirom.device;
 
-import android.app.ActivityManagerNative;
-import android.app.KeyguardManager;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.database.ContentObserver;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.media.IAudioService;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.RemoteException;
 import android.os.ServiceManager;
-import android.os.SystemClock;
 import android.os.UserHandle;
-import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -49,7 +39,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private static final String TAG = KeyHandler.class.getSimpleName();
     private static final boolean DEBUG = false;
-    private static final int GESTURE_REQUEST = 1;
+    protected static final int GESTURE_REQUEST = 1;
     private static final int GESTURE_WAKELOCK_DURATION = 3000;
 
     // Supported scancodes
@@ -66,7 +56,7 @@ public class KeyHandler implements DeviceKeyHandler {
     };
 
     private static final int[] sHandledGestures = new int[]{
-        GESTURE_V_SCANCODE,
+        GESTURE_V_SCANCODE
     };
 
     private final Context mContext;
@@ -130,9 +120,9 @@ public class KeyHandler implements DeviceKeyHandler {
         if (event.getAction() != KeyEvent.ACTION_UP) {
             return false;
         }
-        if (DEBUG) Log.i(TAG, "scanCode=" + event.getScanCode());
         boolean isKeySupported = ArrayUtils.contains(sHandledGestures, event.getScanCode());
         if (isKeySupported && !mEventHandler.hasMessages(GESTURE_REQUEST)) {
+            if (DEBUG) Log.i(TAG, "scanCode=" + event.getScanCode());
             Message msg = getMessageForKeyEvent(event);
             mEventHandler.sendMessage(msg);
         }
