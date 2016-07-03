@@ -112,6 +112,8 @@ COMMON_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_10
 # keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
+EXTENDED_FONT_FOOTPRINT := true
+
 # selinux
 include device/qcom/sepolicy/sepolicy.mk
 
