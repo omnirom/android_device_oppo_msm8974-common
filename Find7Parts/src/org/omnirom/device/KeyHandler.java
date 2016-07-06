@@ -134,6 +134,11 @@ public class KeyHandler implements DeviceKeyHandler {
         return ArrayUtils.contains(sSupportedGestures, event.getScanCode());
     }
 
+    @Override
+    public boolean isDisabledKeyEvent(KeyEvent event) {
+        return false;
+    }
+
     private Message getMessageForKeyEvent(KeyEvent keyEvent) {
         Message msg = mEventHandler.obtainMessage(GESTURE_REQUEST);
         msg.obj = keyEvent;
