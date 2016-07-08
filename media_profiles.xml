@@ -203,7 +203,7 @@
              bitRate="65000000"
              width="4096"
              height="2160"
-             frameRate="24" />
+             frameRate="30" />
 
       <Audio codec="aac"
              bitRate="320000"
@@ -357,7 +357,7 @@
              bitRate="65000000"
              width="4096"
              height="2160"
-             frameRate="24" />
+             frameRate="30" />
 
       <!-- audio setting is ignored -->
       <Audio codec="aac"
