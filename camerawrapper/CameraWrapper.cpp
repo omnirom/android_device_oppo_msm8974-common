@@ -100,11 +100,13 @@ static int check_vendor_module()
 
 static const char *KEY_EXPOSURE_TIME = "exposure-time";
 static const char *KEY_EXPOSURE_TIME_VALUES = "exposure-time-values";
+static const char *KEY_SHUTTER_SPEED_VALUES = "shutter-speed-values";
+static const char *KEY_SHUTTER_SPEED = "shutter-speed";
 
 static char *camera_fixup_getparams(int id, const char *settings)
 {
     bool videoMode = false;
-    const char *exposureTimeValues = "0,1,500000,1000000,2000000,4000000,8000000,16000000,32000000,64000000";
+    const char *exposureTimeValues = "0,200,400,667,1000,2000,4000,8000,15625,31250,62500,125000,250000,500000,1000000,2000000,4000000,8000000,16000000,32000000,64000000";
     const char *supportedSceneModes = "auto,asd,landscape,snow,beach,sunset,night,portrait,backlight,sports,steadyphoto,flowers,candlelight,fireworks,party,night-portrait,theatre,action,AR";
 
     android::CameraParameters params;
@@ -141,6 +143,7 @@ static char *camera_fixup_getparams(int id, const char *settings)
         if (id == 0) {
             /* Set supported exposure time values */
             params.set(KEY_EXPOSURE_TIME_VALUES, exposureTimeValues);
+            params.set(KEY_SHUTTER_SPEED_VALUES, exposureTimeValues);
         }
 
         /* Front camera */
@@ -180,10 +183,12 @@ static char *camera_fixup_setparams(int id, const char *settings)
                 android::CameraParameters::KEY_RECORDING_HINT), "true"));
     }
 
+    if (params.get(KEY_SHUTTER_SPEED)) {
+    	params.set(KEY_EXPOSURE_TIME, params.get(KEY_SHUTTER_SPEED));
+    }
     if (params.get(KEY_EXPOSURE_TIME)) {
         slowShutterMode = (strcmp(params.get(KEY_EXPOSURE_TIME), "0"));
     }
-
     /* Disable flash if slow shutter is enabled */
     if (!videoMode) {
         if (id == 0) {
