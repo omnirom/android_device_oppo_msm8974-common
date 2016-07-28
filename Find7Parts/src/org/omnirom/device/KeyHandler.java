@@ -167,5 +167,10 @@ public class KeyHandler implements DeviceKeyHandler {
         }
         return event.getScanCode() == KEY_DOUBLE_TAP;
     }
+
+    @Override
+    public KeyEvent translateKeyEvent(KeyEvent event) {
+        return null;
+    }
 }
 
