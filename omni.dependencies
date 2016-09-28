@@ -3,43 +3,13 @@
     "remote": "omnirom",
     "repository": "android_hardware_qcom_display-caf-msm8974",
     "target_path": "hardware/qcom/display-caf-msm8974",
-    "revision": "android-6.0"
-  },
-  {
-    "remote": "omnirom",
-    "repository": "android_hardware_qcom_media-caf-msm8974",
-    "target_path": "hardware/qcom/media-caf-msm8974",
-    "revision": "android-6.0"
-  },
-  {
-    "remote": "omnirom",
-    "repository": "android_hardware_qcom_audio-caf-msm8974",
-    "target_path": "hardware/qcom/audio-caf-msm8974",
-    "revision": "android-6.0"
-  },
-  {
-    "remote": "omnirom",
-    "repository": "android_device_qcom_caf-sepolicy",
-    "target_path": "device/qcom/sepolicy",
-    "revision": "android-6.0"
+    "revision": "android-7.0"
   },
   {
     "remote": "omnirom",
     "repository": "android_kernel_oppo_msm8974",
     "target_path": "kernel/oppo/msm8974",
-    "revision": "android-6.0"
-  },
-  {
-    "remote": "omnirom",
-    "repository": "android_frameworks_av",
-    "target_path": "frameworks/av-caf",
-    "revision": "android-6.0-caf"
-  },
-  {
-    "remote": "omnirom",
-    "repository": "android_frameworks_native",
-    "target_path": "frameworks/native-caf",
-    "revision": "android-6.0-caf"
+    "revision": "android-7.0"
   },
   {
     "remote": "omnirom",
