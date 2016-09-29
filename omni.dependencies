@@ -25,24 +25,6 @@
   },
   {
     "remote": "omnirom",
-    "repository": "android_kernel_oppo_msm8974",
-    "target_path": "kernel/oppo/msm8974",
-    "revision": "android-7.0"
-  },
-  {
-    "remote": "omnirom",
-    "repository": "android_frameworks_av",
-    "target_path": "frameworks/av-caf",
-    "revision": "android-6.0-caf"
-  },
-  {
-    "remote": "omnirom",
-    "repository": "android_frameworks_native",
-    "target_path": "frameworks/native-caf",
-    "revision": "android-6.0-caf"
-  },
-  {
-    "remote": "omnirom",
     "repository": "android_external_stlport",
     "target_path": "external/stlport",
     "revision": "android-6.0"
