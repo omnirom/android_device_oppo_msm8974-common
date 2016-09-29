@@ -31,18 +31,6 @@
   },
   {
     "remote": "omnirom",
-    "repository": "android_frameworks_av",
-    "target_path": "frameworks/av-caf",
-    "revision": "android-6.0-caf"
-  },
-  {
-    "remote": "omnirom",
-    "repository": "android_frameworks_native",
-    "target_path": "frameworks/native-caf",
-    "revision": "android-6.0-caf"
-  },
-  {
-    "remote": "omnirom",
     "repository": "android_external_stlport",
     "target_path": "external/stlport",
     "revision": "android-6.0"
