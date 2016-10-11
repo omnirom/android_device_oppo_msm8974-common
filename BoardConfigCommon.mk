@@ -9,6 +9,10 @@ TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := msm8974
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
 
+#Kernel Toolchain
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin
+KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
+
 # Architecture
 TARGET_CPU_VARIANT := krait
 TARGET_CPU_ABI := armeabi-v7a
@@ -112,7 +116,7 @@ TARGET_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_10
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # selinux
-include device/qcom/sepolicy/sepolicy.mk
+#include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
     $(COMMON_PATH)/sepolicy
