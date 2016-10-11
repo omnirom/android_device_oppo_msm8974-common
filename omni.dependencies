@@ -34,5 +34,11 @@
     "repository": "android_packages_apps_SnapdragonCamera",
     "target_path": "packages/apps/SnapdragonCamera",
     "revision": "android-6.0"
+  },
+  {
+    "remote": "aosp",
+    "repository": "platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8",
+    "target_path": "prebuilts/gcc/linux-x86/arm/arm-eabi-4.8",
+    "revision": "refs/tags/android-6.0.1_r72"
   }
 ]
