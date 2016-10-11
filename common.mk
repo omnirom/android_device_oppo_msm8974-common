@@ -146,8 +146,8 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
 
 # Device settings
-PRODUCT_PACKAGES += \
-    Find7Parts
+#PRODUCT_PACKAGES += \
+#    Find7Parts
 
 # NFC
 PRODUCT_COPY_FILES += \
