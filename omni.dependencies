@@ -9,13 +9,19 @@
     "remote": "omnirom",
     "repository": "android_hardware_qcom_media-caf-msm8974",
     "target_path": "hardware/qcom/media-caf-msm8974",
-    "revision": "android-6.0"
+    "revision": "android-7.0"
   },
   {
     "remote": "omnirom",
     "repository": "android_hardware_qcom_audio-caf-msm8974",
     "target_path": "hardware/qcom/audio-caf-msm8974",
-    "revision": "android-6.0"
+    "revision": "android-7.0"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_device_qcom_caf-sepolicy",
+    "target_path": "device/qcom/sepolicy",
+    "revision": "android-7.0"
   },
   {
     "remote": "omnirom",
@@ -39,7 +45,7 @@
     "remote": "omnirom",
     "repository": "android_hardware_ril",
     "target_path": "hardware/ril-caf",
-    "revision": "android-6.0-caf"
+    "revision": "android-7.0"
   },
   {
     "remote": "omnirom",
