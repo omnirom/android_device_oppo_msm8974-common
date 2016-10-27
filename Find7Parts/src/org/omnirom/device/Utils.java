@@ -17,6 +17,8 @@
 */
 package org.omnirom.device;
 
+import android.util.Log;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -26,6 +28,7 @@ import java.io.FileReader;
 
 public class Utils {
 
+    private static final String TAG = "Utils";
     /**
      * Write a string value to the specified file.
      * @param filename      The filename
@@ -110,5 +113,47 @@ public class Utils {
             return fileValue;
         }
         return defValue;
+    }
+    /**
+     * Reads the first line of text from the given file
+     */
+    public static String readOneLine(String fileName) {
+        String line = null;
+        BufferedReader reader = null;
+
+        try {
+            reader = new BufferedReader(new FileReader(fileName), 512);
+            line = reader.readLine();
+        } catch (IOException e) {
+            Log.e(TAG, "Could not read from file " + fileName, e);
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                // ignored, not much we can do anyway
+            }
+        }
+
+        return line;
+    }
+    /**
+     * Writes the given value into the given file
+     *
+     * @return true on success, false on failure
+     */
+    public static boolean writeLine(String fileName, String value) {
+        try {
+            FileOutputStream fos = new FileOutputStream(fileName);
+            fos.write(value.getBytes());
+            fos.flush();
+            fos.close();
+        } catch (IOException e) {
+            Log.e(TAG, "Could not write to file " + fileName, e);
+            return false;
+        }
+
+        return true;
     }
 }
