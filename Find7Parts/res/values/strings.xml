@@ -16,20 +16,62 @@
 <resources>
     <string name="app_name">Find 7</string>
     <string name="category_gestures_title">Off screen gestures</string>
+    <string name="double_tap_wake_title_head">Double tap to wake</string>
+    <string name="double_tap_wake_summary_head">Double tap on screen will wake the device</string>
     <string name="camera_title_head">Camera</string>
     <string name="camera_summary_head">Draw a circle to start camera</string>
+    <string name="music_title_head">Music</string>
+    <string name="music_summary_head">Use gestures to control music playback \n
+    • Two fingers vertically to play/pause\n
+    • Draw left arrow for previous track\n
+    • Draw right arrow for next track</string>
+    <string name="key_disabler_title_head">Enable software keys</string>
+    <string name="key_disabler_summary_head">Will use the software keys instead of hardware keys</string>
+    <string name="offscreen_gestures_settings">Off screen gestures</string>
     <string name="torch_title_head">Torch</string>
     <string name="torch_summary_head">Draw a V to toggle torch</string>
+    <!-- haptic feedback  -->
+    <string name="touchscreen_extras">Haptic feedback</string>
+    <string name="haptic_feedback">Haptic feedback</string>
+    <string name="haptic_feedback_summary">Vibrate when a gesture got detected</string>
+    <!-- Proximity wake -->
+    <string name="proximity_wake_title">Prevent accidental wake-up</string>
+    <string name="proximity_wake_summary">Check the proximity sensor prior to waking up screen</string>
     <string name="category_vibrator">Vibrator</string>
     <string name="vib_strength_title_head">Strength</string>
     <string name="vib_strength_summary_head">Define the strength of the vibrator</string>
     <string name="vib_test">Test</string>
-    <string name="advanced_settings">Advanced</string>
-    <string name="category_oclick">O-Click</string>
-    <string name="oclick_title">Configure O-Click</string>
-    <string name="back_button_title">Fingerprint scanner button</string>
-    <string name="back_button_sleep">Sleep</string>
-    <string name="back_button_recents">Recents</string>
-    <string name="back_button_summary">Unassigned</string>
-    <string name="category_button">Buttons</string>
+    <string-array
+        name="haptic_feedback_array_name">
+        <item>Play/Pause</item>
+        <item>Previous track</item>
+        <item>Next track</item>
+        <item>Flashlight</item>
+    </string-array>
+    <string-array
+        name="haptic_feedback_array_value">
+        <item>touchscreen_gesture_play_pause_feedback</item>
+        <item>touchscreen_gesture_previous_feedback</item>
+        <item>touchscreen_gesture_next_feedback</item>
+        <item>touchscreen_gesture_torch_feedback</item>
+    </string-array>
+    <string-array name="empty_array"/>
+    
+    <!-- launch action  -->
+    <string name="touchscreen_action_title">Launch action</string>
+    
+    <string name="touchscreen_action_title_flashlight">Flashlight</string>
+    <string name="touchscreen_action_title_flashlight_summary">Loading...</string>
+    
+    <string name="touchscreen_action_title_play">Play/Pause</string>
+    <string name="touchscreen_action_title_play_summary">Loading...</string>
+    
+    <string name="touchscreen_action_title_previous">Previous</string>
+    <string name="touchscreen_action_title_previous_summary">Loading...</string>
+    
+    <string name="touchscreen_action_title_next">Next</string>
+    <string name="touchscreen_action_title_next_summary">Loading...</string>
+    
+    <string name="touchscreen_action_default">Default action</string>
+    <string name="touchscreen_action_unkownappforpackagename">(Unkown)</string>
 </resources>

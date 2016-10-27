@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<PreferenceCategory
-	    android:key="gesture_category"
-	    android:title="@string/category_gestures_title" >
-		<!--<CheckBoxPreference
-			android:key="double_tap"
-			android:summary="@string/double_tap_wake_summary_head"
-			android:title="@string/double_tap_wake_title_head" />-->
-
+	<PreferenceCategory android:title="@string/category_gestures_title" >
 		<CheckBoxPreference
 			android:key="camera"
 			android:summary="@string/camera_summary_head"
 			android:title="@string/camera_title_head" />
 
 		<CheckBoxPreference
+			android:key="music"
+			android:summary="@string/music_summary_head"
+			android:title="@string/music_title_head" />
+
+		<CheckBoxPreference
 			android:key="torch"
 			android:summary="@string/torch_summary_head"
 			android:title="@string/torch_title_head" />
 
-	</PreferenceCategory>
+                <MultiSelectListPreference
+                        android:key="touchscreen_gesture_haptic_feedback"
+                        android:title="@string/haptic_feedback"
+                        android:summary="@string/haptic_feedback_summary"
+                        android:entries="@array/haptic_feedback_array_name"
+                        android:entryValues="@array/haptic_feedback_array_value"
+                        android:defaultValue="@array/empty_array" />
 
+                <org.omnirom.device.SystemSettingSwitchPreference
+                    android:key="proximity_on_wake"
+                    android:title="@string/proximity_wake_title"
+                    android:summary="@string/proximity_wake_summary"
+                    android:defaultValue="true" />
+
+	</PreferenceCategory>
 	<PreferenceCategory
         android:title="@string/category_vibrator">
         <org.omnirom.device.VibratorStrengthPreference
@@ -28,24 +39,30 @@
 	        android:summary="@string/vib_strength_summary_head" />
 	</PreferenceCategory>
 
-	<PreferenceCategory
-	    android:key="oclick_category"
-        android:title="@string/category_oclick">
-        <Preference
-	        android:key="oclick"
-	        android:title="@string/oclick_title"
-	        android:persistent="false" />
-	</PreferenceCategory>
-
-	<PreferenceCategory
-	    android:key="button_category"
-        android:title="@string/category_button">
+    <PreferenceCategory android:title="@string/touchscreen_action_title">
+		
         <ListPreference
-            android:key="back_button"
-            android:title="@string/back_button_title"
-            android:entries="@array/back_button_entries"
-            android:entryValues="@array/back_button_values"
-            android:summary="@string/back_button_summary"
-            android:persistent="false" />
-	</PreferenceCategory>
+			android:key="touchscreen_gesture_torch_launch_intent"
+			android:title="@string/touchscreen_action_title_flashlight"			
+			android:summary="@string/touchscreen_action_title_flashlight_summary"
+			android:enabled="false" />
+			
+        <ListPreference
+			android:key="touchscreen_gesture_play_pause_launch_intent"
+			android:title="@string/touchscreen_action_title_play"			
+			android:summary="@string/touchscreen_action_title_play_summary"
+			android:enabled="false" />
+			
+        <ListPreference
+			android:key="touchscreen_gesture_previous_launch_intent"
+			android:title="@string/touchscreen_action_title_previous"			
+			android:summary="@string/touchscreen_action_title_previous_summary"
+			android:enabled="false" />
+			
+        <ListPreference
+			android:key="touchscreen_gesture_next_launch_intent"
+			android:title="@string/touchscreen_action_title_next"			
+			android:summary="@string/touchscreen_action_title_next_summary"
+			android:enabled="false" />
+      </PreferenceCategory>
 </PreferenceScreen>
