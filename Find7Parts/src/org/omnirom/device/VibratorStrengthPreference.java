@@ -136,4 +136,3 @@ public class VibratorStrengthPreference extends SeekBarDialogPreference implemen
         setValue(String.valueOf(mOldStrength));
     }
 }
-
