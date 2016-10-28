@@ -28,7 +28,6 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <pthread.h>
-#include <malloc.h>
 
 #include <sys/ioctl.h>
 #include <sys/types.h>
@@ -111,12 +110,9 @@ static int is_qpnp_device(void)
     char value[PROPERTY_VALUE_MAX] = {'\0'};
 
     if (property_get("ro.oppo.device", value, NULL)) {
-        if (!strcmp(value, "find7s")) {
-            return 1;
-        }
-        if (!strcmp(value, "n3")) {
-            return 1;
-        }
+        if (!strcmp(value, "qpnp_device")) {
+	    return 1;
+	}
     }
     return 0;
 }
@@ -165,7 +161,7 @@ rgb_to_brightness(struct light_state_t const* state)
 }
 
 static int
-set_light_backlight(struct light_device_t* dev __unused,
+set_light_backlight(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     int err = 0;
@@ -173,13 +169,14 @@ set_light_backlight(struct light_device_t* dev __unused,
 
     pthread_mutex_lock(&g_lock);
     err = write_int(LCD_FILE, brightness);
+
     pthread_mutex_unlock(&g_lock);
 
     return err;
 }
 
 static int
-set_speaker_light_locked_shineled(struct light_device_t* dev __unused,
+set_speaker_light_locked_shineled(struct light_device_t* dev,
         struct light_state_t const* state)
 {
 
@@ -259,7 +256,7 @@ set_speaker_light_locked_shineled(struct light_device_t* dev __unused,
 }
 
 static int
-set_speaker_light_locked_qpnp(struct light_device_t* dev __unused,
+set_speaker_light_locked_qpnp(struct light_device_t* dev,
         struct light_state_t const* state)
 {
 
@@ -300,28 +297,28 @@ set_speaker_light_locked_qpnp(struct light_device_t* dev __unused,
 #endif
 
         if (onMS > 0 && offMS > 0) {
-            char dutystr[4*(QPNP_DUTY_STEPS+1)];
+	    char dutystr[4*(QPNP_DUTY_STEPS+1)];
             char* p = dutystr;
             int totalMS = onMS + offMS;
             int stepMS = totalMS/QPNP_DUTY_STEPS;
-            int onSteps = onMS/stepMS;
+	    int onSteps = onMS/stepMS;
             int i;
 
-            //FIXME - This math makes my head hurt and it's been a long week
+	    //FIXME - This math makes my head hurt and it's been a long week
             p += sprintf(p, "0");
             for(i = 1; i <= onSteps/2; i++) {
-                p += sprintf(p, ",%d", min(((100*i)/(onSteps/2)), 100));
+              p += sprintf(p, ",%d", min(((100*i)/(onSteps/2)), 100));
             }
             for(; i <= onSteps; i++) {
-                p += sprintf(p, ",%d", min(((100*(onSteps-i))/(onSteps/2)), 100));
+	      p += sprintf(p, ",%d", min(((100*(onSteps-i))/(onSteps/2)), 100));
             }
             for(; i < QPNP_DUTY_STEPS - 1; i++) {
-                p += sprintf(p, ",0");
+              p += sprintf(p, ",0");
             }
             sprintf(p,"\n");
 #if 0
             ALOGD("set_speaker_light_locked_qpnp stepMS = %d, onSteps = %d, dutystr \"%s\"\n",
-                    stepMS, onSteps, dutystr);
+		  stepMS, onSteps, dutystr);
 #endif
             write_int(QPNP_RED_LED_FILE, 0);
             write_int(QPNP_GREEN_LED_FILE, 0);
@@ -332,7 +329,7 @@ set_speaker_light_locked_qpnp(struct light_device_t* dev __unused,
         } else {
 #if 0
             ALOGD("set_speaker_light_locked_qpnp red = %d\n",
-                    red);
+		  red);
 #endif
             write_int(QPNP_BLINK_FILE, 0);
             write_int(QPNP_RED_LED_FILE, red);
@@ -355,7 +352,7 @@ set_speaker_light_locked(struct light_device_t* dev,
 
 static void
 handle_speaker_battery_locked(struct light_device_t* dev,
-    struct light_state_t const* state __unused, int state_type __unused)
+    struct light_state_t const* state, int state_type)
 {
     if(is_lit(&g_attention)) {
         set_speaker_light_locked(dev, NULL);
@@ -419,7 +416,7 @@ set_light_attention(struct light_device_t* dev,
 }
 
 static int
-set_light_touchkeys(struct light_device_t* dev __unused,
+set_light_touchkeys(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     int err = 0;
@@ -500,6 +497,6 @@ struct hw_module_t HAL_MODULE_INFO_SYM = {
     .version_minor = 0,
     .id = LIGHTS_HARDWARE_MODULE_ID,
     .name = "find7a/s/op lights HAL",
-    .author = "The OmniROM Project",
+    .author = "Google, Inc., OmniROM",
     .methods = &lights_module_methods,
 };
