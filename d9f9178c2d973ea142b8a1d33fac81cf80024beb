@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8098520_4213a3b7",
+        "filename": "Find7Parts/res/xml/main.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001070
+      },
+      "writtenOn": "2016-10-28T09:28:38Z",
+      "side": 1,
+      "message": "you can remove this part",
+      "revId": "d9f9178c2d973ea142b8a1d33fac81cf80024beb",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
