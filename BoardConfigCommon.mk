@@ -72,6 +72,10 @@ AUDIO_FEATURE_ENABLED_INCALL_MUSIC := true
 # Camera
 USE_CAMERA_STUB := true
 
+# Crypto
+TARGET_HW_DISK_ENCRYPTION := true
+TARGET_CRYPTFS_HW_PATH := device/oppo/msm8974-common/cryptfs_hw
+
 # Disable secure discard because it's SLOW
 BOARD_SUPPRESS_SECURE_ERASE := true
 
