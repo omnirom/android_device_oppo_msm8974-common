@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8098520_93da2b4d",
+        "filename": "omni.dependencies",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001787
+      },
+      "writtenOn": "2016-11-01T15:23:55Z",
+      "side": 0,
+      "message": "You should remove that comma, it\u0027s giving the output \"Malformed dependency file\"",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "deae71c5a14600460d5183e4ebd8243dcfc14abd",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
