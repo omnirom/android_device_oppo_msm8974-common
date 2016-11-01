@@ -257,7 +257,7 @@
         com.android.internal.os.DeviceKeyHandler interface. -->
     <string name="config_deviceKeyHandlerClass" translatable="false">org.omnirom.device.KeyHandler</string>
 
-    <bool name="config_powerProfilesSupported">true</bool>
+    <!--<bool name="config_powerProfilesSupported">true</bool>-->
 
     <!-- Whether Multiuser UI should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
