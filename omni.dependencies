@@ -19,12 +19,6 @@
   },
   {
     "remote": "omnirom",
-    "repository": "android_kernel_oppo_msm8974",
-    "target_path": "kernel/oppo/msm8974",
-    "revision": "android-7.0"
-  },
-  {
-    "remote": "omnirom",
     "repository": "android_external_stlport",
     "target_path": "external/stlport",
     "revision": "android-7.0"
@@ -37,20 +31,8 @@
   },
   {
     "remote": "omnirom",
-    "repository": "android_hardware_ril",
-    "target_path": "hardware/ril-caf",
-    "revision": "android-6.0-caf"
-  },
-  {
-    "remote": "omnirom",
     "repository": "android_packages_apps_SnapdragonCamera",
     "target_path": "packages/apps/SnapdragonCamera",
     "revision": "android-7.0"
   },
-  {
-    "remote": "aosp",
-    "repository": "platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8",
-    "target_path": "prebuilts/gcc/linux-x86/arm/arm-eabi-4.8",
-    "revision": "refs/tags/android-6.0.1_r72"
-  }
 ]
