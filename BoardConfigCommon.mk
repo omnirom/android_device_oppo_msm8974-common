@@ -71,6 +71,8 @@ AUDIO_FEATURE_ENABLED_INCALL_MUSIC := true
 
 # Camera
 USE_CAMERA_STUB := true
+# Camera Hacks
+TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
