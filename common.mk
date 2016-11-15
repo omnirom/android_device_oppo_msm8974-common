@@ -139,8 +139,7 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     hostapd \
     wpa_supplicant \
-    wpa_supplicant.conf \
-    dhcpcd.conf
+    wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
