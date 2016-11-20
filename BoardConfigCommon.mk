@@ -9,6 +9,9 @@ TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := msm8974
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
 
+#Kernel Toolchain
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
+
 # Architecture
 TARGET_CPU_VARIANT := krait
 TARGET_CPU_ABI := armeabi-v7a
