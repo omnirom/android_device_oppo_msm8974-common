@@ -114,11 +114,11 @@ TARGET_PROVIDES_POWERHAL := true
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# ril
-TARGET_RIL_VARIANT := caf
-
 # keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+
+# camera hax
+TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
 # selinux
 include device/qcom/sepolicy/sepolicy.mk
