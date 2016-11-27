@@ -222,7 +222,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # qcom
 PRODUCT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
+    camera2.portability.force_api=1 \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true
 
 # Audio Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
