@@ -115,7 +115,9 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     power.msm8974 \
-    keystore.msm8974
+    keystore.msm8974 \
+    libshim_camera \
+    libshim_wvm
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
@@ -222,7 +224,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # qcom
 PRODUCT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
+    camera2.portability.force_api=1 \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true
 
 # Audio Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
