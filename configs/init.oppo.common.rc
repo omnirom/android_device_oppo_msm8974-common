@@ -15,6 +15,7 @@
 #
 
 import init.oppo.usb.rc
+import init.qcom.power.rc
 
 on early-init
     mkdir /firmware 0771 system system
