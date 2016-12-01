@@ -14,6 +14,7 @@
 # limitations under the License.
 #
 
+import init.omni.rc
 import init.oppo.usb.rc
 import init.qcom.power.rc
 
