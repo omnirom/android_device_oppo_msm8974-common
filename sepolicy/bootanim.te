@@ -1,0 +1,6 @@
+###########################
+# OmniROM oppo common sepolicy
+#
+
+allow bootanim rootfs:lnk_file getattr;
+allow bootanim gpu_sysfs:file r_file_perms;

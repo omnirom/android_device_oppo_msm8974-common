@@ -1,0 +1,1 @@
+allow platform_app gpu_sysfs:file r_file_perms;
