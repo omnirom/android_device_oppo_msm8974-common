@@ -1,0 +1,5 @@
+###########################
+# OmniROM oppo common sepolicy
+#
+
+allow priv_app device:dir { read open };
