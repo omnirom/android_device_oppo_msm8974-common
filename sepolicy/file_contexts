@@ -21,3 +21,5 @@
 /system/etc/init\.qcom\.bt\.sh u:object_r:bluetooth_loader_exec:s0
 
 #/data/fdAlbum -- u:object_r:camera_data_file:s0
+
+/sys/devices/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0(/.*)? u:object_r:gpu_sysfs:s0

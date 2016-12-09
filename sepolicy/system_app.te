@@ -8,3 +8,4 @@ allow system_app sysfs_touchscreen:file rw_file_perms;
 allow system_app sysfs_touchscreen:dir search;
 allow system_app sysfs_vibrator:file rw_file_perms;
 allow system_app sysfs_vibrator:dir search;
+allow system_app gpu_sysfs:file r_file_perms;
