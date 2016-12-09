@@ -1,0 +1,5 @@
+###########################
+# OmniROM oppo common sepolicy
+#
+
+allow mediacodec rootfs:lnk_file getattr;

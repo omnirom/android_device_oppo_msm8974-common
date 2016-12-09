@@ -1,0 +1,6 @@
+###########################
+# OmniROM oppo common sepolicy
+#
+
+allow platform_app gpu_sysfs:file r_file_perms;
+allow platform_app gpu_sysfs:dir search;
