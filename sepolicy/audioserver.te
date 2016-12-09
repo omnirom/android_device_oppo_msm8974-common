@@ -1,0 +1,5 @@
+###########################
+# OmniROM oppo common sepolicy
+#
+
+allow audioserver rootfs:lnk_file getattr;

@@ -1,0 +1,6 @@
+###########################
+# OmniROM oppo common sepolicy
+#
+
+allow priv_app audio_data_file:dir search;
+allow priv_app device:dir { read open };
