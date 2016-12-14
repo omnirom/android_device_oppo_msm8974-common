@@ -20,6 +20,9 @@ package org.omnirom.device;
 import android.content.Context;
 import android.content.Intent;
 import android.database.ContentObserver;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraCharacteristics;
+import android.hardware.camera2.CameraManager;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
@@ -65,6 +68,9 @@ public class KeyHandler implements DeviceKeyHandler {
     private WakeLock mGestureWakeLock;
     private Handler mHandler = new Handler();
     private SettingsObserver mSettingsObserver;
+    private CameraManager mCameraManager;
+    private String mRearCameraId;
+    private boolean mTorchEnabled;
 
     private class SettingsObserver extends ContentObserver {
         SettingsObserver(Handler handler) {
@@ -88,6 +94,21 @@ public class KeyHandler implements DeviceKeyHandler {
         }
     }
 
+    private class MyTorchCallback extends CameraManager.TorchCallback {
+        @Override
+        public void onTorchModeChanged(String cameraId, boolean enabled) {
+            if (!cameraId.equals(mRearCameraId))
+                return;
+            mTorchEnabled = enabled;
+        }
+
+        @Override
+        public void onTorchModeUnavailable(String cameraId) {
+            if (!cameraId.equals(mRearCameraId))
+                return;
+            mTorchEnabled = false;
+        }
+    }
     public KeyHandler(Context context) {
         mContext = context;
         mEventHandler = new EventHandler();
@@ -96,6 +117,8 @@ public class KeyHandler implements DeviceKeyHandler {
                 "GestureWakeLock");
         mSettingsObserver = new SettingsObserver(mHandler);
         mSettingsObserver.observe();
+        mCameraManager = (CameraManager) mContext.getSystemService(Context.CAMERA_SERVICE);
+        mCameraManager.registerTorchCallback(new MyTorchCallback(), mEventHandler);
     }
 
     private class EventHandler extends Handler {
@@ -103,13 +126,18 @@ public class KeyHandler implements DeviceKeyHandler {
         public void handleMessage(Message msg) {
             KeyEvent event = (KeyEvent) msg.obj;
             switch(event.getScanCode()) {
-            case GESTURE_V_SCANCODE:
-                if (DEBUG) Log.i(TAG, "GESTURE_V_SCANCODE");
-                mGestureWakeLock.acquire(GESTURE_WAKELOCK_DURATION);
-                Intent torchIntent = new Intent("com.android.systemui.TOGGLE_FLASHLIGHT");
-                torchIntent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
-                UserHandle user = new UserHandle(UserHandle.USER_CURRENT);
-                mContext.sendBroadcastAsUser(torchIntent, user);
+                case GESTURE_V_SCANCODE:
+                    if (DEBUG) Log.i(TAG, "GESTURE_V_SCANCODE");
+                    String rearCameraId = getRearCameraId();
+                    if (rearCameraId != null) {
+                        mGestureWakeLock.acquire(GESTURE_WAKELOCK_DURATION);
+                        try {
+                            mCameraManager.setTorchMode(rearCameraId, !mTorchEnabled);
+                            mTorchEnabled = !mTorchEnabled;
+                        } catch (Exception e) {
+                            // Ignore
+                        }
+                    }
                 break;
             }
         }
@@ -166,6 +194,26 @@ public class KeyHandler implements DeviceKeyHandler {
             return false;
         }
         return event.getScanCode() == KEY_DOUBLE_TAP;
+    }
+
+    private String getRearCameraId() {
+        if (mRearCameraId == null) {
+            try {
+                for (final String cameraId : mCameraManager.getCameraIdList()) {
+	            CameraCharacteristics c = mCameraManager.getCameraCharacteristics(cameraId);
+	            Boolean flashAvailable = c.get(CameraCharacteristics.FLASH_INFO_AVAILABLE);
+	            Integer lensFacing = c.get(CameraCharacteristics.LENS_FACING);
+	            if (flashAvailable != null && flashAvailable
+	                    && lensFacing != null && lensFacing == CameraCharacteristics.LENS_FACING_BACK) {
+                        mRearCameraId = cameraId;
+                        break;
+                    }
+                }
+            } catch (CameraAccessException e) {
+                // Ignore
+            }
+        }
+        return mRearCameraId;
     }
 }
 
