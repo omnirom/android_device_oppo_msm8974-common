@@ -9,7 +9,7 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := wvm_shim.cpp
-LOCAL_SHARED_LIBRARIES := libstagefright_foundation
+LOCAL_SHARED_LIBRARIES := libstagefright_foundation libmedia
 LOCAL_MODULE := libshim_wvm
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)

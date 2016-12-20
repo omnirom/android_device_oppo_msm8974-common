@@ -19,3 +19,8 @@ extern "C" int _ZN7android16MediaBufferGroupC1Ej(unsigned int);
 extern "C" int _ZN7android16MediaBufferGroupC1Ev() {
     return _ZN7android16MediaBufferGroupC1Ej(0);
 }
+
+extern "C" bool _ZNK7android12IMediaSource11ReadOptions9getSeekToEPxPNS1_8SeekModeE(long long *time_us, int *mode);
+extern "C" bool _ZNK7android11MediaSource11ReadOptions9getSeekToEPxPNS1_8SeekModeE(long long *time_us, int *mode) {
+    return _ZNK7android12IMediaSource11ReadOptions9getSeekToEPxPNS1_8SeekModeE(time_us, mode);
+}
