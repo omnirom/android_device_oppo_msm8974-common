@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78209991_0a8707be",
+        "filename": "sepolicy/file_contexts",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2016-12-24T15:00:43Z",
+      "side": 1,
+      "message": "should be like this\n/sys/devices/fdb00000\\.qcom,kgsl-3d0/kgsl/kgsl-3d0(/.*)? u:object_r:gpu_sysfs:s0",
+      "revId": "c75739e3aa0ac828226e3a0aebec4b31a844672f",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
