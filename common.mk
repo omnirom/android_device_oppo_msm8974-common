@@ -168,10 +168,16 @@ endif
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
-# GPS configuration
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8974
+
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/gps/gps.conf:system/etc/gps.conf \
-    $(COMMON_PATH)/gps/izat.conf:system/etc/izat.conf
+    $(LOCAL_PATH)/gps/flp.conf:system/etc/flp.conf \
+    $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/gps/izat.conf:system/etc/izat.conf \
+    $(LOCAL_PATH)/gps/quipc.conf:system/etc/quipc.conf \
+    $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/power_profiles.xml:system/etc/power_profiles.xml
@@ -247,7 +253,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # gps
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.gps.qc_nlp_in_use=1 \
+    persist.gps.qc_nlp_in_use=0 \
     ro.gps.agps_provider=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
