@@ -120,6 +120,8 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 # camera hax
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
+KERNEL_HAS_FINIT_MODULE := false
+
 # selinux
 include device/qcom/sepolicy/sepolicy.mk
 
