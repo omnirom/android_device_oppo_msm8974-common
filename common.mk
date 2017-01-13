@@ -239,7 +239,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Audio Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.fluencetype=fluence \
-    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicecall=false \
     audio.offload.buffer.size.kb=32 \
     audio.offload.gapless.enabled=true \
     use.voice.path.for.pcm.voip=true \
