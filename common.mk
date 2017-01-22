@@ -272,9 +272,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/sensor/sap.conf:system/etc/sap.conf
 
-# Telephony extension
-PRODUCT_PACKAGES += telephony-ext
-PRODUCT_BOOT_JARS += telephony-ext
-
 # Inherit from proprietary blobs
 $(call inherit-product, vendor/oppo/msm8974-common/msm8974-common-vendor.mk)
