@@ -32,4 +32,6 @@
     <string name="back_button_recents">Recents</string>
     <string name="back_button_summary">Unassigned</string>
     <string name="category_button">Buttons</string>
+	<string name="proxi_summary_head">Check proximity sensor for handling gesture and fingerprint sensor</string>
+	<string name="proxi_title_head">Proximity check</string>
 </resources>

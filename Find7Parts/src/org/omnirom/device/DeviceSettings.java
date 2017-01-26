@@ -40,12 +40,14 @@ public class DeviceSettings extends PreferenceActivity implements
     public static final String KEY_OCLICK = "oclick";
     public static final String KEY_BACK_BUTTON = "back_button";
     public static final String KEY_BUTTON_CATEGORY = "button_category";
+    public static final String KEY_PROXI_SWITCH = "proxi";
 
     private TwoStatePreference mTorchSwitch;
     private TwoStatePreference mCameraSwitch;
     private VibratorStrengthPreference mVibratorStrength;
     private Preference mOClickPreference;
     private ListPreference mBackButton;
+    private TwoStatePreference mProxiSwitch;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,6 +90,9 @@ public class DeviceSettings extends PreferenceActivity implements
             mBackButton.setValueIndex(valueIndex);
             mBackButton.setSummary(mBackButton.getEntries()[valueIndex]);
         }
+        mProxiSwitch = (TwoStatePreference) findPreference(KEY_PROXI_SWITCH);
+        mProxiSwitch.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.DEVICE_PROXI_CHECK_ENABLED, 1) != 0);
     }
 
     @Override
@@ -107,6 +112,10 @@ public class DeviceSettings extends PreferenceActivity implements
         if (preference == mOClickPreference) {
             Intent i = new Intent(Intent.ACTION_MAIN).setClassName("org.omnirom.omniclick","org.omnirom.omniclick.OClickControlActivity");
             startActivity(i);
+            return true;
+        } else if (preference == mProxiSwitch) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DEVICE_PROXI_CHECK_ENABLED, mProxiSwitch.isChecked() ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
