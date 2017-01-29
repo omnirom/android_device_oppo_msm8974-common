@@ -171,6 +171,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     Find7Parts
 
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm8974
+
+
 #PRODUCT_PACKAGES += \
     SnapdragonCamera
 
