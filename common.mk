@@ -239,13 +239,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Audio Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.fluencetype=fluence \
-    audio.offload.buffer.size.kb=32 \
+    audio.offload.buffer.size.kb=64 \
     audio.offload.gapless.enabled=true \
     use.voice.path.for.pcm.voip=true \
     audio.offload.video=true \
     av.streaming.offload.enable=false \
     audio.offload.pcm.16bit.enable=true \
-    audio.offload.multiple.enabled=false
+    audio.offload.multiple.enabled=true
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
