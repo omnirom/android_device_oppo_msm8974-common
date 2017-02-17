@@ -58,12 +58,12 @@ public class DeviceSettings extends PreferenceActivity implements
 
         mTorchSwitch = (TwoStatePreference) findPreference(KEY_TORCH_SWITCH);
         mTorchSwitch.setEnabled(TorchGestureSwitch.isSupported());
-        mTorchSwitch.setChecked(TorchGestureSwitch.isEnabled(this));
+        mTorchSwitch.setChecked(TorchGestureSwitch.isCurrentlyEnabled(this));
         mTorchSwitch.setOnPreferenceChangeListener(new TorchGestureSwitch());
 
         mCameraSwitch = (TwoStatePreference) findPreference(KEY_CAMERA_SWITCH);
         mCameraSwitch.setEnabled(CameraGestureSwitch.isSupported());
-        mCameraSwitch.setChecked(CameraGestureSwitch.isEnabled(this));
+        mCameraSwitch.setChecked(CameraGestureSwitch.isCurrentlyEnabled(this));
         mCameraSwitch.setOnPreferenceChangeListener(new CameraGestureSwitch());
 
         mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
