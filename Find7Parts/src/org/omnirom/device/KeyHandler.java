@@ -122,8 +122,9 @@ public class KeyHandler implements DeviceKeyHandler {
 
         public void update() {
             setButtonDisable(mContext);
-            mUseProxiCheck = Settings.System.getInt(
-                    mContext.getContentResolver(), Settings.System.DEVICE_PROXI_CHECK_ENABLED, 0) == 1;
+            mUseProxiCheck = Settings.System.getIntForUser(
+                    mContext.getContentResolver(), Settings.System.DEVICE_PROXI_CHECK_ENABLED, 0,
+                    UserHandle.USER_CURRENT) == 1;
         }
     }
 
@@ -230,8 +231,9 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     public static void setButtonDisable(Context context) {
-        final boolean disableButtons = Settings.System.getInt(
-                context.getContentResolver(), Settings.System.HARDWARE_KEYS_DISABLE, 0) == 1;
+        final boolean disableButtons = Settings.System.getIntForUser(
+                context.getContentResolver(), Settings.System.HARDWARE_KEYS_DISABLE, 0,
+                UserHandle.USER_CURRENT) == 1;
         if (DEBUG) Log.i(TAG, "setButtonDisable=" + disableButtons);
         Utils.writeValue(BUTTON_DISABLE_FILE, disableButtons ? "1" : "0");
     }
