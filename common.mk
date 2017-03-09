@@ -14,7 +14,7 @@ PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 PRODUCT_PACKAGES += \
-    charger_res_images
+    omni_charger_res_images
 
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
