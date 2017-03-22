@@ -19,10 +19,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
-#Default USB mount
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapers \
@@ -39,6 +35,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/init.oppo.usb.rc:root/init.oppo.usb.rc \
     $(COMMON_PATH)/configs/init.oppo.common.rc:root/init.oppo.common.rc \
     $(COMMON_PATH)/configs/init.qcom.power.rc:root/init.qcom.power.rc \
+    $(COMMON_PATH)/configs/init.qcom.usb.sh:root/init.qcom.usb.sh \
     $(COMMON_PATH)/configs/ueventd.qcom.rc:root/ueventd.qcom.rc
 
 # Config files for touch and input
