@@ -1,12 +1,6 @@
 [
   {
     "remote": "omnirom",
-    "repository": "android_kernel_oppo_msm8974",
-    "target_path": "kernel/oppo/msm8974",
-    "revision": "android-7.1"
-  },
-  {
-    "remote": "omnirom",
     "repository": "android_hardware_qcom_display-caf-msm8974",
     "target_path": "hardware/qcom/display-caf-msm8974",
     "revision": "android-7.0"
