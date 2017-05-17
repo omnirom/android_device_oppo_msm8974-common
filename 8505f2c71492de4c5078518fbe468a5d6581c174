@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b77384e_dc4a9736",
+        "filename": "configs/init.oppo.common.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2017-05-17T16:47:10Z",
+      "side": 1,
+      "message": "what about the keypad_enable?",
+      "revId": "8505f2c71492de4c5078518fbe468a5d6581c174",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
