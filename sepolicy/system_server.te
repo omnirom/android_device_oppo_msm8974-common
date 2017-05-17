@@ -7,6 +7,8 @@ allow system_server apk_data_file:sock_file { read write getattr };
 #allow system_server cache_file:file { execute };
 allow system_server sysfs_touchscreen:file rw_file_perms;
 allow system_server sysfs_touchscreen:dir search;
+allow system_server proc_touchpanel:file rw_file_perms;
+allow system_server proc_touchpanel:dir { search };
 allow system_server sysfs_vibrator:file rw_file_perms;
 allow system_server sysfs_vibrator:dir search;
 allow system_server kernel:process { getsched setsched };
@@ -14,4 +16,3 @@ allow system_server unlabeled:file unlink;
 allow system_server gpu_sysfs:file r_file_perms;
 allow system_server gpu_sysfs:dir search;
 allow system_server shell_prop:property_service set;
-

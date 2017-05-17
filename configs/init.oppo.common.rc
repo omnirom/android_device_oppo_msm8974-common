@@ -185,7 +185,16 @@ on boot
     chown system system /sys/kernel/touchscreen/double_tap_enable
     chown system system /sys/kernel/touchscreen/button_disable
 
-    # vibrator
+    chown system system /proc/touchpanel/camera_enable
+    chmod 0640 /proc/touchpanel/camera_enable
+    chown system system /proc/touchpanel/flashlight_enable
+    chmod 0640 /proc/touchpanel/flashlight_enable
+    chown system system /proc/touchpanel/double_tap_enable
+    chmod 0640 /proc/touchpanel/double_tap_enable
+    chown system system /proc/touchpanel/keypad_enable
+    chmod 0640 /proc/touchpanel/keypad_enable
+
+    # vibratora
     chown system system /sys/devices/virtual/timed_output/vibrator/vtg_level
     chown system system /sys/devices/virtual/timed_output/vibrator/vtg_min
     chown system system /sys/devices/virtual/timed_output/vibrator/vtg_max
