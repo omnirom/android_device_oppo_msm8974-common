@@ -181,9 +181,12 @@ on boot
 
     # touchscreen
     chown system system /sys/kernel/touchscreen/camera_enable
+    chown system system /proc/touchpanel/camera_enable
     chown system system /sys/kernel/touchscreen/flashlight_enable
+    chown system system /proc/touchpanel/flashlight_enable
     chown system system /sys/kernel/touchscreen/double_tap_enable
     chown system system /sys/kernel/touchscreen/button_disable
+    chown system system /proc/touchpanel/keypad_enable
 
     # vibrator
     chown system system /sys/devices/virtual/timed_output/vibrator/vtg_level
