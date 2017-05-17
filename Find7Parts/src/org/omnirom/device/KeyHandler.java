@@ -57,6 +57,17 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int KEY_DOUBLE_TAP = 61;
 
     private static final String BUTTON_DISABLE_FILE = "/sys/kernel/touchscreen/button_disable";
+    private static final String BUTTON_DISABLE_FILE_ALT = "/proc/touchpanel/keypad_enable";
+
+    private static String getFile() {
+        if (Utils.fileWritable(BUTTON_DISABLE_FILE)) {
+            return BUTTON_DISABLE_FILE;
+        }
+        if (Utils.fileWritable(BUTTON_DISABLE_FILE_ALT)) {
+            return BUTTON_DISABLE_FILE_ALT;
+        }
+        return null;
+    }
 
     private static final int[] sSupportedGestures = new int[]{
         GESTURE_CIRCLE_SCANCODE,
@@ -235,7 +246,11 @@ public class KeyHandler implements DeviceKeyHandler {
                 context.getContentResolver(), Settings.System.HARDWARE_KEYS_DISABLE, 0,
                 UserHandle.USER_CURRENT) == 1;
         if (DEBUG) Log.i(TAG, "setButtonDisable=" + disableButtons);
-        Utils.writeValue(BUTTON_DISABLE_FILE, disableButtons ? "1" : "0");
+        if (Utils.fileWritable(BUTTON_DISABLE_FILE_ALT)) {
+            Utils.writeValue(getFile(), disableButtons ? "0" : "1");
+        } else {
+            Utils.writeValue(getFile(), disableButtons ? "1" : "0");
+        }
     }
 
     @Override
@@ -289,4 +304,3 @@ public class KeyHandler implements DeviceKeyHandler {
         }
     }
 }
-

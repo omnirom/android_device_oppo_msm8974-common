@@ -4,6 +4,7 @@
 
 # touchscreen gestures
 /sys/kernel/touchscreen(/.*)?	u:object_r:sysfs_touchscreen:s0
+/proc/touchpanel(/.*)?	u:object_r:proc_touchpanel:s0
 /sys/devices/virtual/timed_output/vibrator(/.*)?	u:object_r:sysfs_vibrator:s0
 
 /data/cam_socket.*  u:object_r:camera_socket:s0
