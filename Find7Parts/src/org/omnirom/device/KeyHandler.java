@@ -56,22 +56,44 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int GESTURE_V_SCANCODE = 63;
     private static final int KEY_DOUBLE_TAP = 61;
 
+    private static final int GESTURE_CIRCLE_SCANCODE_ALT = 250;
+    private static final int GESTURE_V_SCANCODE_ALT = 252;
+    private static final int KEY_DOUBLE_TAP_ALT = 255;
+
     private static final String BUTTON_DISABLE_FILE = "/sys/kernel/touchscreen/button_disable";
+    private static final String BUTTON_DISABLE_FILE_ALT = "/proc/touchpanel/keypad_enable";
+
+    private static String getFile() {
+        if (Utils.fileWritable(BUTTON_DISABLE_FILE)) {
+            return BUTTON_DISABLE_FILE;
+        }
+        if (Utils.fileWritable(BUTTON_DISABLE_FILE_ALT)) {
+            return BUTTON_DISABLE_FILE_ALT;
+        }
+        return null;
+    }
 
     private static final int[] sSupportedGestures = new int[]{
         GESTURE_CIRCLE_SCANCODE,
         GESTURE_V_SCANCODE,
-        KEY_DOUBLE_TAP
+        KEY_DOUBLE_TAP,
+        GESTURE_CIRCLE_SCANCODE_ALT,
+        GESTURE_V_SCANCODE_ALT,
+        KEY_DOUBLE_TAP_ALT
     };
 
     private static final int[] sHandledGestures = new int[]{
-        GESTURE_V_SCANCODE
+        GESTURE_V_SCANCODE,
+        GESTURE_V_SCANCODE_ALT
     };
 
     private static final int[] sProxiCheckedGestures = new int[]{
         GESTURE_CIRCLE_SCANCODE,
         GESTURE_V_SCANCODE,
-        KEY_DOUBLE_TAP
+        KEY_DOUBLE_TAP,
+        GESTURE_CIRCLE_SCANCODE_ALT,
+        GESTURE_V_SCANCODE_ALT,
+        KEY_DOUBLE_TAP_ALT
     };
 
     protected final Context mContext;
@@ -190,6 +212,19 @@ public class KeyHandler implements DeviceKeyHandler {
                         }
                     }
                 break;
+                case GESTURE_V_SCANCODE_ALT:
+                    if (DEBUG) Log.i(TAG, "GESTURE_V_SCANCODE_ALT");
+                    String rearCameraIdAlt = getRearCameraId();
+                    if (rearCameraIdAlt != null) {
+                        mGestureWakeLock.acquire(GESTURE_WAKELOCK_DURATION);
+                        try {
+                            mCameraManager.setTorchMode(rearCameraIdAlt, !mTorchEnabled);
+                            mTorchEnabled = !mTorchEnabled;
+                        } catch (Exception e) {
+                            // Ignore
+                        }
+                    }
+                break;
             }
         }
     }
@@ -235,7 +270,11 @@ public class KeyHandler implements DeviceKeyHandler {
                 context.getContentResolver(), Settings.System.HARDWARE_KEYS_DISABLE, 0,
                 UserHandle.USER_CURRENT) == 1;
         if (DEBUG) Log.i(TAG, "setButtonDisable=" + disableButtons);
-        Utils.writeValue(BUTTON_DISABLE_FILE, disableButtons ? "1" : "0");
+        if (Utils.fileWritable(BUTTON_DISABLE_FILE_ALT)) {
+            Utils.writeValue(getFile(), disableButtons ? "0" : "1");
+        } else {
+            Utils.writeValue(getFile(), disableButtons ? "1" : "0");
+        }
     }
 
     @Override
@@ -243,7 +282,11 @@ public class KeyHandler implements DeviceKeyHandler {
         if (event.getAction() != KeyEvent.ACTION_UP) {
             return false;
         }
-        return event.getScanCode() == GESTURE_CIRCLE_SCANCODE;
+        if (Utils.fileWritable(BUTTON_DISABLE_FILE_ALT)) {
+            return event.getScanCode() == GESTURE_CIRCLE_SCANCODE_ALT;
+        } else {
+            return event.getScanCode() == GESTURE_CIRCLE_SCANCODE;
+        }
     }
 
     @Override
@@ -251,7 +294,11 @@ public class KeyHandler implements DeviceKeyHandler {
         if (event.getAction() != KeyEvent.ACTION_UP) {
             return false;
         }
-        return event.getScanCode() == KEY_DOUBLE_TAP;
+        if (Utils.fileWritable(BUTTON_DISABLE_FILE_ALT)) {
+            return event.getScanCode() == KEY_DOUBLE_TAP_ALT;
+        } else {
+            return event.getScanCode() == KEY_DOUBLE_TAP;
+        }
     }
 
     private String getRearCameraId() {
@@ -289,4 +336,3 @@ public class KeyHandler implements DeviceKeyHandler {
         }
     }
 }
-
