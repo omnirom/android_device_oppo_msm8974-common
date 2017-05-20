@@ -23,6 +23,7 @@
 #include <sys/un.h>
 #include <fcntl.h>
 #include <dlfcn.h>
+#include <unistd.h>
 
 #define LOG_TAG "PowerHAL"
 #include <utils/Log.h>
@@ -39,6 +40,7 @@
 #define MAX_GPU_PATH "/sys/class/kgsl/kgsl-3d0/max_pwrlevel"
 #define MIN_GPU_PATH "/sys/class/kgsl/kgsl-3d0/min_pwrlevel"
 #define DOUBLE_TAP_FILE "/sys/kernel/touchscreen/double_tap_enable"
+#define DOUBLE_TAP_FILE_ALT "/proc/touchpanel/double_tap_enable"
 
 // we can handle those tags
 #define PROFILE_MAX_CPU_NUM_TAG "maxCpu"
@@ -197,7 +199,11 @@ static void power_hint(struct power_module __unused *module, power_hint_t hint,
 
 void set_feature(struct power_module __unused *module, feature_t feature, int state) {
     if (feature == POWER_FEATURE_DOUBLE_TAP_TO_WAKE) {
-        sysfs_write(DOUBLE_TAP_FILE, state ? "1" : "0");
+        if (access(DOUBLE_TAP_FILE), F_OK) {
+            sysfs_write(DOUBLE_TAP_FILE, state ? "1" : "0");
+        } else if (access(DOUBLE_TAP_FILE_ALT), F_OK) {
+            sysfs_write(DOUBLE_TAP_FILE_ALT, state ? "1" : "0");
+        }
     }
 }
 
