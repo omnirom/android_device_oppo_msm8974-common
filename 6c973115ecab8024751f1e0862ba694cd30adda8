@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56e322cf_be0351a4",
+        "filename": "sepolicy/qti_init_shell.te",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2017-05-20T20:33:42Z",
+      "side": 1,
+      "message": "this has nothing to do with this change - if really needed afterwards you can add extra",
+      "revId": "6c973115ecab8024751f1e0862ba694cd30adda8",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
