@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6344c90f_065015f4",
+        "filename": "sepolicy/file_contexts",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2017-05-21T21:48:30Z",
+      "side": 1,
+      "message": "so whats wrong here?",
+      "revId": "28cdbf39976ad398516c0ecaf13129ab390c6082",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
