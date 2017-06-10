@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82c12ed4_1bfd48c5",
+        "filename": "sepolicy/system_app.te",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001016
+      },
+      "writtenOn": "2017-06-10T11:53:51Z",
+      "side": 0,
+      "message": "d",
+      "revId": "eb08ee3d3c767a049291b0a1e93f88bd5cf8f014",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
