@@ -41,6 +41,8 @@ public class DeviceSettings extends PreferenceActivity implements
     public static final String KEY_BACK_BUTTON = "back_button";
     public static final String KEY_BUTTON_CATEGORY = "button_category";
     public static final String KEY_PROXI_SWITCH = "proxi";
+    private static final String KEY_SWAP_BACK_RECENTS = "swap_back_recents";
+    private static final String KEY_SWAP_MENU_RECENTS = "swap_menu_recents";
 
     private TwoStatePreference mTorchSwitch;
     private TwoStatePreference mCameraSwitch;
@@ -48,6 +50,8 @@ public class DeviceSettings extends PreferenceActivity implements
     private Preference mOClickPreference;
     private ListPreference mBackButton;
     private TwoStatePreference mProxiSwitch;
+    private TwoStatePreference mSwapBackRecents;
+    private TwoStatePreference mSwapMenuRecents;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -93,6 +97,13 @@ public class DeviceSettings extends PreferenceActivity implements
         mProxiSwitch = (TwoStatePreference) findPreference(KEY_PROXI_SWITCH);
         mProxiSwitch.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.DEVICE_PROXI_CHECK_ENABLED, 0) == 1);
+
+        mSwapBackRecents = (TwoStatePreference) findPreference(KEY_SWAP_BACK_RECENTS);
+        mSwapBackRecents.setChecked(Settings.System.getInt(getContentResolver(),
+                    Settings.System.BUTTON_SWAP_BACK_RECENTS, 0) != 0);
+        mSwapMenuRecents = (TwoStatePreference) findPreference(KEY_SWAP_MENU_RECENTS);
+        mSwapMenuRecents.setChecked(Settings.System.getInt(getContentResolver(),
+                    Settings.System.BUTTON_SWAP_MENU_RECENTS, 0) != 0);
     }
 
     @Override
@@ -116,6 +127,14 @@ public class DeviceSettings extends PreferenceActivity implements
         } else if (preference == mProxiSwitch) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.DEVICE_PROXI_CHECK_ENABLED, mProxiSwitch.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mSwapBackRecents) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.BUTTON_SWAP_BACK_RECENTS, mSwapBackRecents.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mSwapMenuRecents) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.BUTTON_SWAP_MENU_RECENTS, mSwapMenuRecents.isChecked() ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
