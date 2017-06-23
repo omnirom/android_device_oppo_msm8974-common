@@ -3,10 +3,6 @@
     <PreferenceCategory
         android:key="gesture_category"
         android:title="@string/category_gestures_title" >
-        <CheckBoxPreference
-            android:key="double_tap"
-            android:summary="@string/double_tap_wake_summary_head"
-            android:title="@string/double_tap_wake_title_head" />
 
         <CheckBoxPreference
             android:key="camera"
