@@ -54,9 +54,11 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
-# Audio config files
+# Find 7 Audio config files
+ifneq ($(TARGET_DEVICE),find7op)
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
+endif
 
 # MSM IPC Router security configuration
 PRODUCT_COPY_FILES += \
