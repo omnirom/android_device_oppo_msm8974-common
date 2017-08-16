@@ -24,3 +24,4 @@
 #/data/fdAlbum -- u:object_r:camera_data_file:s0
 
 /sys/devices/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0(/.*)? u:object_r:gpu_sysfs:s0
+/cache/org\.omnirom\.device\.dex u:object_r:dalvikcache_data_file:s0
