@@ -306,6 +306,7 @@ on charger
     write /sys/module/msm_pm/modes/cpu1/power_collapse/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu2/power_collapse/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu3/power_collapse/suspend_enabled 1
+    setprop persist.sys.usb.config charging
 
     # silene cgroup warnings
     chmod 0660 /dev/cpuctl
