@@ -367,7 +367,7 @@ on property:bluetooth.hciattach=false
 service qmuxd /system/bin/qmuxd
     class main
     user radio
-    group radio audio bluetooth gps diag qcom_diag
+    group radio audio bluetooth gps diag
 
 service audiod /system/bin/audiod
     class main
