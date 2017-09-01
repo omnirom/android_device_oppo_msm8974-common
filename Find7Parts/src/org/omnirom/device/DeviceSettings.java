@@ -87,7 +87,7 @@ public class DeviceSettings extends PreferenceActivity implements
             getPreferenceScreen().removePreference(buttonCategory);
         }
         mBackButton.setOnPreferenceChangeListener(this);
-        int keyCode = Settings.System.getInt(getContentResolver(),
+        /*int keyCode = Settings.System.getInt(getContentResolver(),
                     Settings.System.BUTTON_EXTRA_KEY_MAPPING, 0);
         if (keyCode != 0) {
             int valueIndex = mBackButton.findIndexOfValue(String.valueOf(keyCode));
@@ -103,7 +103,7 @@ public class DeviceSettings extends PreferenceActivity implements
                     Settings.System.BUTTON_SWAP_BACK_RECENTS, 0) != 0);
         mSwapMenuRecents = (TwoStatePreference) findPreference(KEY_SWAP_MENU_RECENTS);
         mSwapMenuRecents.setChecked(Settings.System.getInt(getContentResolver(),
-                    Settings.System.BUTTON_SWAP_MENU_RECENTS, 0) != 0);
+                    Settings.System.BUTTON_SWAP_MENU_RECENTS, 0) != 0);*/
     }
 
     @Override
@@ -120,7 +120,7 @@ public class DeviceSettings extends PreferenceActivity implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mOClickPreference) {
+        /*if (preference == mOClickPreference) {
             Intent i = new Intent(Intent.ACTION_MAIN).setClassName("org.omnirom.omniclick","org.omnirom.omniclick.OClickControlActivity");
             startActivity(i);
             return true;
@@ -136,20 +136,20 @@ public class DeviceSettings extends PreferenceActivity implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.BUTTON_SWAP_MENU_RECENTS, mSwapMenuRecents.isChecked() ? 1 : 0);
             return true;
-        }
+        }*/
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mBackButton) {
+        /*if (preference == mBackButton) {
             String value = (String) newValue;
             int keyCode = Integer.valueOf(value);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.BUTTON_EXTRA_KEY_MAPPING, keyCode);
             int valueIndex = mBackButton.findIndexOfValue(value);
             mBackButton.setSummary(mBackButton.getEntries()[valueIndex]);
-         }
+        }*/
         return true;
     }
 }

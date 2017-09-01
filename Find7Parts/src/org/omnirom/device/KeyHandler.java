@@ -128,12 +128,12 @@ public class KeyHandler implements DeviceKeyHandler {
         }
 
         void observe() {
-            mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
+            /*mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.HARDWARE_KEYS_DISABLE),
                     false, this);
             mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.DEVICE_PROXI_CHECK_ENABLED),
-                    false, this);
+                    false, this);*/
             update();
         }
 
@@ -144,9 +144,9 @@ public class KeyHandler implements DeviceKeyHandler {
 
         public void update() {
             setButtonDisable(mContext);
-            mUseProxiCheck = Settings.System.getIntForUser(
+            /*mUseProxiCheck = Settings.System.getIntForUser(
                     mContext.getContentResolver(), Settings.System.DEVICE_PROXI_CHECK_ENABLED, 0,
-                    UserHandle.USER_CURRENT) == 1;
+                    UserHandle.USER_CURRENT) == 1;*/
         }
     }
 
@@ -254,7 +254,7 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     public static void setButtonDisable(Context context) {
-        final boolean disableButtons = Settings.System.getIntForUser(
+        /*final boolean disableButtons = Settings.System.getIntForUser(
                 context.getContentResolver(), Settings.System.HARDWARE_KEYS_DISABLE, 0,
                 UserHandle.USER_CURRENT) == 1;
         if (DEBUG) Log.i(TAG, "setButtonDisable=" + disableButtons);
@@ -262,7 +262,7 @@ public class KeyHandler implements DeviceKeyHandler {
             Utils.writeValue(getFile(), disableButtons ? "0" : "1");
         } else {
             Utils.writeValue(getFile(), disableButtons ? "1" : "0");
-        }
+        }*/
     }
 
     @Override
