@@ -52,12 +52,12 @@ public class N3KeyHandler extends KeyHandler {
             KeyEvent event = (KeyEvent) msg.obj;
             switch(event.getScanCode()) {
             case KEY_BACK_BUTTON:
-                int keyCode = Settings.System.getInt(mContext.getContentResolver(),
+                /*int keyCode = Settings.System.getInt(mContext.getContentResolver(),
                     Settings.System.BUTTON_EXTRA_KEY_MAPPING, 0);
                 if (keyCode != 0) {
                     if (DEBUG) Log.i(TAG, "KEY_BACK_BUTTON -> " + keyCode);
                     triggerVirtualKeypress(keyCode);
-                }
+                }*/
                 break;
             }
         }

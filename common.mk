@@ -104,7 +104,6 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
-    camera-wrapper.msm8974 \
     libaudio-resampler \
     audiod \
     libqcompostprocbundle \
@@ -114,6 +113,9 @@ PRODUCT_PACKAGES += \
     keystore.msm8974 \
     libshim_camera \
     libshim_wvm
+
+#PRODUCT_PACKAGES += \
+    camera-wrapper.msm8974
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
@@ -144,7 +146,9 @@ PRODUCT_COPY_FILES += \
 
 # Device settings
 PRODUCT_PACKAGES += \
-    Find7Parts \
+    Find7Parts
+
+#PRODUCT_PACKAGES += \
     SnapdragonCamera
 
 # NFC
@@ -156,13 +160,13 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-ifeq ($(TARGET_BUILD_VARIANT),user)
-    NFCEE_ACCESS_PATH := $(COMMON_PATH)/configs/nfcee_access.xml
-else
-    NFCEE_ACCESS_PATH := $(COMMON_PATH)/configs/nfcee_access_debug.xml
-endif
-PRODUCT_COPY_FILES += \
-    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+#ifeq ($(TARGET_BUILD_VARIANT),user)
+#    NFCEE_ACCESS_PATH := $(COMMON_PATH)/configs/nfcee_access.xml
+#else
+#    NFCEE_ACCESS_PATH := $(COMMON_PATH)/configs/nfcee_access_debug.xml
+#endif
+#PRODUCT_COPY_FILES += \
+#    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
 # GPS
 PRODUCT_PACKAGES += \
