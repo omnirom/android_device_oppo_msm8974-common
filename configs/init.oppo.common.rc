@@ -25,7 +25,6 @@ on early-init
 on init
     # Preload the BoringSSL wrapper
     export LD_PRELOAD /system/lib/libboringssl-compat.so
-    export LD_SHIM_LIBS "/system/vendor/lib/hw/camera.vendor.msm8974.so|/system/lib/libshim_camera.so:/system/vendor/lib/libwvm.so|/system/lib/libshim_wvm.so"
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
