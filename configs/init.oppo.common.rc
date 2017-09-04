@@ -377,7 +377,7 @@ service audiod /system/bin/audiod
 service netmgrd /system/bin/netmgrd
     class main
     user root
-    group radio
+    group radio system
 
 service sensors /system/bin/sensors.qcom
     class late_start
