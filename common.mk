@@ -95,6 +95,7 @@ PRODUCT_COPY_FILES += \
 
 # Hardware modules to build
 PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0-impl \
     libbt-vendor \
     android.hardware.bluetooth@1.0-impl \
     android.hardware.wifi@1.0-service \
