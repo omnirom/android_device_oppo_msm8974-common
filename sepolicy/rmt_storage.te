@@ -1,4 +1,2 @@
-###########################
-# OmniROM oppo common sepolicy
-#
-allow rmt_storage self:capability dac_override;
+# Allow rmt_storage to backup/restore NV contents
+allow rmt_storage nvbackup_block_device:blk_file rw_file_perms;
