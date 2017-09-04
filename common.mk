@@ -12,6 +12,7 @@ COMMON_PATH := device/oppo/msm8974-common
 # if the xhdpi doesn't exist.
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+PRODUCT_PROPERTY_OVERRIDES += debug.hwui.use_buffer_age=false
 
 PRODUCT_PACKAGES += \
     omni_charger_res_images
