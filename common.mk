@@ -179,6 +179,10 @@ PRODUCT_PACKAGES += \
 #PRODUCT_COPY_FILES += \
 #    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
+# OMX properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.media.treble_omx=false
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8974
