@@ -143,3 +143,5 @@ TW_EXCLUDE_ENCRYPTED_BACKUPS := true
 TW_INCLUDE_L_CRYPTO := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+
+DEVICE_MANIFEST_FILE := device/oneplus/bacon/manifest.xml
