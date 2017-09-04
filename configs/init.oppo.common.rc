@@ -367,7 +367,7 @@ on property:bluetooth.hciattach=false
 service qmuxd /system/bin/qmuxd
     class main
     user radio
-    group radio audio bluetooth gps diag
+    group radio audio bluetooth wakelock gps diag
 
 service audiod /system/bin/audiod
     class main
@@ -377,7 +377,7 @@ service audiod /system/bin/audiod
 service netmgrd /system/bin/netmgrd
     class main
     user root
-    group radio system
+    group radio system wakelock
 
 service sensors /system/bin/sensors.qcom
     class late_start
