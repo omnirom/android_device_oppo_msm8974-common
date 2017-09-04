@@ -110,7 +110,7 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     libshim_wvm
 
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     camera-wrapper.msm8974
 
 PRODUCT_PACKAGES += \
