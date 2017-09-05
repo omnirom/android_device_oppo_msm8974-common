@@ -98,13 +98,19 @@ PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl \
     android.hardware.vibrator@1.0-impl \
     android.hardware.sensors@1.0-impl \
+    android.hardware.sensors@1.0-service \
     android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service \
     android.hardware.gnss@1.0-impl \
+    android.hardware.gnss@1.0-service \
     android.hardware.light@2.0-impl \
     android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.audio@2.0-impl \
+    android.hardware.audio@2.0-service \
     android.hardware.audio.effect@2.0-impl \
     hwcomposer.msm8974 \
     gralloc.msm8974 \
@@ -124,7 +130,8 @@ PRODUCT_PACKAGES += \
     power.msm8974 \
     keystore.msm8974 \
     libshim_camera \
-    libshim_wvm
+    libshim_wvm \
+    librmnetctl
 
 PRODUCT_PACKAGES += \
     camera-wrapper.msm8974
