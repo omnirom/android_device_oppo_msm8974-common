@@ -18,7 +18,7 @@
 
 
 #define LOG_NDEBUG 0
-#define LOG_TAG "lights"
+#define LOG_TAG "oppo-common-lights"
 
 #include <cutils/log.h>
 #include <cutils/properties.h>
@@ -110,6 +110,8 @@ static int is_qpnp_device(void)
     char value[PROPERTY_VALUE_MAX] = {'\0'};
 
     if (property_get("ro.oppo.device", value, NULL)) {
+        ALOGV("is_qpnp_device %s\n", value);
+        
         if (!strcmp(value, "find7s")) {
 	         return 1;
 	      }
