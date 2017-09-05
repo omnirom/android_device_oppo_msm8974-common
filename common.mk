@@ -112,6 +112,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
     android.hardware.audio@2.0-service \
     android.hardware.audio.effect@2.0-impl \
+    android.hardware.usb@1.0-service \
     hwcomposer.msm8974 \
     gralloc.msm8974 \
     copybit.msm8974 \
