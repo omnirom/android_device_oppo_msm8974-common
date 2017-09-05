@@ -1,2 +1,0 @@
-allow untrusted_app gpu_sysfs:file r_file_perms;
-allow untrusted_app gpu_sysfs:dir search;

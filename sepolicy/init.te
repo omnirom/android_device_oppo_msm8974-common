@@ -1,5 +1,0 @@
-###########################
-# OmniROM oppo common sepolicy
-#
-allow init property_socket:sock_file write;
-allow init debugfs:file write;

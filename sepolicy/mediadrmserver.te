@@ -1,5 +1,0 @@
-###########################
-# OmniROM oppo common sepolicy
-#
-
-allow mediadrmserver rootfs:lnk_file getattr;

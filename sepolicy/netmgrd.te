@@ -1,4 +1,0 @@
-###########################
-# OmniROM oppo common sepolicy
-
-allow netmgrd self:capability dac_override;

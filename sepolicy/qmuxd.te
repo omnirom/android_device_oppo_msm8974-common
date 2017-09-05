@@ -1,4 +1,0 @@
-###########################
-# OmniROM oppo common sepolicy
-#
-allow qmuxd diag_device:chr_file rw_file_perms;

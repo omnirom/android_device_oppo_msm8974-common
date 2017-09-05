@@ -1,6 +1,0 @@
-###########################
-# OmniROM oppo common sepolicy
-#
-
-allow surfaceflinger gpu_sysfs:file r_file_perms;
-allow surfaceflinger gpu_sysfs:dir search;

@@ -1,5 +1,0 @@
-###########################
-# OmniROM oppo common sepolicy
-#
-allow vold persist_file:dir r_file_perms;
-
