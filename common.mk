@@ -64,8 +64,8 @@ PRODUCT_COPY_FILES += \
 
 # Wifi config
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    $(COMMON_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+    $(COMMON_PATH)/configs/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf \
+    $(COMMON_PATH)/configs/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -115,6 +115,8 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-service \
     android.hardware.audio.effect@2.0-impl \
     android.hardware.usb@1.0-service \
+    android.hardware.power@1.0-service \
+    android.hardware.power@1.0-impl \
     hwcomposer.msm8974 \
     gralloc.msm8974 \
     copybit.msm8974 \
