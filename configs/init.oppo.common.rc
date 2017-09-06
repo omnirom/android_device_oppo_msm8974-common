@@ -385,7 +385,7 @@ service sensors /system/bin/sensors.qcom
     user root
     group root
 
-service wpa_supplicant /system/bin/wpa_supplicant \
+service wpa_supplicant /system/vendor/bin/hw/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
     -O/data/misc/wifi/sockets \
@@ -399,7 +399,7 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-service p2p_supplicant /system/bin/wpa_supplicant \
+service p2p_supplicant /system/vendor/bin/hw/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
     -I/system/etc/wifi/p2p_supplicant_overlay.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -466,6 +466,11 @@ service qseecomd /system/bin/qseecomd
     class core
     user root
     group root
+
+service wcnss-service /system/bin/wcnss_service
+    class main
+    user system
+    group system wifi qcom_diag radio
 
 service time_daemon /system/bin/time_daemon
     class late_start
