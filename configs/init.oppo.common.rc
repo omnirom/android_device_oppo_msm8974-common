@@ -220,10 +220,13 @@ on boot
     write /sys/module/msm_thermal/freq_control/freq_step 1
     write /sys/module/msm_thermal/parameters/enabled 1
 
-    start config_bluetooth
-    #start mpdecision
-    write /sys/class/android_usb/android0/enable 1
-    start adbd
+    # Subsytem Restart
+    #adsp
+    write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
+    #modem
+    write /sys/bus/msm_subsys/devices/subsys1/restart_level "related"
+    #venus
+    write /sys/bus/msm_subsys/devices/subsys2/restart_level "related"
 
 # msm specific files that need to be created on /data
 on post-fs-data
@@ -292,21 +295,10 @@ on post-fs-data
     # LED On/Off synchronization
     chown system system /sys/class/leds/red/device/lock
 
-    # communicate with mpdecision and thermald
-    #mkdir /dev/socket/mpdecision 0770 system system
-    #chmod 2770 /dev/socket/mpdecision
+    # camera sockets
+    mkdir /data/misc/camera 0770 camera camera
 
-    # Tombstone dropboxes
-    mkdir /data/tombstones 0771 system system
-    mkdir /data/tombstones/modem 0771 system system
-    mkdir /data/tombstones/lpass 0771 system system
-    mkdir /data/tombstones/wcnss 0771 system system
-    mkdir /data/tombstones/dsps 0771 system system
-
-   # camera sockets
-   mkdir /data/misc/camera 0770 camera camera
-
-   setprop vold.post_fs_data_done 1
+    setprop vold.post_fs_data_done 1
 
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
@@ -339,22 +331,20 @@ service rfs_access /system/bin/rfs_access
 on property:ro.boot.emmc=true
     start rfs_access
 
-#service bdAddrLoader /system/bin/bdAddrLoader -f /persist/bluetooth/.bdaddr -h -x
-#    class main
-#    user bluetooth
-#    group system bluetooth
-#    oneshot
+on property:vold.decrypt=trigger_restart_framework
+    start config_bt_addr
+    start wcnss-service
 
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
+service config_bt_addr /system/bin/btnvtool -O
     class core
-    user root
-    seclabel u:r:bluetooth_loader:s0
+    user bluetooth
+    group bluetooth radio
     oneshot
 
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
-    group bluetooth net_bt_admin system
+    group bluetooth net_bt_admin diag radio
     disabled
     oneshot
 
@@ -363,11 +353,6 @@ on property:bluetooth.hciattach=true
 
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
-
-#service bridgemgrd /system/bin/bridgemgrd
-#    class main
-#    user radio
-#    group radio
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
@@ -433,19 +418,6 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
 #   user root
 #   disabled
 
-#service conn_init /system/bin/conn_init
-#    class late_start
-#    user system
-#    group system wifi
-#    oneshot
-
-#service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
-#    class late_start
-#    user root
-#    disabled
-#    oneshot
-
-
 # bugreport is triggered by holding down volume down, volume up and power
 service bugreport /system/bin/bugmailer.sh -v
     class main
@@ -472,13 +444,6 @@ service adsprpcd /system/bin/adsprpcd
     class main
     user media
     group media
-
-#service diag_mdlog /system/bin/diag_mdlog -s 100
-#    class late_start
-#    disabled
-
-# on property:gsm.sim.state=READY
-#    start diag_mdlog
 
 service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
