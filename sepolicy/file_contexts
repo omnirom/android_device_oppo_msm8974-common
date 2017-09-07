@@ -1,0 +1,2 @@
+/dev/kgsl-3d0                                   u:object_r:gpu_device:s0
+/sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0(/.*)? u:object_r:sysfs_kgsl:s0
