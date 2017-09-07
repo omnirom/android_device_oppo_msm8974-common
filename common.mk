@@ -67,6 +67,12 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf \
     $(COMMON_PATH)/configs/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf
 
+# WiFi firmware
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
+    $(COMMON_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+    $(COMMON_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -214,6 +220,9 @@ PRODUCT_COPY_FILES += \
 
 # Properties
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.sdcardfs=false
+
 # bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
@@ -253,12 +262,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true
 
-# Oppo-specific
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.oppo.version=US \
-    ro.xxversion=V1.0 \
-    ro.bootversion=V1.1
-
 # qcom
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1 \
@@ -284,9 +287,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.gps.qc_nlp_in_use=1 \
     ro.gps.agps_provider=1
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1
 
 # sensors
 PRODUCT_PROPERTY_OVERRIDES += \
