@@ -78,8 +78,8 @@ USE_LEGACY_LOCAL_AUDIO_HAL := true
 USE_CAMERA_STUB := true
 
 # Crypto
-TARGET_HW_DISK_ENCRYPTION := true
-TARGET_CRYPTFS_HW_PATH := device/oppo/msm8974-common/cryptfs_hw
+#TARGET_HW_DISK_ENCRYPTION := true
+#TARGET_CRYPTFS_HW_PATH := device/oppo/msm8974-common/cryptfs_hw
 
 # Disable secure discard because it's SLOW
 BOARD_SUPPRESS_SECURE_ERASE := true
@@ -122,10 +122,16 @@ TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
 KERNEL_HAS_FINIT_MODULE := false
 
+# netd
+TARGET_KERNEL_NO_FRA_UID_RANGE_SUPPORT := true
+
+#wificond
+TARGET_KERNEL_NO_NL80211_ATTR_MAC := true
+
 # selinux
 include device/qcom/sepolicy/sepolicy.mk
 
-#BOARD_SEPOLICY_DIRS += \
+BOARD_SEPOLICY_DIRS += \
     $(COMMON_PATH)/sepolicy
 
 # Recovery:Start
