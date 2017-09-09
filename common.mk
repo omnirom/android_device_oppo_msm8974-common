@@ -99,22 +99,17 @@ PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl \
     android.hardware.vibrator@1.0-impl \
     android.hardware.sensors@1.0-impl \
-    android.hardware.sensors@1.0-service \
     android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service \
     android.hardware.gnss@1.0-impl \
-    android.hardware.gnss@1.0-service \
     android.hardware.light@2.0-impl \
     android.hardware.graphics.composer@2.1-impl \
-    android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.allocator@2.0-impl \
-    android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.memtrack@1.0-impl \
     android.hardware.audio@2.0-impl \
-    android.hardware.audio@2.0-service \
     android.hardware.audio.effect@2.0-impl \
     android.hardware.usb@1.0-service \
+    android.hardware.power@1.0-impl \
     hwcomposer.msm8974 \
     gralloc.msm8974 \
     copybit.msm8974 \
@@ -231,7 +226,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Ril
 PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
+    rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so \
+    persist.data.qmi.adb_logmask=0
 
 # Cell Broadcasts
 PRODUCT_PROPERTY_OVERRIDES += \
