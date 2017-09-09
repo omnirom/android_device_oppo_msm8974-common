@@ -179,13 +179,13 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-#ifeq ($(TARGET_BUILD_VARIANT),user)
-#    NFCEE_ACCESS_PATH := $(COMMON_PATH)/configs/nfcee_access.xml
-#else
-#    NFCEE_ACCESS_PATH := $(COMMON_PATH)/configs/nfcee_access_debug.xml
-#endif
-#PRODUCT_COPY_FILES += \
-#    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+ifeq ($(TARGET_BUILD_VARIANT),user)
+    NFCEE_ACCESS_PATH := $(COMMON_PATH)/configs/nfcee_access.xml
+else
+    NFCEE_ACCESS_PATH := $(COMMON_PATH)/configs/nfcee_access_debug.xml
+endif
+PRODUCT_COPY_FILES += \
+    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
 # OMX properties
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -276,7 +276,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # gps
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.gps.qc_nlp_in_use=1 \
+    persist.gps.qc_nlp_in_use=0 \
     ro.gps.agps_provider=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
