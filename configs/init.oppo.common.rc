@@ -182,19 +182,24 @@ on boot
     write /sys/block/mmcblk0/bdi/read_ahead_kb 1024
 
     # touchscreen
-    chown system system /sys/kernel/touchscreen/camera_enable
-    chown system system /sys/kernel/touchscreen/flashlight_enable
-    chown system system /sys/kernel/touchscreen/double_tap_enable
-    chown system system /sys/kernel/touchscreen/button_disable
+    chown system radio /proc/touchpanel/double_tap_enable
+    chmod 0660 /proc/touchpanel/double_tap_enable
 
-    chown system system /proc/touchpanel/camera_enable
-    chmod 0640 /proc/touchpanel/camera_enable
-    chown system system /proc/touchpanel/flashlight_enable
-    chmod 0640 /proc/touchpanel/flashlight_enable
-    chown system system /proc/touchpanel/double_tap_enable
-    chmod 0640 /proc/touchpanel/double_tap_enable
-    chown system system /proc/touchpanel/keypad_enable
-    chmod 0640 /proc/touchpanel/keypad_enable
+    chown root system /proc/touchpanel/double_swipe_enable
+    chmod 0660 /proc/touchpanel/double_swipe_enable
+    chown root system /proc/touchpanel/up_arrow_enable
+    chmod 0660 /proc/touchpanel/up_arrow_enable
+    chown root system /proc/touchpanel/down_arrow_enable
+    chmod 0660 /proc/touchpanel/down_arrow_enable
+    chown root system /proc/touchpanel/left_arrow_enable
+    chmod 0660 /proc/touchpanel/left_arrow_enable
+    chown root system /proc/touchpanel/right_arrow_enable
+    chmod 0660 /proc/touchpanel/right_arrow_enable
+    chown root system /proc/touchpanel/letter_o_enable
+    chmod 0660 /proc/touchpanel/letter_o_enable
+
+    chown root system /proc/touchpanel/keypad_enable
+    chmod 0660 /proc/touchpanel/keypad_enable
 
     # vibratora
     chown system system /sys/devices/virtual/timed_output/vibrator/vtg_level
