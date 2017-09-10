@@ -128,17 +128,16 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     libaudio-resampler \
     audiod \
-    libqcompostprocbundle \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
     power.msm8974 \
     keystore.msm8974 \
     libshim_camera \
     libshim_wvm \
     librmnetctl
 
-PRODUCT_PACKAGES += \
-    camera-wrapper.msm8974
+#PRODUCT_PACKAGES += \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
@@ -150,11 +149,6 @@ PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libxml2 \
     libboringssl-compat
-
-#    libOmxAacEnc \
-#    libOmxAmrEnc \
-#    libOmxEvrcEnc \
-#    libOmxQcelp13Enc \
 
 # wifi
 PRODUCT_PACKAGES += \
@@ -172,6 +166,12 @@ PRODUCT_COPY_FILES += \
 # Device settings
 PRODUCT_PACKAGES += \
     Find7Parts
+
+# camera
+PRODUCT_PACKAGES += \
+    camera.device@1.0-impl \
+    android.hardware.camera.provider@2.4-impl \
+    camera-wrapper.msm8974
 
 #PRODUCT_PACKAGES += \
     SnapdragonCamera
