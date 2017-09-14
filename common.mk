@@ -196,7 +196,8 @@ PRODUCT_COPY_FILES += \
 
 # OMX properties
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.media.treble_omx=false
+    persist.media.treble_omx=false \
+    camera.disable_treble=true
 
 # GPS
 PRODUCT_PACKAGES += \
