@@ -14,18 +14,11 @@ LOCAL_SHARED_LIBRARIES := \
     android.hidl.token@1.0-utils \
     android.hardware.graphics.bufferqueue@1.0
 
-LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-# workaround for hardware/qcom/camera already defining camera.board
-LOCAL_MODULE := camera-wrapper.msm8974
-
-
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw
+LOCAL_MODULE := camera.msm8974
+LOCAL_CFLAGS := -Werror
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
-#include $(BUILD_HEAPTRACKED_SHARED_LIBRARY)
-
-$(LOCAL_INSTALLED_MODULE): $(LOCAL_BUILT_MODULE) | $(ACP)
-	@echo "Install (overridden): $@"
-	$(hide) $(ACP) -fp $< $(dir $@)/camera.msm8974$(TARGET_SHLIB_SUFFIX)
 
 endif

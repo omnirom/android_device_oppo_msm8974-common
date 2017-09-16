@@ -76,8 +76,11 @@ USE_LEGACY_LOCAL_AUDIO_HAL := true
 
 # Camera
 USE_CAMERA_STUB := true
+TARGET_USES_NON_TREBLE_CAMERA := true
+# TODO remove?
+#TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
-# Crypto
+# TODO Crypto
 #TARGET_HW_DISK_ENCRYPTION := true
 #TARGET_CRYPTFS_HW_PATH := device/oppo/msm8974-common/cryptfs_hw
 
@@ -87,7 +90,6 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
-BLUETOOTH_HCI_USE_MCT := true
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
@@ -117,10 +119,8 @@ TARGET_PROVIDES_LIBLIGHT := true
 # keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
-# camera hax
-TARGET_HAS_LEGACY_CAMERA_HAL1 := true
-
-KERNEL_HAS_FINIT_MODULE := false
+# TODO remove?
+#KERNEL_HAS_FINIT_MODULE := false
 
 # netd
 TARGET_KERNEL_NO_FRA_UID_RANGE_SUPPORT := true

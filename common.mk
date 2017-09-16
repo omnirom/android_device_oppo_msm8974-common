@@ -172,7 +172,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.device@1.0-impl \
     android.hardware.camera.provider@2.4-impl \
-    camera-wrapper.msm8974
+    camera.msm8974
 
 #PRODUCT_PACKAGES += \
     SnapdragonCamera
