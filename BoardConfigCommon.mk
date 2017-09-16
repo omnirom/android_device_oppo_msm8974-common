@@ -125,9 +125,6 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 # netd
 TARGET_KERNEL_NO_FRA_UID_RANGE_SUPPORT := true
 
-#wificond
-TARGET_KERNEL_NO_NL80211_ATTR_MAC := true
-
 # selinux
 include device/qcom/sepolicy/sepolicy.mk
 
