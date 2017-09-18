@@ -59,23 +59,14 @@ char const*const GREEN_LED_FILE
 char const*const BLUE_LED_FILE
         = "/sys/class/leds/blue/brightness";
 
-char const*const QPNP_RED_LED_FILE
-        = "/sys/class/leds/rgb_red/brightness";
-
-char const*const QPNP_GREEN_LED_FILE
-        = "/sys/class/leds/rgb_green/brightness";
-
-char const*const QPNP_BLUE_LED_FILE
-        = "/sys/class/leds/rgb_blue/brightness";
-
 char const*const QPNP_RAMP_STEP_FILE
-        = "/sys/class/leds/rgb_red/ramp_step_ms";
+        = "/sys/class/leds/red/ramp_step_ms";
 
 char const*const QPNP_DUTY_FILE
-        = "/sys/class/leds/rgb_red/duty_pcts";
+        = "/sys/class/leds/red/duty_pcts";
 
 char const*const QPNP_BLINK_FILE
-        = "/sys/class/leds/rgb_red/blink";
+        = "/sys/class/leds/red/blink";
 
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
@@ -93,7 +84,7 @@ char const*const RED_BLINK_FILE
         = "/sys/class/leds/red/device/blink";
 
 //The maximum LUT size is 63 steps
-#define QPNP_DUTY_STEPS 63
+#define QPNP_DUTY_STEPS 50
 
 /**
  * device methods
@@ -111,10 +102,9 @@ static int is_qpnp_device(void)
 
     if (property_get("ro.oppo.device", value, NULL)) {
         ALOGV("is_qpnp_device %s\n", value);
-        
         if (!strcmp(value, "find7s")) {
-	         return 1;
-	      }
+            return 1;
+        }
         if (!strcmp(value, "n3")) {
            return 1;
         }
@@ -265,81 +255,74 @@ set_speaker_light_locked_qpnp(struct light_device_t* dev,
 {
 
     int len;
-    int red, green, blue;
     int onMS, offMS;
+    unsigned int brightness;
     unsigned int colorRGB;
 
-    if(state == NULL) {
-        len = 0;
-        red = 0;
-        green = 0;
-        blue = 0;
-        onMS = 0;
-        offMS = 0;
+    if (state == NULL) {
+        write_int(QPNP_BLINK_FILE, 0);
+        write_int(RED_LED_FILE, 0);
+        return 0;
+    }
+
+    switch (state->flashMode) {
+        case LIGHT_FLASH_TIMED:
+            onMS = state->flashOnMS;
+            offMS = state->flashOffMS;
+            break;
+        case LIGHT_FLASH_NONE:
+        default:
+            onMS = 0;
+            offMS = 0;
+            break;
+    }
+
+    colorRGB = (0xFFFFFF & state->color);
+
+    // If a brightness has been applied by the user
+    brightness = (g_notification.color & 0xFF000000) >> 24;
+    if (brightness == 0x00) {
+        brightness = 0xFF;
+    }
+
+#if 0
+    ALOGD("set_speaker_light_locked_qpnp mode %d, colorRGB=%08X, onMS=%d, offMS=%d\n",
+            state->flashMode, colorRGB, onMS, offMS);
+#endif
+
+    if (onMS > 0 && offMS > 0) {
+        char dutystr[4*(QPNP_DUTY_STEPS+1)];
+        char* p = dutystr;
+        int totalMS = onMS + offMS;
+        int stepMS = totalMS/QPNP_DUTY_STEPS;
+        int onSteps = onMS/stepMS;
+        int i;
+
+        //FIXME - This math makes my head hurt and it's been a long week
+        p += sprintf(p, "0");
+        for(i = 1; i <= onSteps/2; i++) {
+            p += sprintf(p, ",%d", min(((100*i)/(onSteps/2)), 100));
+        }
+        for(; i <= onSteps; i++) {
+            p += sprintf(p, ",%d", min(((100*(onSteps-i))/(onSteps/2)), 100));
+        }
+        for(; i < QPNP_DUTY_STEPS - 1; i++) {
+            p += sprintf(p, ",0");
+        }
+        sprintf(p,"\n");
+#if 0
+        ALOGD("set_speaker_light_locked_qpnp stepMS = %d, onSteps = %d, dutystr \"%s\"\n", stepMS, onSteps, dutystr);
+#endif
+        write_int(RED_LED_FILE, 0);
+        write_str(QPNP_DUTY_FILE, dutystr);
+        write_int(QPNP_RAMP_STEP_FILE, stepMS);
+        write_int(QPNP_BLINK_FILE, 1);
     } else {
-        switch (state->flashMode) {
-            case LIGHT_FLASH_TIMED:
-                onMS = state->flashOnMS;
-                offMS = state->flashOffMS;
-                break;
-            case LIGHT_FLASH_NONE:
-            default:
-                onMS = 0;
-                offMS = 0;
-                break;
-        }
-
-        colorRGB = state->color;
-
-        red = (colorRGB >> 16) & 0xFF;
-        green = (colorRGB >> 8) & 0xFF;
-        blue = colorRGB & 0xFF;
-
 #if 0
-        ALOGD("set_speaker_light_locked_qpnp mode %d, colorRGB=%08X, onMS=%d, offMS=%d\n",
-                state->flashMode, colorRGB, onMS, offMS);
+        ALOGD("set_speaker_light_locked_qpnp red = %d\n", brightness);
 #endif
-
-        if (onMS > 0 && offMS > 0) {
-	    char dutystr[4*(QPNP_DUTY_STEPS+1)];
-            char* p = dutystr;
-            int totalMS = onMS + offMS;
-            int stepMS = totalMS/QPNP_DUTY_STEPS;
-	    int onSteps = onMS/stepMS;
-            int i;
-
-	    //FIXME - This math makes my head hurt and it's been a long week
-            p += sprintf(p, "0");
-            for(i = 1; i <= onSteps/2; i++) {
-              p += sprintf(p, ",%d", min(((100*i)/(onSteps/2)), 100));
-            }
-            for(; i <= onSteps; i++) {
-	      p += sprintf(p, ",%d", min(((100*(onSteps-i))/(onSteps/2)), 100));
-            }
-            for(; i < QPNP_DUTY_STEPS - 1; i++) {
-              p += sprintf(p, ",0");
-            }
-            sprintf(p,"\n");
-#if 0
-            ALOGD("set_speaker_light_locked_qpnp stepMS = %d, onSteps = %d, dutystr \"%s\"\n",
-		  stepMS, onSteps, dutystr);
-#endif
-            write_int(QPNP_RED_LED_FILE, 0);
-            write_int(QPNP_GREEN_LED_FILE, 0);
-            write_int(QPNP_BLUE_LED_FILE, 0);
-            write_str(QPNP_DUTY_FILE, dutystr);
-            write_int(QPNP_RAMP_STEP_FILE, stepMS);
-            write_int(QPNP_BLINK_FILE, 1);
-        } else {
-#if 0
-            ALOGD("set_speaker_light_locked_qpnp red = %d\n",
-		  red);
-#endif
-            write_int(QPNP_BLINK_FILE, 0);
-            write_int(QPNP_RED_LED_FILE, red);
-            write_int(QPNP_GREEN_LED_FILE, green);
-            write_int(QPNP_BLUE_LED_FILE, blue);
-        }
+        write_int(QPNP_BLINK_FILE, 0);
+        write_int(RED_LED_FILE, colorRGB ? brightness : 0);
     }
 
     return 0;
