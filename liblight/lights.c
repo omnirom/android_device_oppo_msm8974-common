@@ -59,23 +59,14 @@ char const*const GREEN_LED_FILE
 char const*const BLUE_LED_FILE
         = "/sys/class/leds/blue/brightness";
 
-char const*const QPNP_RED_LED_FILE
-        = "/sys/class/leds/rgb_red/brightness";
-
-char const*const QPNP_GREEN_LED_FILE
-        = "/sys/class/leds/rgb_green/brightness";
-
-char const*const QPNP_BLUE_LED_FILE
-        = "/sys/class/leds/rgb_blue/brightness";
-
 char const*const QPNP_RAMP_STEP_FILE
-        = "/sys/class/leds/rgb_red/ramp_step_ms";
+        = "/sys/class/leds/red/ramp_step_ms";
 
 char const*const QPNP_DUTY_FILE
-        = "/sys/class/leds/rgb_red/duty_pcts";
+        = "/sys/class/leds/red/duty_pcts";
 
 char const*const QPNP_BLINK_FILE
-        = "/sys/class/leds/rgb_red/blink";
+        = "/sys/class/leds/red/blink";
 
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
@@ -113,8 +104,8 @@ static int is_qpnp_device(void)
         ALOGV("is_qpnp_device %s\n", value);
         
         if (!strcmp(value, "find7s")) {
-	         return 1;
-	      }
+            return 1;
+        }
         if (!strcmp(value, "n3")) {
            return 1;
         }
@@ -301,44 +292,42 @@ set_speaker_light_locked_qpnp(struct light_device_t* dev,
 #endif
 
         if (onMS > 0 && offMS > 0) {
-	    char dutystr[4*(QPNP_DUTY_STEPS+1)];
+            char dutystr[4*(QPNP_DUTY_STEPS+1)];
             char* p = dutystr;
             int totalMS = onMS + offMS;
             int stepMS = totalMS/QPNP_DUTY_STEPS;
-	    int onSteps = onMS/stepMS;
+            int onSteps = onMS/stepMS;
             int i;
 
-	    //FIXME - This math makes my head hurt and it's been a long week
+            //FIXME - This math makes my head hurt and it's been a long week
             p += sprintf(p, "0");
             for(i = 1; i <= onSteps/2; i++) {
               p += sprintf(p, ",%d", min(((100*i)/(onSteps/2)), 100));
             }
             for(; i <= onSteps; i++) {
-	      p += sprintf(p, ",%d", min(((100*(onSteps-i))/(onSteps/2)), 100));
+                p += sprintf(p, ",%d", min(((100*(onSteps-i))/(onSteps/2)), 100));
             }
             for(; i < QPNP_DUTY_STEPS - 1; i++) {
-              p += sprintf(p, ",0");
+                p += sprintf(p, ",0");
             }
             sprintf(p,"\n");
 #if 0
-            ALOGD("set_speaker_light_locked_qpnp stepMS = %d, onSteps = %d, dutystr \"%s\"\n",
-		  stepMS, onSteps, dutystr);
+            ALOGD("set_speaker_light_locked_qpnp stepMS = %d, onSteps = %d, dutystr \"%s\"\n", stepMS, onSteps, dutystr);
 #endif
-            write_int(QPNP_RED_LED_FILE, 0);
-            write_int(QPNP_GREEN_LED_FILE, 0);
-            write_int(QPNP_BLUE_LED_FILE, 0);
+            write_int(RED_LED_FILE, 0);
+            write_int(GREEN_LED_FILE, 0);
+            write_int(BLUE_LED_FILE, 0);
             write_str(QPNP_DUTY_FILE, dutystr);
             write_int(QPNP_RAMP_STEP_FILE, stepMS);
             write_int(QPNP_BLINK_FILE, 1);
         } else {
 #if 0
-            ALOGD("set_speaker_light_locked_qpnp red = %d\n",
-		  red);
+            ALOGD("set_speaker_light_locked_qpnp red = %d\n", red);
 #endif
             write_int(QPNP_BLINK_FILE, 0);
-            write_int(QPNP_RED_LED_FILE, red);
-            write_int(QPNP_GREEN_LED_FILE, green);
-            write_int(QPNP_BLUE_LED_FILE, blue);
+            write_int(RED_LED_FILE, red);
+            write_int(GREEN_LED_FILE, green);
+            write_int(BLUE_LED_FILE, blue);
         }
     }
 
