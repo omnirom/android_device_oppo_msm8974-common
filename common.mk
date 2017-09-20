@@ -161,6 +161,7 @@ PRODUCT_PACKAGES += \
     wifilogd \
     wpa_supplicant.conf
 
+# bluetooth
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
 
@@ -209,11 +210,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/quipc.conf:system/etc/quipc.conf \
     $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf
 
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/power_profiles.xml:system/etc/power_profiles.xml
-
 # Properties
-
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sys.sdcardfs=false
 
