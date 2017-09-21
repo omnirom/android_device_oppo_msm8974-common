@@ -23,6 +23,7 @@
 #include <cutils/log.h>
 #include <cutils/properties.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <errno.h>
@@ -180,10 +181,6 @@ set_speaker_light_locked_shineled(struct light_device_t* dev,
     unsigned int colorRGB;
 
     if (state == NULL) {
-        write_int(RED_LED_FILE, 0);
-        write_int(GREEN_LED_FILE, 0);
-        write_int(BLUE_LED_FILE, 0);
-        write_int(RED_BLINK_FILE, 0);
         return 0;
     }
 
@@ -255,8 +252,6 @@ set_speaker_light_locked_qpnp(struct light_device_t* dev,
     unsigned int colorRGB;
 
     if (state == NULL) {
-        write_int(QPNP_BLINK_FILE, 0);
-        write_int(RED_LED_FILE, 0);
         return 0;
     }
 
