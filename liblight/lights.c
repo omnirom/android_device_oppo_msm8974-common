@@ -23,6 +23,7 @@
 #include <cutils/log.h>
 #include <cutils/properties.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <errno.h>
@@ -180,10 +181,6 @@ set_speaker_light_locked_shineled(struct light_device_t* dev,
     unsigned int colorRGB;
 
     if (state == NULL) {
-        write_int(RED_LED_FILE, 0);
-        write_int(GREEN_LED_FILE, 0);
-        write_int(BLUE_LED_FILE, 0);
-        write_int(RED_BLINK_FILE, 0);
         return 0;
     }
 
@@ -255,8 +252,6 @@ set_speaker_light_locked_qpnp(struct light_device_t* dev,
     unsigned int colorRGB;
 
     if (state == NULL) {
-        write_int(QPNP_BLINK_FILE, 0);
-        write_int(RED_LED_FILE, 0);
         return 0;
     }
 
@@ -405,6 +400,10 @@ set_light_touchkeys(struct light_device_t* dev,
     int brightness = rgb_to_brightness(state);
 
     pthread_mutex_lock(&g_lock);
+    // everything below 80 is not really visible
+    if (brightness != 0) {
+        brightness = max(80, brightness);
+    }
     write_int(BUTTONS_FILE, brightness);
     pthread_mutex_unlock(&g_lock);
     return err;
