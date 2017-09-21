@@ -164,6 +164,11 @@ set_light_backlight(struct light_device_t* dev,
 
     pthread_mutex_lock(&g_lock);
     err = write_int(LCD_FILE, brightness);
+    // TODO for now use same as screen
+    // everything below 80 is not really visible
+    if (brightness != 0) {
+        brightness = max(80, brightness);
+    }
     pthread_mutex_unlock(&g_lock);
 
     return err;
