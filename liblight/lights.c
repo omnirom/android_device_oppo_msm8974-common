@@ -405,6 +405,10 @@ set_light_touchkeys(struct light_device_t* dev,
     int brightness = rgb_to_brightness(state);
 
     pthread_mutex_lock(&g_lock);
+    // everything below 80 is not really visible
+    if (brightness != 0) {
+        brightness = max(80, brightness);
+    }
     write_int(BUTTONS_FILE, brightness);
     pthread_mutex_unlock(&g_lock);
     return err;
