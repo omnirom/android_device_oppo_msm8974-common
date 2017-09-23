@@ -268,18 +268,13 @@
         1 - Recent apps view in SystemUI
         2 - Launch assist intent
         This needs to match the constants in
-        policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-    -->
+        policy/src/com/android/internal/policy/impl/PhoneWindowManager.java -->
     <integer name="config_longPressOnHomeBehavior">2</integer>
 
     <!-- Control the behavior when the user long presses the menu button.
-            0 - Nothing
-            1 - Recent apps view in SystemUI
-            2 - Launch assist intent
-         This needs to match the constants in
-         policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-    -->
-    <!--<integer name="config_longPressOnMenuBehavior">1</integer>-->
+        0 - Nothing
+        1 - Recent apps view in SystemUI -->
+    <integer name="config_longPressOnMenuBehavior">1</integer>
 
     <!-- The RadioAccessFamilies supported by the device.
          Only used on devices which don't support RIL_REQUEST_GET_RADIO_CAPABILITY
