@@ -149,4 +149,4 @@ TW_INCLUDE_L_CRYPTO := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 
-DEVICE_MANIFEST_FILE := device/oppo/msm8974-common/manifest.xml
+DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml

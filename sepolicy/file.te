@@ -1,1 +1,1 @@
-type sysfs_kgsl, sysfs_type, fs_type;
+type proc_touchpanel, fs_type;
