@@ -1,3 +1,8 @@
 /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0(/.*)? u:object_r:sysfs_kgsl:s0
 /system/bin/wcnss_service       u:object_r:wcnss_service_exec:s0
 /system/bin/audiod              u:object_r:audiod_exec:s0
+/proc/touchpanel(/.*)? u:object_r:proc_touchpanel:s0
+/sys/devices/virtual/timed_output/vibrator(/.*)? u:object_r:sysfs_vibrator:s0
+/data/time(/.*)? u:object_r:time_data_file:s0
+/data/fdAlbum u:object_r:vendor_camera_data_file:s0
+/data/cam_socket.*  u:object_r:camera_socket:s0
