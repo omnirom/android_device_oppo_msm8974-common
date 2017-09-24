@@ -1,0 +1,2 @@
+allow priv_app proc_interrupts:file r_file_perms;
+#allow priv_app firstboot_prop:file r_file_perms;

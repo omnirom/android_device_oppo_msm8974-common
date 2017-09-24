@@ -1,0 +1,7 @@
+unix_socket_connect(mediaserver, thermal, thermal-engine)
+allow mediaserver camera_prop:property_service set;
+allow mediaserver socket_device:sock_file { write };
+allow mediaserver { cameraserver_service cameraproxy_service }:service_manager find;
+#allow mediaserver cameraserver_service:service_manager add;
+allow mediaserver mm-qcamerad:unix_dgram_socket sendto;
+allow mediaserver hal_camera_hwservice:hwservice_manager find;
