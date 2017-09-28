@@ -379,12 +379,12 @@ service qseecomd /system/vendor/bin/qseecomd
 service wcnss-service /system/bin/wcnss_service
     class main
     user system
-    group system wifi qcom_diag radio
+    group system wifi diag radio
 
 service time_daemon /system/vendor/bin/time_daemon
     class late_start
     user root
-    group root radio qcom_diag
+    group root radio diag
 
 service adsprpcd /system/vendor/bin/adsprpcd
     class main
@@ -394,4 +394,4 @@ service adsprpcd /system/vendor/bin/adsprpcd
 service loc_launcher /system/vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
-    group gps inet net_raw qcom_diag net_admin wifi
+    group gps inet net_raw diag net_admin wifi
