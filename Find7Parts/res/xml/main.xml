@@ -18,7 +18,7 @@
             android:summary="@string/vib_strength_summary_head" />
     </PreferenceCategory>
 
-    <!--<PreferenceCategory
+    <PreferenceCategory
         android:title="@string/category_button">
         <CheckBoxPreference
             android:key="swap_menu_recents"
@@ -33,7 +33,7 @@
             android:dependency="swap_menu_recents" />
     </PreferenceCategory>
 
-    <PreferenceCategory
+    <!--<PreferenceCategory
         android:key="button_category"
         android:title="@string/category_button">
         <ListPreference
