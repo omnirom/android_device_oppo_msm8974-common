@@ -51,12 +51,12 @@ public class DeviceSettings extends PreferenceActivity implements
         mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
         mVibratorStrength.setEnabled(VibratorStrengthPreference.isSupported());
 
-        /*mSwapBackRecents = (TwoStatePreference) findPreference(KEY_SWAP_BACK_RECENTS);
+        mSwapBackRecents = (TwoStatePreference) findPreference(KEY_SWAP_BACK_RECENTS);
         mSwapBackRecents.setChecked(Settings.System.getInt(getContentResolver(),
                     Settings.System.BUTTON_SWAP_BACK_RECENTS, 0) != 0);
         mSwapMenuRecents = (TwoStatePreference) findPreference(KEY_SWAP_MENU_RECENTS);
         mSwapMenuRecents.setChecked(Settings.System.getInt(getContentResolver(),
-                    Settings.System.BUTTON_SWAP_MENU_RECENTS, 0) != 0);*/
+                    Settings.System.BUTTON_SWAP_MENU_RECENTS, 0) != 0);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class DeviceSettings extends PreferenceActivity implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        /*if (preference == mSwapBackRecents) {
+        if (preference == mSwapBackRecents) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.BUTTON_SWAP_BACK_RECENTS, mSwapBackRecents.isChecked() ? 1 : 0);
             return true;
@@ -81,7 +81,7 @@ public class DeviceSettings extends PreferenceActivity implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.BUTTON_SWAP_MENU_RECENTS, mSwapMenuRecents.isChecked() ? 1 : 0);
             return true;
-        }*/
+        }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
