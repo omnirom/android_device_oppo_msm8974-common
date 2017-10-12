@@ -133,11 +133,9 @@ PRODUCT_PACKAGES += \
     keystore.msm8974 \
     libshim_camera \
     libshim_wvm \
-    librmnetctl \
-    sh_vendor \
-    mkshrc_vendor
+    librmnetctl
 
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing
