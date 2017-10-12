@@ -135,7 +135,7 @@ PRODUCT_PACKAGES += \
     libshim_wvm \
     librmnetctl
 
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing
