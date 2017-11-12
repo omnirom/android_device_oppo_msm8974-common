@@ -125,7 +125,7 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 TARGET_KERNEL_NO_FRA_UID_RANGE_SUPPORT := true
 
 # selinux
-include device/qcom/sepolicy/sepolicy.mk
+include device/qcom/sepolicy/Android.mk
 
 BOARD_SEPOLICY_DIRS += \
     $(COMMON_PATH)/sepolicy
