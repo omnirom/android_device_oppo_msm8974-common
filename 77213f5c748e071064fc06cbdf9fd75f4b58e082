@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e4cb2e8_c4e14ee9",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1001016
+      },
+      "writtenOn": "2017-11-12T15:24:13Z",
+      "side": 1,
+      "message": "if its Android.mk it will called anyways you dont have to add it here... but as its not clear how to handle qcom selinux leave it at selinux.mk and use https://gerrit.omnirom.org/#/c/26124/",
+      "revId": "77213f5c748e071064fc06cbdf9fd75f4b58e082",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
