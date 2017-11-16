@@ -306,7 +306,7 @@ service qmuxd /system/vendor/bin/qmuxd
     user radio
     group radio audio bluetooth wakelock gps diag
 
-service audiod /system/bin/audiod
+service audiod /system/vendor/bin/audiod
     class main
     user system
     group audio
