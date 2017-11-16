@@ -124,6 +124,9 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 # netd
 TARGET_KERNEL_NO_FRA_UID_RANGE_SUPPORT := true
 
+# GPS
+USE_DEVICE_SPECIFIC_GPS := true
+
 # selinux
 include device/qcom/sepolicy/sepolicy.mk
 
