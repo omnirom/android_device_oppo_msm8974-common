@@ -178,7 +178,7 @@ PRODUCT_PACKAGES += \
     camera.msm8974
 
 #PRODUCT_PACKAGES += \
-    SnapdragonCamera
+    SnapdragonCamera2
 
 # NFC
 PRODUCT_COPY_FILES += \
