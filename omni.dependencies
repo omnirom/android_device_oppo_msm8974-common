@@ -3,25 +3,25 @@
     "remote": "omnirom",
     "repository": "android_hardware_qcom_display-caf-msm8974",
     "target_path": "hardware/qcom/display-caf-msm8974",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   },
   {
     "remote": "omnirom",
     "repository": "android_hardware_qcom_media-caf-msm8974",
     "target_path": "hardware/qcom/media-caf-msm8974",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   },
   {
     "remote": "omnirom",
     "repository": "android_hardware_qcom_audio-caf-msm8974",
     "target_path": "hardware/qcom/audio-caf-msm8974",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   },
   {
     "remote": "omnirom",
     "repository": "android_external_stlport",
     "target_path": "external/stlport",
-    "revision": "android-7.0"
+    "revision": "android-7.1"
   },
   {
     "remote": "omnirom",
@@ -31,26 +31,26 @@
   },
   {
     "remote": "omnirom",
-    "repository": "android_packages_apps_SnapdragonCamera",
-    "target_path": "packages/apps/SnapdragonCamera",
-    "revision": "android-7.1"
+    "repository": "android_packages_apps_SnapdragonCamera2",
+    "target_path": "packages/apps/SnapdragonCamera2",
+    "revision": "android-8.0"
   },
   {
     "remote": "omnirom",
     "repository": "vendor_qcom_opensource_dataservices",
     "target_path": "vendor/qcom/opensource/dataservices",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   },
   {
     "remote": "omnirom",
     "repository": "android_device_qcom_caf-sepolicy",
     "target_path": "device/qcom/sepolicy",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   },
   {
     "remote": "omnirom",
     "repository": "android_vendor_qcom_opensource_interfaces",
     "target_path": "vendor/qcom/opensource/interfaces",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   }
 ]
