@@ -1,0 +1,27 @@
+dontaudit untrusted_app_25 proc:file { open read };
+#============= untrusted_app ==============
+allow untrusted_app proc_stat:file { getattr open read };
+allow untrusted_app proc_tty_drivers:file { getattr open read };
+allow untrusted_app untrusted_app_25:unix_stream_socket connectto;
+#============= untrusted_app_25 ==============
+allow untrusted_app_25 bootanim_exec:file { getattr open read };
+allow untrusted_app_25 bootstat_exec:file { getattr open read };
+allow untrusted_app_25 cameraserver_exec:file { getattr open read };
+allow untrusted_app_25 cgroup:dir { open read };
+allow untrusted_app_25 dnsmasq_exec:file { getattr read };
+allow untrusted_app_25 proc:file getattr;
+allow untrusted_app_25 qemu_hw_mainkeys_prop:file { getattr open read };
+allow untrusted_app_25 rootfs:dir { open read };
+allow untrusted_app_25 sysfs_usb_supply:dir { open read };
+allow untrusted_app_25 thermalserviced_exec:file { getattr open read };
+allow untrusted_app_25 tombstoned_exec:file { getattr open read };
+allow untrusted_app_25 tzdatacheck_exec:file { getattr open read };
+allow untrusted_app_25 uncrypt_exec:file getattr;
+allow untrusted_app_25 unlabeled:file { getattr open read };
+allow untrusted_app_25 vdc_exec:file { getattr open read };
+allow untrusted_app_25 vold_exec:file { getattr open read };
+allow untrusted_app_25 webview_zygote_exec:file getattr;
+allow untrusted_app_25 wificond_exec:file { getattr open read };
+neverallow untrusted_app_25 apk_data_file:file { setattr };
+neverallow untrusted_app_25 debugfs:file { read };
+neverallow untrusted_app_25 serialno_prop:file { read getattr open };
