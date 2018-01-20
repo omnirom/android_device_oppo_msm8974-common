@@ -1,3 +1,4 @@
 allow priv_app proc_interrupts:file r_file_perms;
 allow priv_app device:dir { read open };
 #set_prop(priv_app, firstboot_prop)
+allow priv_app proc_modules:file { read getattr open };
