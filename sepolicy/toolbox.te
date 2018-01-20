@@ -1,2 +1,5 @@
 set_prop(toolbox, rmnet_mux_prop)
 allow toolbox init:fifo_file write;
+#============= toolbox ==============
+allow toolbox init:fifo_file getattr;
+allow toolbox system_prop:property_service set;
