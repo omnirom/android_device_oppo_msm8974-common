@@ -1,0 +1,4 @@
+#============= init ==============
+allow init proc_dirty_ratio:file write;
+neverallow init shell_exec:file { execute_no_trans };
+neverallow init btnvtool_exec:file { execute_no_trans };

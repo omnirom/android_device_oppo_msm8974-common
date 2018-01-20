@@ -284,7 +284,7 @@ on property:vold.decrypt=trigger_restart_framework
 service config_bt_addr /system/vendor/bin/btnvtool -O
     class core
     user bluetooth
-    group bluetooth radio
+    group bluetooth radio system
     oneshot
 
 service hciattach /system/vendor/bin/sh /system/etc/init.qcom.bt.sh
