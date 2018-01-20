@@ -1,0 +1,4 @@
+allow rmt_storage sysfs:dir { read open };
+allow rmt_storage sysfs:file { read open getattr };
+#============= rmt_storage ==============
+neverallow rmt_storage block_device:blk_file { open read write };
