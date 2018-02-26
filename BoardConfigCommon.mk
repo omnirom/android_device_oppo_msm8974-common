@@ -1,5 +1,5 @@
 # inherit from the proprietary version
--include vendor/oppo/find7a/BoardConfigVendor.mk
+-include vendor/oppo/find7op/BoardConfigVendor.mk
 
 COMMON_PATH := device/oppo/msm8974-common
 
@@ -97,6 +97,10 @@ WIFI_DRIVER_FW_PATH_AP           := "ap"
 TARGET_USES_QCOM_WCNSS_QMI       := true
 TARGET_PROVIDES_WCNSS_QMI        := true
 TARGET_USES_WCNSS_MAC_ADDR_REV   := true
+
+# Camera
+BOARD_USES_SNAPDRAGONCAMERA_VERSION := 2
+TARGET_USES_QTI_CAMERA2CLIENT := true
 
 # charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true

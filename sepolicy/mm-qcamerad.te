@@ -3,3 +3,7 @@ allow mm-qcamerad camera_socket:sock_file { create unlink write };
 allow mm-qcamerad camera_data_file:sock_file { create unlink };
 
 type_transition mm-qcamerad system_data_file:file vendor_camera_data_file "fdAlbum";
+
+allow mm-qcamerad { domain appdomain -isolated_app }:fd use;
+allow mm-qcamerad vendor_camera_data_file:file create_file_perms;
+allow mm-qcamerad { surfaceflinger mediaserver cameraserver hal_graphics_allocator untrusted_app_25 }:fd use;
