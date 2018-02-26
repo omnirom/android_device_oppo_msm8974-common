@@ -175,11 +175,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.device@1.0-impl \
     android.hardware.camera.provider@2.4-impl \
-    camera.msm8974
-
-
-#PRODUCT_PACKAGES += \
-    SnapdragonCamera
+    camera.msm8974 \
+    SnapdragonCamera2
 
 # NFC
 PRODUCT_COPY_FILES += \
@@ -296,5 +293,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/sensor/sap.conf:system/etc/sap.conf
 
-# Inherit from proprietary blobs
-$(call inherit-product, vendor/oppo/msm8974-common/msm8974-common-vendor.mk)
