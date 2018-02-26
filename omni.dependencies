@@ -25,12 +25,6 @@
   },
   {
     "remote": "omnirom",
-    "repository": "android_hardware_sony_boringssl-compat",
-    "target_path": "hardware/sony/boringssl-compat",
-    "revision": "android-6.0"
-  },
-  {
-    "remote": "omnirom",
     "repository": "android_packages_apps_SnapdragonCamera2",
     "target_path": "packages/apps/SnapdragonCamera2",
     "revision": "android-8.0"
